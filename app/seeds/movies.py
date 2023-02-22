@@ -356,7 +356,7 @@ def seed_movies():
 
     movie23 = Movie(
         backdrop_path=None,
-        genre_ids=[35,27],
+        genre_ids='35,27',
         tmdb_id=5655,
         original_language="en",
         original_title="Dairy of Terror",
