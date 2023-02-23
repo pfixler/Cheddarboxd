@@ -38,11 +38,13 @@ const MoviesBrowser = () => {
                 {movies.map((movie) => (
                     <div className="single-movie-card" key={movie.id}>
                         <div className="movie-image">
+                            <NavLink to={`/movies/${movie.id}`} target="_blank">
                             <img
                                 className="card-image"
                                 src={movie.poster_path}
                                 name={movie.original_title}
                             />
+                            </NavLink>
                         </div>
                         <div className="movie-interaction-statistics">
                             <div className="movie-views">
