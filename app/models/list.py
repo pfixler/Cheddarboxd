@@ -25,6 +25,6 @@ class List(db.Model):
             'public_list': self.public_list,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'creator': self.creator,
-            'movies': [movie.to_dict() for movie in self.movies]
+            'creator': self.creator.simple_user(),
+            'movies': [movie.simple_movie() for movie in self.movies]
         }

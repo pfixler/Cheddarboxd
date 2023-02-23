@@ -1,7 +1,75 @@
-.profile-dropdown {
+/* .profile-dropdown {
   position: absolute;
 }
 
 .hidden {
   display: none;
+} */
+.navbar-box {
+  background-color: #000;
+  height: 72px;
+  margin-top: 0;
+  /* display: flex;
+  align-items: center;
+  box-sizing: border-box; */
+}
+
+
+.navbar {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 72px;
+  /* position: sticky; */
+}
+
+.navbar-left-side {
+  display: flex;
+  /* margin-top: 22px; */
+  height: 100%;
+  width: 25%;
+  align-items: center;
+  justify-content: left;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+
+
+
+.home-link {
+  width: 100%;
+  color: white;
+}
+
+.navbar-right-side {
+  display: flex;
+  /* margin-top: 22px; */
+  transition: right .3s cubic-bezier(.165,.84,.44,1);
+  line-height: 17px;
+  font-size: 16px;
+  height: 100%;
+  align-items: center;
+  justify-content: right;
+  width: 65%;
+}
+
+.navbar-links {
+  margin-left: 15px;
+}
+
+.navbar-links button{
+  color: #9ab;
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 630;
+  letter-spacing: .07692308em;
+  cursor: pointer;
+}
+
+.navbar-links button:hover{
+  color: white;
 }
