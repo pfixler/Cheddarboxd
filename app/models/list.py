@@ -18,6 +18,16 @@ class List(db.Model):
     creator = db.relationship("User", back_populates="lists")
     movies = db.relationship("Movie", secondary=list_movie, back_populates="lists")
 
+    def simple_list(self):
+        return {
+            'id': self.id,
+            'description': self.description,
+            'public_list': self.public_list,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'creator': self.creator.simple_user()
+        }
+
     def to_dict(self):
         return {
             'id': self.id,

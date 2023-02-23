@@ -61,5 +61,5 @@ class Movie(db.Model):
             'vote_average': self.vote_average,
             'vote_count': self.vote_count,
             'reviews': [review.simple_review() for review in self.reviews],
-            'lists': [list.to_dict() for list in self.lists]
+            'lists': [list.simple_list() for list in self.lists]
         }
