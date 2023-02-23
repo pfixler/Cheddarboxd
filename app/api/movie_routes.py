@@ -10,7 +10,7 @@ def movies():
     """
 
     movies = Movie.query.all()
-    return {'movies': [movie.to_dict() for movie in movies]}
+    return {'Movies': [movie.to_dict() for movie in movies]}
 
 
 @movie_routes.route('/<int:movieId>')

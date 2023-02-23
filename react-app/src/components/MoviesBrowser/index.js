@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadAllMovies } from "../../store/movie";
+import { NavLink } from "react-router-dom";
+
 
 const MoviesBrowser = () => {
     const dispatch = useDispatch();

@@ -18,8 +18,9 @@ const loadOne = (movies) => ({
 export const loadAllMovies = () => async (dispatch) => {
     const response = await fetch('api/movies/');
 
-    if (response) {
-        const movies = response.json();
+    if (response.ok) {
+        const movies = await response.json();
+        console.log('movies in thunk:', movies)
         dispatch(loadAll(movies))
     }
 }
@@ -27,8 +28,8 @@ export const loadAllMovies = () => async (dispatch) => {
  export const loadOneMovie = (movieId) => async (dispatch) => {
     const response = await fetch(`api/movies/${movieId}`)
 
-    if (response) {
-        const movie = response.json()
+    if (response.ok) {
+        const movie = await response.json()
         dispatch(loadOne(movie))
     }
  }
@@ -40,7 +41,7 @@ const movie = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL_MOVIES:
             newState = { allMovies: {}, oneMovie: {} }
-            action.movies.movies.forEach(movie => {
+            action.movies.Movies.forEach(movie => {
                 newState.allMovies[movie.id] = movie;
             });
             return newState
