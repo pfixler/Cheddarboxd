@@ -8,15 +8,15 @@ const loadAll = (movies) => ({
     movies
 })
 
-const loadOne = (movies) => ({
+const loadOne = (movie) => ({
     type: LOAD_ONE_MOVIE,
-    movies
+    movie
 })
 
 
 
 export const loadAllMovies = () => async (dispatch) => {
-    const response = await fetch('api/movies/');
+    const response = await fetch('/api/movies/');
 
     if (response.ok) {
         const movies = await response.json();
@@ -26,8 +26,9 @@ export const loadAllMovies = () => async (dispatch) => {
 }
 
  export const loadOneMovie = (movieId) => async (dispatch) => {
-    const response = await fetch(`api/movies/${movieId}`)
-
+    console.log('movie id in think:', movieId)
+    const response = await fetch(`/api/movies/${movieId}`)
+    console.log('one movie:', response)
     if (response.ok) {
         const movie = await response.json()
         dispatch(loadOne(movie))

@@ -49,7 +49,7 @@ def seed_movies():
         vote_average=7.5,
         vote_count=699
     )
-
+    # maybe remove
     movie4 = Movie(
         backdrop_path="https://image.tmdb.org/t/p/original/jZreyEq1OBO03PVqNeCyHclwwjL.jpg",
         genre_ids='35,80,9648',

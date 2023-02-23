@@ -4,11 +4,19 @@ import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
 
 
-const MovieDetails = ({}) => {
+const MovieDetails = () => {
     const { movieId } = useParams();
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie.oneMovie)
+    console.log('movie use state:', movie)
 
+    useEffect(() => {
+        dispatch(loadOneMovie(movieId))
+    }, [dispatch])
+
+    if (!movie) {
+        return null
+    }
     const movieReviewsNum = (movie) => {
         return movie.reviews.length
     }
@@ -28,14 +36,16 @@ const MovieDetails = ({}) => {
         return likesSum;
     }
 
-    useEffect(() => {
-        dispatch(loadOneMovie(movieId))
-    }, [dispatch])
+
 
     return (
         <div className="single-movie-page">
             <div className="single-movie-backdrop">
-
+                <img
+                    className="card-image"
+                    src={movie.backdrop_path}
+                    name={movie.original_title}
+                />
             </div>
             <div className="single-movie-content-box">
                 <div className="single-movie-content">
@@ -68,14 +78,47 @@ const MovieDetails = ({}) => {
                         </div>
                         <div className="information-box">
                             <div className="synopsis-box">
-
+                                {movie.overview}
                             </div>
                             <div className="interaction-sidebar">
+                                <div className="user-movie-status">
+                                    <div className="watched-icon">
 
+                                    </div>
+                                    <div className="like-icon">
+
+                                    </div>
+                                </div>
+                                <div className="rating-status">
+
+                                </div>
+                                <div className="lists-status">
+
+                                </div>
                             </div>
                         </div>
                         <div className="reviews-box">
-                            
+                            <div className="reviews-header">
+
+                            </div>
+                            <div className="reviews-list">
+                                <div className="reviewer-image">
+
+                                </div>
+                                <div className="review-content">
+                                    <div className="review-stats">
+                                        <div className="reviewer-name">
+
+                                        </div>
+                                        <div className="review-rating">
+
+                                        </div>
+                                    <div className="review-words">
+
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route> */}
-          <Route path="/movies">
+          <Route exact path="/movies/">
             <MoviesBrowser />
           </Route>
           <Route path="/movies/:movieId">

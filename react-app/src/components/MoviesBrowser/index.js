@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { loadAllMovies } from "../../store/movie";
-import { NavLink } from "react-router-dom";
+import movie, { loadAllMovies } from "../../store/movie";
+import { useHistory, Link } from "react-router-dom";
 
 
 const MoviesBrowser = () => {
+    // const history = useHistory();
     const dispatch = useDispatch();
     const moviesObj = useSelector(state => state.movie.allMovies)
     const movies = Object.values(moviesObj)
@@ -32,7 +33,13 @@ const MoviesBrowser = () => {
         dispatch(loadAllMovies())
     }, [dispatch])
 
+    // const routeToDetails = (movieId) => {
+    //     history.push(`/movies/${movieId}`)
+    // }
 
+    if (!movies) {
+        return null
+    }
 
     return (
         <div className="movies-browser-box">
@@ -40,13 +47,14 @@ const MoviesBrowser = () => {
                 {movies.map((movie) => (
                     <div className="single-movie-card" key={movie.id}>
                         <div className="movie-image">
-                            <NavLink to={`/movies/${movie.id}`} target="_blank">
-                            <img
-                                className="card-image"
-                                src={movie.poster_path}
-                                name={movie.original_title}
-                            />
-                            </NavLink>
+                            <Link to={`/movies/${movie.id}`}>
+                                <img
+                                    // onClick={(movie) => routeToDetails(movie.id)}
+                                    className="card-image"
+                                    src={movie.poster_path}
+                                    name={movie.original_title}
+                                />
+                            </Link>
                         </div>
                         <div className="movie-interaction-statistics">
                             <div className="movie-views">
