@@ -1,0 +1,98 @@
+.sign-in-form-box {
+    width: auto;
+    padding-top: 13px;
+    height: 72px;
+    display: flex;
+    align-items: start;
+    justify-content: right;
+    padding-left: 35px;
+    box-sizing: border-box;
+}
+
+.sign-in-form {
+    /* width: 100%; */
+    /* height: 100%; */
+    display: flex;
+    /* align-items: center; */
+    height: 45px;
+    box-sizing: border-box;
+}
+
+.close-sign-in-form {
+    height: 100%;
+    margin-right: 10px;
+    padding-top: 17px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.close-sign-in-button {
+    color: #345;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.close-sign-in-button:hover {
+    color: #def;
+}
+
+.sign-in-form-field {
+    margin-right: 10px;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+.sign-in-form-field label {
+    font-size: 12px;
+    line-height: 13px;
+    /* margin-bottom: 4px; */
+    box-sizing: border-box;
+    color: #678;
+}
+
+.sign-in-form-field input {
+    font-size: 16px;
+    height: 28px;
+    line-height: 17px;
+    padding: 5px 7px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #2c3440;
+    border-radius: 3px;
+    border: none;
+}
+
+
+
+
+.submit-sign-in-form {
+    height: 100%;
+    padding-top: 17px;
+    display: flex;
+    align-items: center;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.submit-sign-in-button {
+    height: 28px;
+    background-color: #00b020;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    height: 28px;
+}
+
+.submit-sign-in-button div {
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 600;
+}

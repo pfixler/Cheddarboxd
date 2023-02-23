@@ -20,6 +20,18 @@ class Review(db.Model):
     movie = db.relationship("Movie", back_populates="reviews")
     reviewer = db.relationship("User", back_populates="reviews")
 
+    def simple_review(self):
+        return {
+            'id': self.id,
+            'watched': self.watched,
+            'watch_date': self.watch_date,
+            'rating': self.rating,
+            'like': self.like,
+            'content': self.content,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -30,6 +42,6 @@ class Review(db.Model):
             'content': self.content,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'movie': self.movie,
-            'reviewer': self.reviewer
+            'movie': self.movie.simple_movie(),
+            'reviewer': self.reviewer.simple_user()
         }
