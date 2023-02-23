@@ -36,7 +36,7 @@ function Navigation({ isLoaded }){
 							/>
 						</div>
 						<div className='navbar-links' id='navbar-films'>
-							<NavLink exact to="/">
+							<NavLink exact to="/movies">
 								<button>Films</button>
 							</NavLink>
 						</div>
