@@ -3,8 +3,8 @@ div {
 }
 
 .movies-browser-box {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 12%;
+    margin-right: 12%;
     color: #9ab;
 }
 
@@ -16,7 +16,7 @@ div {
     grid-auto-rows: minmax(min-content, max-content);
     grid-auto-flow: row dense;
     /* grid-template-columns: minmax(0, 1fr); */
-    column-gap: 24px;
+    column-gap: 10px;
     row-gap: 10px;
 
 }

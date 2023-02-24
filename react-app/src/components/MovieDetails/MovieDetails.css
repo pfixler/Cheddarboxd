@@ -1,0 +1,13 @@
+.single-movie-backdrop {
+    height: 80vh;
+}
+
+.single-movie-backdrop img {
+    object-fit: cover;
+}
+
+.single-movie-page {
+    margin-left: 12%;
+    margin-right: 12%;
+    color: #9ab;
+}
