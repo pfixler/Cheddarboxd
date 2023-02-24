@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Review, Movie, db
+from app.models import Review, Movie, db, User
 from flask_login import login_required, current_user
 from app.forms import ReviewForm
 from .auth_routes import validation_errors_to_error_messages, authenticate, unauthorized
@@ -15,6 +15,7 @@ def reviewDetails(review_id):
     review = Review.query.get(review_id)
     return review.to_dict()
 
+
 @review_routes.route('/movie/<int:movie_id>')
 def getSpotReviews(movie_id):
     """
@@ -23,6 +24,17 @@ def getSpotReviews(movie_id):
 
     movie = Movie.query.get(movie_id)
     return {"Reviews": [review.to_dict() for review in movie.reviews]}
+
+
+@review_routes.route('/user/<int:user_id>')
+def getUserReviews(user_id):
+    """
+    Query for all reviews of a user by that user's id
+    """
+
+    user = User.query.get(user_id)
+    return {"Reviews": [review.to_dict() for review in user.reviews]}
+
 
 @review_routes.route('/movie/<int:movie_id>', methods=["POST"])
 @login_required
@@ -73,6 +85,7 @@ def updateReview(review_id):
         db.session.commit()
         return review.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}
+
 
 @review_routes.route("/<int:review_id>", methods=["DELETE"])
 @login_required
