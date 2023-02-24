@@ -17,7 +17,7 @@
 
 .navbar {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   margin-left: 15%;
