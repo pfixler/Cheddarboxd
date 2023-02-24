@@ -8,27 +8,27 @@ const loadAll = (movies) => ({
     movies
 })
 
-const loadOne = (movies) => ({
+const loadOne = (movie) => ({
     type: LOAD_ONE_MOVIE,
-    movies
+    movie
 })
 
 
 
 export const loadAllMovies = () => async (dispatch) => {
-    const response = await fetch('api/movies/');
+    const response = await fetch('/api/movies/');
 
-    if (response) {
-        const movies = response.json();
+    if (response.ok) {
+        const movies = await response.json();
         dispatch(loadAll(movies))
     }
 }
 
  export const loadOneMovie = (movieId) => async (dispatch) => {
-    const response = await fetch(`api/movies/${movieId}`)
+    const response = await fetch(`/api/movies/${movieId}`)
 
-    if (response) {
-        const movie = response.json()
+    if (response.ok) {
+        const movie = await response.json()
         dispatch(loadOne(movie))
     }
  }
@@ -39,13 +39,13 @@ const movie = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_ALL_MOVIES:
-            newState = { allMovies: {}, oneMovie: {} }
-            action.movies.movies.forEach(movie => {
+            newState = { allMovies: {}, oneMovie: {}}
+            action.movies.Movies.forEach(movie => {
                 newState.allMovies[movie.id] = movie;
             });
             return newState
         case LOAD_ONE_MOVIE:
-            newState = {...state, oneMovie: {} }
+            newState = { allMovies: {}, oneMovie: {}}
             newState.oneMovie = action.movie
             return newState;
         default:
