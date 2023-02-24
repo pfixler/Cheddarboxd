@@ -20,15 +20,13 @@ export const loadAllMovies = () => async (dispatch) => {
 
     if (response.ok) {
         const movies = await response.json();
-        console.log('movies in thunk:', movies)
         dispatch(loadAll(movies))
     }
 }
 
  export const loadOneMovie = (movieId) => async (dispatch) => {
-    console.log('movie id in think:', movieId)
     const response = await fetch(`/api/movies/${movieId}`)
-    console.log('one movie:', response)
+
     if (response.ok) {
         const movie = await response.json()
         dispatch(loadOne(movie))
@@ -41,13 +39,13 @@ const movie = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_ALL_MOVIES:
-            newState = { allMovies: {}, oneMovie: {} }
+            newState = { allMovies: {}, oneMovie: {}}
             action.movies.Movies.forEach(movie => {
                 newState.allMovies[movie.id] = movie;
             });
             return newState
         case LOAD_ONE_MOVIE:
-            newState = {...state, oneMovie: {} }
+            newState = { allMovies: {}, oneMovie: {}}
             newState.oneMovie = action.movie
             return newState;
         default:

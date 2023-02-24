@@ -2,48 +2,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-
+import review, { loadMovieReviews } from "../../store/review";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie.oneMovie)
-    console.log('movie use state:', movie)
+    const reviews = Object.values(useSelector(state => state.review.movieReviews))
+    console.log('reviews:', reviews)
 
     useEffect(() => {
+        dispatch(loadMovieReviews(movieId))
         dispatch(loadOneMovie(movieId))
-    }, [dispatch])
+    }, [dispatch, movieId])
+
+    // useEffect(() => {
+    //     dispatch(loadMovieReviews(movieId))
+    // }, [movie])
 
     if (!movie) {
         return null
     }
-    const movieReviewsNum = (movie) => {
-        return movie.reviews.length
-    }
 
-    const movieListsNum = (movie) => {
-        return movie.lists.length
-    }
-
-    const movieLikesNum = (movie) => {
-        let likesSum = 0;
-        let reviews = movie.reviews;
-        reviews.forEach(review => {
-            if (review.like == true) {
-                likesSum += 1
-            }
-        });
-        return likesSum;
-    }
-
-
+    // if (!reviews) {
+    //     return null
+    // }
 
     return (
         <div className="single-movie-page">
             <div className="single-movie-backdrop">
                 <img
                     className="card-image"
-                    src={movie.backdrop_path}
+                    // src={movie.backdrop_path}
                     name={movie.original_title}
                 />
             </div>
@@ -60,15 +50,15 @@ const MovieDetails = () => {
                         <div className="movie-interaction-statistics">
                             <div className="movie-views">
                                 <div className="view-icon"></div>
-                                <div className="views-number">{movieReviewsNum(movie)}</div>
+                                <div className="views-number">{movie.reviews?.length}</div>
                             </div>
                             <div className="movie-lists">
                                 <div className="list-icon"></div>
-                                <div className="lists-number">{movieListsNum(movie)}</div>
+                                <div className="lists-number"></div>
                             </div>
                             <div className="movie-likes">
                                 <div className="like-icon"></div>
-                                <div className="likes-number">{movieLikesNum(movie)}</div>
+                                <div className="likes-number"></div>
                             </div>
                         </div>
                     </div>
@@ -99,25 +89,30 @@ const MovieDetails = () => {
                         </div>
                         <div className="reviews-box">
                             <div className="reviews-header">
-
+                                Reviews
                             </div>
-                            <div className="reviews-list">
-                                <div className="reviewer-image">
-
-                                </div>
-                                <div className="review-content">
-                                    <div className="review-stats">
-                                        <div className="reviewer-name">
-
+                            <div className="review-content">
+                                {reviews.map(review => {
+                                    <div className="single-review-box" key={review.id}>
+                                        list
+                                        <div className="reviewer-image">
+                                            image
                                         </div>
-                                        <div className="review-rating">
-
+                                        <div className="review-information">
+                                            <div className="review-stats">
+                                                <div className="reviewer-name">
+                                                    {review.reviewer.username}
+                                                </div>
+                                                <div className="review-rating">
+                                                    {review.rating}
+                                                </div>
+                                            <div className="review-words">
+                                                {review.content}
+                                            </div>
+                                            </div>
                                         </div>
-                                    <div className="review-words">
-
                                     </div>
-                                    </div>
-                                </div>
+                                })}
                             </div>
                         </div>
                     </div>
