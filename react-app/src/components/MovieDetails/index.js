@@ -2,24 +2,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-import { loadMovieReviews } from "../../store/review";
+import review, { loadMovieReviews } from "../../store/review";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie.oneMovie)
-    const reviewsObj = useSelector(state => state.review.movieReviews)
-    const reviews = Object.values(reviewsObj)
-
+    const reviews = Object.values(useSelector(state => state.review.movieReviews))
+    console.log('reviews:', reviews)
 
     useEffect(() => {
+        dispatch(loadMovieReviews(movieId))
         dispatch(loadOneMovie(movieId))
-        // dispatch(loadMovieReviews(movieId))
     }, [dispatch, movieId])
+
+    // useEffect(() => {
+    //     dispatch(loadMovieReviews(movieId))
+    // }, [movie])
 
     if (!movie) {
         return null
     }
+
+    // if (!reviews) {
+    //     return null
+    // }
 
     return (
         <div className="single-movie-page">
@@ -43,7 +50,7 @@ const MovieDetails = () => {
                         <div className="movie-interaction-statistics">
                             <div className="movie-views">
                                 <div className="view-icon"></div>
-                                <div className="views-number">{movie.reviews.length}</div>
+                                <div className="views-number">{movie.reviews?.length}</div>
                             </div>
                             <div className="movie-lists">
                                 <div className="list-icon"></div>
@@ -84,26 +91,29 @@ const MovieDetails = () => {
                             <div className="reviews-header">
                                 Reviews
                             </div>
-                            {reviews.map((review) => {
-                            <div className="reviews-list">
-                                <div className="reviewer-image">
-                                    image
-                                </div>
-                                <div className="review-content">
-                                    <div className="review-stats">
-                                        <div className="reviewer-name">
-                                            {review.reviewer.username}
+                            <div className="review-content">
+                                {reviews.map(review => {
+                                    <div className="single-review-box" key={review.id}>
+                                        list
+                                        <div className="reviewer-image">
+                                            image
                                         </div>
-                                        <div className="review-rating">
-                                            {review.rating}
+                                        <div className="review-information">
+                                            <div className="review-stats">
+                                                <div className="reviewer-name">
+                                                    {review.reviewer.username}
+                                                </div>
+                                                <div className="review-rating">
+                                                    {review.rating}
+                                                </div>
+                                            <div className="review-words">
+                                                {review.content}
+                                            </div>
+                                            </div>
                                         </div>
-                                    <div className="review-words">
-                                        {review.content}
                                     </div>
-                                    </div>
-                                </div>
+                                })}
                             </div>
-                            })}
                         </div>
                     </div>
                 </div>
