@@ -12,11 +12,15 @@ const MovieDetails = () => {
     const movie = useSelector(state => state.movie.oneMovie)
     const reviews = Object.values(useSelector(state => state.review.movieReviews))
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
+    const [loadImage, setLoadImage] = useState(false)
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
             .then(dispatch(loadMovieReviews(movieId)))
             .then(() => setAreReviewsLoaded(true))
+            .then(setTimeout(() => {
+                setLoadImage(true)
+            }, 3000))
     }, [dispatch, movieId])
 
     // useEffect(() => {
@@ -31,14 +35,27 @@ const MovieDetails = () => {
         return null
     }
 
+    // src={movie.backdrop_path}
+    // name={movie.original_title}
+
     return (
         <>
             <div className="single-movie-backdrop">
-                <img
-                    className="card-image"
-                    src={movie.backdrop_path}
-                    name={movie.original_title}
-                />
+                <div className="backdrop-images-holder">
+                    <img
+                        className="backdrop-image-placeholder"
+                        src={movie.backdrop_path}
+                        name={movie.original_title}
+                    />
+                    <img
+                        className="backdrop-image"
+                        src={movie.backdrop_path}
+                        name={movie.original_title}
+                    />
+                    <div className="backdrop-fade">
+                        {""}
+                    </div>
+                </div>
             </div>
             <div className="single-movie-page">
                 <div className="single-movie-content-box">

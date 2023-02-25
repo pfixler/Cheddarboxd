@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import '../MovieDetails/MovieDetails.css';
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../LoginForm";
 import SignupFormModal from "../SignupFormModal"
