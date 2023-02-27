@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadAllMovies } from "../../store/movie";
 import { useHistory, NavLink } from "react-router-dom";
+import "./MoviesBrowser.css"
 
 const MoviesBrowser = () => {
     // const history = useHistory();
@@ -45,20 +46,20 @@ const MoviesBrowser = () => {
             <div className="movie-list-container">
                 {movies.map(movie => (
                     <div className="single-movie-card" key={movie.id}>
-                        <div className="movie-image">
-                            <NavLink to={`/movies/${movie.id}`}>
+                        <NavLink to={`/movies/${movie.id}`}>
+                        <div className="movie-image-box">
                                 <img
                                     // onClick={(movie) => routeToDetails(movie.id)}
-                                    className="card-image"
+                                    className="movie-image"
                                     src={movie.poster_path}
-                                    name={movie.original_title}
+                                    name={movie.title}
                                 />
-                            </NavLink>
                         </div>
+                        </NavLink>
                         <div className="movie-interaction-statistics">
                             <div className="movie-views">
                                 <div className="view-icon"></div>
-                                <div className="views-number">{movieReviewsNum(movie)}</div>
+                                <span className="views-number">{movieReviewsNum(movie)}</span>
                             </div>
                             <div className="movie-lists">
                                 <div className="list-icon"></div>
