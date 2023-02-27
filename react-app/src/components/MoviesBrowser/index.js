@@ -52,7 +52,7 @@ const MoviesBrowser = () => {
                                     // onClick={(movie) => routeToDetails(movie.id)}
                                     className="movie-image"
                                     src={movie.poster_path}
-                                    name={movie.original_title}
+                                    name={movie.title}
                                 />
                         </div>
                         </NavLink>

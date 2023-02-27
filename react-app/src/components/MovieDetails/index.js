@@ -10,12 +10,19 @@ const MovieDetails = () => {
     const { movieId } = useParams();
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie.oneMovie)
+    const [isMovieLoaded, setIsMovieLoaded] = useState(false)
     const reviews = Object.values(useSelector(state => state.review.movieReviews))
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
+    const user = useSelector(state => state.session.user)
     const [loadImage, setLoadImage] = useState(false)
+    const [movieReviewsNum, setMovieReviewsNum] = useState('')
+    const [movieListsNum, setMovieListsNum] = useState('')
+    const [movieLikesNum, setMovieLikesNum] = useState('')
+    const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
+            .then(() => setIsMovieLoaded(true))
             .then(dispatch(loadMovieReviews(movieId)))
             .then(() => setAreReviewsLoaded(true))
             .then(setTimeout(() => {
@@ -23,9 +30,23 @@ const MovieDetails = () => {
             }, 3000))
     }, [dispatch, movieId])
 
-    // useEffect(() => {
-    //     dispatch(loadMovieReviews(movieId))
-    // }, [reviewsLength])
+    useEffect(() => {
+        setMovieReviewsNum(movie.reviews?.length)
+        setMovieListsNum(movie.lists?.length)
+
+        let likesSum = 0;
+        let reviews = movie?.reviews;
+        reviews?.forEach(review => {
+            if (review.like == true) {
+                likesSum += 1
+            }
+        });
+        setMovieLikesNum(likesSum);
+
+        if (movie.title != movie.original_title) {
+            setIsDifferentLanguage(true)
+        }
+    }, [movie])
 
     if (!movie) {
         return null
@@ -35,62 +56,75 @@ const MovieDetails = () => {
         return null
     }
 
-    // src={movie.backdrop_path}
-    // name={movie.original_title}
 
     return (
         <>
-            <div className="single-movie-backdrop">
-                <div className="backdrop-images-holder">
-                    <img
-                        className="backdrop-image-placeholder"
-                        src={movie.backdrop_path}
-                        name={movie.original_title}
-                    />
-                    <img
-                        className="backdrop-image"
-                        src={movie.backdrop_path}
-                        name={movie.original_title}
-                    />
-                    <div className="backdrop-fade">
-                        {""}
+            {isMovieLoaded && (
+            <>
+                <div className="single-movie-backdrop">
+                    <div className="backdrop-images-holder">
+                        <img
+                            className="backdrop-image-placeholder"
+                            src={movie.backdrop_path}
+                            name={movie.original_title}
+                        />
+                        <img
+                            className="backdrop-image"
+                            src={movie.backdrop_path}
+                            name={movie.original_title}
+                        />
+                        <div className="backdrop-fade">
+                            {""}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="single-movie-page">
-                <div className="single-movie-content-box">
+                <div className="single-movie-page">
+                    {/* <div className="single-movie-content-box"> */}
                     <div className="single-movie-content">
                         <div className="single-movie-card">
-                            <div className="movie-image">
+                            <div className="movie-image-box">
                                 <img
-                                    className="card-image"
+                                    className="movie-image"
                                     src={movie.poster_path}
-                                    name={movie.original_title}
+                                    name={movie.title}
                                 />
                             </div>
                             <div className="movie-interaction-statistics">
                                 <div className="movie-views">
                                     <div className="view-icon"></div>
-                                    <div className="views-number">{movie.reviews?.length}</div>
+                                    <div className="views-number">{movieReviewsNum}</div>
                                 </div>
                                 <div className="movie-lists">
                                     <div className="list-icon"></div>
-                                    <div className="lists-number"></div>
+                                    <div className="lists-number">{movieListsNum}</div>
                                 </div>
                                 <div className="movie-likes">
                                     <div className="like-icon"></div>
-                                    <div className="likes-number"></div>
+                                    <div className="likes-number">{movieLikesNum}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="single-movie-information">
-                            <div className="title-box">
-                                {movie.original_title}
+                            <div className="header-box">
+                                <div className="title">
+                                    {movie.title}
+                                </div>
+                                <div className="header-information">
+                                    <div className="release-date">
+                                        {movie.release_date.split('-')[0]}
+                                    </div>
+                                    {isDifferentLanguage && (
+                                        <div className="original-title">
+                                            {movie.original_title}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                             <div className="information-box">
                                 <div className="synopsis-box">
                                     {movie.overview}
                                 </div>
+                                {/* the review stuff here will be a create/update form for reviews */}
                                 <div className="interaction-sidebar">
                                     <div className="user-movie-status">
                                         <div className="watched-icon">
@@ -113,8 +147,10 @@ const MovieDetails = () => {
                             )}
                         </div>
                     </div>
+                    {/* </div> */}
                 </div>
-            </div>
+            </>
+            )}
         </>
     )
 }

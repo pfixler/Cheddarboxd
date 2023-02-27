@@ -128,4 +128,37 @@
     background-image: none;
     padding-top: 400px;
     display: flex;
+    /* position: relative;
+    z-index: 1; */
+}
+
+.single-movie-content {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.single-movie-information {
+
+}
+
+.header-box {
+
+}
+
+.title {
+
+}
+
+.release-date {
+
+}
+
+.original-title {
+
+}
+
+.information-box {
+    display: flex;
+    
 }
