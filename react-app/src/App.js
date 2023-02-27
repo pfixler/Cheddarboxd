@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import MoviesBrowser from "./components/MoviesBrowser";
 import MovieDetails from "./components/MovieDetails";
 import ListsBrowser from "./components/ListsBrowser";
+import ListDetails from "./components/ListDetails";
 import CreateListPage from "./components/CreateListPage";
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path="/lists/">
             <ListsBrowser />
+          </Route>
+          <Route path="/lists/:listId">
+            <ListDetails />
           </Route>
           <Route path="/lists/new">
             <CreateListPage />

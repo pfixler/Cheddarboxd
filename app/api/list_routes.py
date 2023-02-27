@@ -15,7 +15,7 @@ def list_details(list_id):
     """
 
     list = List.query.get(list_id)
-    return list.simple_list()
+    return list.to_dict()
 
 
 @list_routes.route('/movie/<int:movie_id>')

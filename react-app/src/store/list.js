@@ -75,7 +75,7 @@ export const loadOneList = (listId) => async (dispatch) => {
     const response = await fetch(`/api/lists/${listId}`)
 
     if (response.ok) {
-        const oneList = response.json();
+        const oneList = await response.json();
         dispatch(loadOne(oneList))
     }
 }
