@@ -5,6 +5,9 @@ import { loadOneMovie } from "../../store/movie";
 import { loadMovieReviews } from "../../store/review";
 import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
+import OpenModalButton from "../OpenModalButton";
+import CreateReviewModal from "../CreateReviewModal";
+
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -135,7 +138,11 @@ const MovieDetails = () => {
                                         </div>
                                     </div>
                                     <div className="rating-status">
-
+                                        <OpenModalButton
+                                            buttonText="Review"
+                                            // onItemClick={closeMenu}
+                                            modalComponent={<CreateReviewModal movie={movie}/>}
+							            />
                                     </div>
                                     <div className="lists-status">
 
