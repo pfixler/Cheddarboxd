@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MoviesBrowser from "./components/MoviesBrowser";
 import MovieDetails from "./components/MovieDetails";
+import ListsBrowser from "./components/ListsBrowser";
+import CreateListPage from "./components/CreateListPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,12 @@ function App() {
           </Route>
           <Route path="/movies/:movieId">
             <MovieDetails />
+          </Route>
+          <Route exact path="/lists/">
+            <ListsBrowser />
+          </Route>
+          <Route path="/lists/new">
+            <CreateListPage />
           </Route>
         </Switch>
       )}

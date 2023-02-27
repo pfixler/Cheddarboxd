@@ -21,16 +21,18 @@ class List(db.Model):
     def simple_list(self):
         return {
             'id': self.id,
+            'name': self.name,
             'description': self.description,
             'public_list': self.public_list,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'creator': self.creator.simple_user()
+            'creator': self.creator.username
         }
 
     def to_dict(self):
         return {
             'id': self.id,
+            'name': self.name,
             'description': self.description,
             'public_list': self.public_list,
             'created_at': self.created_at,

@@ -42,7 +42,7 @@ function Navigation({ isLoaded }){
 							</NavLink>
 						</div>
 						<div className='navbar-links' id='navbar-lists'>
-							<NavLink exact to="/">
+							<NavLink exact to="/lists">
 								<button>Lists</button>
 							</NavLink>
 						</div>

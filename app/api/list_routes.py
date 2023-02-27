@@ -15,7 +15,7 @@ def list_details(list_id):
     """
 
     list = List.query.get(list_id)
-    return list.to_dict()
+    return list.simple_list()
 
 
 @list_routes.route('/movie/<int:movie_id>')
@@ -25,7 +25,7 @@ def get_movie_lists(movie_id):
     """
 
     movie = Movie.query.get(movie_id)
-    return {"Lists": [list.to_dict() for list in movie.lists]}
+    return {"Lists": [list.simple_list() for list in movie.lists]}
 
 
 @list_routes.route('/user/<int:user_id>')
@@ -35,7 +35,7 @@ def get_user_lists(user_id):
     """
 
     user = User.query.get(user_id)
-    return {"Lists": [list.to_dict() for list in user.lists]}
+    return {"Lists": [list.simple_list() for list in user.lists]}
 
 
 @list_routes.route('/')
@@ -45,7 +45,7 @@ def lists():
     """
 
     lists = List.query.all()
-    return {'Lists': [list.to_dict() for list in lists]}
+    return {'Lists': [list.simple_list() for list in lists]}
 
 
 @list_routes.route('/', methods=["POST"])
