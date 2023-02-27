@@ -6,24 +6,22 @@
   display: none;
 } */
 .navbar-box {
-  background-color: #000;
+  background-color: #14181c;
   height: 72px;
   margin-top: 0;
-  /* display: flex;
-  align-items: center;
-  box-sizing: border-box; */
+  z-index: 10;
+  position: relative;
 }
 
 
 .navbar {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 12%;
+  margin-right: 12%;
   height: 72px;
-  /* position: sticky; */
 }
 
 .navbar-left-side {

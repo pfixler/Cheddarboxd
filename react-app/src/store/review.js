@@ -88,7 +88,7 @@ const review = (state=initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_MOVIE_REVIEWS:
-            newState = {userReviews: {}, movieReviews: {}};
+            newState = {...state, movieReviews: {}};
             action.reviews.Reviews.forEach((review) => {
                 newState.movieReviews[review.id] = review;
             })

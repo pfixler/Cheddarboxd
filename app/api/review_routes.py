@@ -7,7 +7,7 @@ from .auth_routes import validation_errors_to_error_messages, authenticate, unau
 review_routes = Blueprint('reviews', __name__)
 
 @review_routes.route('/<int:review_id>')
-def reviewDetails(review_id):
+def review_details(review_id):
     """
     Query for a review by id and return that review in a dictionary
     """
@@ -17,7 +17,7 @@ def reviewDetails(review_id):
 
 
 @review_routes.route('/movie/<int:movie_id>')
-def getSpotReviews(movie_id):
+def get_movie_reviews(movie_id):
     """
     Query for all reviews of a movie by that movie's id
     """
@@ -27,7 +27,7 @@ def getSpotReviews(movie_id):
 
 
 @review_routes.route('/user/<int:user_id>')
-def getUserReviews(user_id):
+def get_user_reviews(user_id):
     """
     Query for all reviews of a user by that user's id
     """
@@ -38,7 +38,7 @@ def getUserReviews(user_id):
 
 @review_routes.route('/movie/<int:movie_id>', methods=["POST"])
 @login_required
-def createReview(movie_id):
+def create_review(movie_id):
     """
     Query for a movie by id and append a new review to that movie
     """
@@ -66,7 +66,7 @@ def createReview(movie_id):
 
 @review_routes.route('/<int:review_id>', methods=["PUT"])
 @login_required
-def updateReview(review_id):
+def update_review(review_id):
     """
     Query for a review by id and update that review
     """
