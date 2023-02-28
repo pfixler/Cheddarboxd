@@ -2,6 +2,10 @@ div {
     box-sizing: border-box;
 }
 
+.navbar-box.solid {
+    background-color: #14181c;
+}
+
 .movies-browser-box {
     margin-left: 12%;
     margin-right: 12%;

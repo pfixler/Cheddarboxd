@@ -7,6 +7,7 @@ import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
+import EditReviewModal from "../EditReviewModal";
 
 
 const MovieDetails = () => {
@@ -22,6 +23,25 @@ const MovieDetails = () => {
     const [movieListsNum, setMovieListsNum] = useState('')
     const [movieLikesNum, setMovieLikesNum] = useState('')
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
+    const [userReview, setUserReview] = useState()
+
+    const userHasReview = () => {
+        if (user) {
+            if (areReviewsLoaded) {
+                for (let i in reviews) {
+                    if (user.id == reviews[i].reviewer.id) {
+                        console.log('user id:', user.id)
+                        console.log('review user id:', reviews[i].reviewer.id)
+                        setUserReview(reviews[i])
+                    }
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        userHasReview()
+    }, [user])
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
@@ -31,6 +51,7 @@ const MovieDetails = () => {
             .then(setTimeout(() => {
                 setLoadImage(true)
             }, 3000))
+            .then(userHasReview())
     }, [dispatch, movieId])
 
     useEffect(() => {
@@ -136,14 +157,27 @@ const MovieDetails = () => {
                                         <div className="like-icon">
 
                                         </div>
+                                        <div className="rating-slider">
+
+                                        </div>
                                     </div>
-                                    <div className="rating-status">
+                                    {userReview ?
+                                        <div className="review-button">
                                         <OpenModalButton
-                                            buttonText="Review"
+                                            buttonText="Edit Review"
                                             // onItemClick={closeMenu}
-                                            modalComponent={<CreateReviewModal movie={movie}/>}
-							            />
-                                    </div>
+                                            modalComponent={<EditReviewModal movie={movie} review={userReview}/>}
+                                        />
+                                        </div>
+                                        :
+                                        <div className="review-button">
+                                            <OpenModalButton
+                                                buttonText="Create Review"
+                                                // onItemClick={closeMenu}
+                                                modalComponent={<CreateReviewModal movie={movie}/>}
+                                            />
+                                        </div>
+                                    }
                                     <div className="lists-status">
 
                                     </div>

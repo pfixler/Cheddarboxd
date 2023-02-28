@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import ProfileButton from './ProfileButton';
+import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import '../MovieDetails/MovieDetails.css';
 import OpenModalButton from "../OpenModalButton";
@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
 	const [signUpOpen, setSignUpOpen] = useState(false);
 
 	return (
-		<div className='navbar-box'>
+		<div className='navbar-box solid transparent'>
 			<div className='navbar'>
 				<div className='navbar-left-side'>
 					<NavLink className='home-link' exact to="/">
@@ -24,18 +24,24 @@ function Navigation({ isLoaded }){
 					<LoginForm setSignUpOpen={setSignUpOpen}/>
 					:
 					<div className='navbar-right-side'>
-						<div className='navbar-links' id='navbar-sign-in'>
-							<button onClick={() => setSignUpOpen(true)}>
-								Sign In
-							</button>
+						{sessionUser ?
+							<ProfileButton user={sessionUser} />
+						:
+						<div className='login-signup-buttons'>
+							<div className='navbar-links' id='navbar-sign-in'>
+								<button onClick={() => setSignUpOpen(true)}>
+									Sign In
+								</button>
+							</div>
+							<div className='navbar-links' id='navbar-create-account'>
+								<OpenModalButton
+									buttonText="Create Account"
+									// onItemClick={closeMenu}
+									modalComponent={<SignupFormModal />}
+								/>
+							</div>
 						</div>
-						<div className='navbar-links' id='navbar-create-account'>
-							<OpenModalButton
-								buttonText="Create Account"
-								// onItemClick={closeMenu}
-								modalComponent={<SignupFormModal />}
-							/>
-						</div>
+						}
 						<div className='navbar-links' id='navbar-films'>
 							<NavLink exact to="/movies">
 								<button>Films</button>

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { useState } from "react"
 
 
-const CreateListPage = () => {
+const EditListPage = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -74,4 +74,4 @@ const CreateListPage = () => {
     )
 }
 
-export default CreateListPage
+export default EditListPage

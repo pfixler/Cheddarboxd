@@ -17,7 +17,7 @@ function LoginForm({setSignUpOpen}) {
     if (data) {
       setErrors(data);
     } else {
-        // closeModal()
+      setSignUpOpen(false)
     }
   };
 
@@ -25,7 +25,7 @@ function LoginForm({setSignUpOpen}) {
     <div className="sign-in-form-box">
       <form className='sign-in-form' onSubmit={handleSubmit}>
         <div className="close-sign-in-form">
-          <button className='close-sign-in-button'onClick={() => setSignUpOpen(false)}>
+          <button className='close-sign-in-button' onClick={() => setSignUpOpen(false)}>
             X
           </button>
         </div>

@@ -10,6 +10,7 @@ import MovieDetails from "./components/MovieDetails";
 import ListsBrowser from "./components/ListsBrowser";
 import ListDetails from "./components/ListDetails";
 import CreateListPage from "./components/CreateListPage";
+import EditListPage from "./components/EditListPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,11 +39,14 @@ function App() {
           <Route exact path="/lists/">
             <ListsBrowser />
           </Route>
+          <Route exact path="/lists/new">
+            <CreateListPage />
+          </Route>
+          <Route path="/:userId/lists/:listId">
+            <EditListPage />
+          </Route>
           <Route path="/lists/:listId">
             <ListDetails />
-          </Route>
-          <Route path="/lists/new">
-            <CreateListPage />
           </Route>
         </Switch>
       )}

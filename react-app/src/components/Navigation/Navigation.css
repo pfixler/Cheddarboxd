@@ -60,6 +60,12 @@
   width: 65%;
 }
 
+.login-signup-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
 .navbar-links {
   margin-left: 15px;
 }
@@ -76,4 +82,14 @@
 
 .navbar-links button:hover{
   color: white;
+}
+
+.profile-dropdown:hover {
+  background-color: #89a;
+  display: block;
+}
+
+.dropdown-menu {
+  /* z-index: 2; */
+  margin-top: 20px;
 }

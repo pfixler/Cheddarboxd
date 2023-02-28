@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { loadAllLists } from "../../store/list";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import SingleList from "./SingleList";
 
 
@@ -21,9 +21,9 @@ const ListsBrowser = () => {
         return null
     }
 
-    const addlistButton = () => {
-        history.push('/lists/new')
-    }
+    // const addlistButton = () => {
+    //     history.push('/lists/new')
+    // }
 
 
 
@@ -34,9 +34,9 @@ const ListsBrowser = () => {
                     Collect, curate, and share. Lists are the perfect way to group movies.
                 </div>
                 <div className="create-list-button-box">
-                    <button className="create-list-button" onClick={addlistButton}>
+                    <NavLink className="create-list-page" exact to='/lists/new'>
                         Start your own list
-                    </button>
+                    </NavLink>
                 </div>
             </div>
             <div className="list-lists-section">

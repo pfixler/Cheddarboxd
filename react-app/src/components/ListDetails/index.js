@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { loadOneList } from "../../store/list"
 import './ListDetails.css'
@@ -10,6 +10,7 @@ const ListDetails = () => {
     const dispatch = useDispatch();
     const list = useSelector(state => state.list.oneList)
     const [isListLoaded, setIsListLoaded] = useState(false)
+    const user = useSelector(state => state.session.user)
 
 
     useEffect(() => {
@@ -69,7 +70,11 @@ const ListDetails = () => {
                             </div>
                         </div>
                         <div className="list-interaction">
-
+                            {user && (
+                                <NavLink to={`${user.id}/lists/${list.id}`}>
+                                    <div>Edit List</div>
+                                </NavLink>
+                            )}
                         </div>
                     </div>
                 </>
