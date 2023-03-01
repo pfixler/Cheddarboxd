@@ -4,6 +4,20 @@ from flask_login import login_required, current_user
 from app.forms import ListForm
 from .auth_routes import validation_errors_to_error_messages, authenticate, unauthorized
 
+def structure_movies(list_movies):
+        movies_arr = list_movies.split(",")
+        structured_movies = []
+        for movie in movies_arr:
+            movie_dict = Movie.query.get(movie)
+            structured_movies.append(movie_dict)
+        return structured_movies
+
+def append_movies(self):
+    for movie in self.structure_movies():
+        self.movies.append(movie)
+        movie.lists.append(self)
+        db.session.commit()
+
 
 list_routes = Blueprint('lists', __name__)
 
@@ -52,7 +66,7 @@ def lists():
 @login_required
 def create_list():
     """
-    Query for a movie by id and append a new list to that movie
+    Create list
     """
     form = ListForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -64,9 +78,22 @@ def create_list():
             description = data["description"],
             public_list = data["public_list"],
             created_at = data["created_at"],
-            updated_at = None
+            updated_at = None,
         )
+        list_movies = data["list_movies"]
+
+        def append_movies(list_movies):
+            movies_arr = list_movies.split(",")
+            structured_movies = []
+            for movie in movies_arr:
+                movie_dict = Movie.query.get(movie)
+                structured_movies.append(movie_dict)
+            for movie in structured_movies:
+                list.movies.append(movie)
+                movie.lists.append(list)
+
         db.session.add(list)
+        append_movies(list_movies)
         db.session.commit()
         return list.to_dict()
 
@@ -77,7 +104,7 @@ def create_list():
 @login_required
 def update_list(list_id):
     """
-    Query for a movie by id and append a new list to that movie
+    Update list
     """
     list = List.query.get(list_id)
     form = ListForm()

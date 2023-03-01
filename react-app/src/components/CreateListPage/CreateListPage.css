@@ -1,0 +1,10 @@
+.create-list-movie-image-box {
+    height: 52px;
+    width: 35px;
+}
+
+.create-list-movie-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

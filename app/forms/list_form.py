@@ -9,3 +9,4 @@ class ListForm(FlaskForm):
     public_list = BooleanField("public_list")
     created_at = StringField("created_at", validators=[DataRequired()])
     updated_at = StringField("updated_at")
+    list_movies = StringField("list_movies")

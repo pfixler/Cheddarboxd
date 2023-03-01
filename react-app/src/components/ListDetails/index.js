@@ -70,11 +70,11 @@ const ListDetails = () => {
                             </div>
                         </div>
                         <div className="list-interaction">
-                            {user && (
-                                <NavLink to={`${user.id}/lists/${list.id}`}>
-                                    <div>Edit List</div>
+                            {/* {user && ( */}
+                                <NavLink className="edit-list-page" to={`${user.id}/lists/${list.id}`}>
+                                    Edit List
                                 </NavLink>
-                            )}
+                            {/* )} */}
                         </div>
                     </div>
                 </>
