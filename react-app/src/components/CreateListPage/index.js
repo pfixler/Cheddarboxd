@@ -1,19 +1,57 @@
-import { useDispatch } from "react-redux"
-import { useState } from "react"
-
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
+import { createList } from "../../store/list";
+import { useHistory } from "react-router-dom";
+import { loadAllMovies } from "../../store/movie";
 
 const CreateListPage = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [publicList, setPublicList] = useState(false)
+    const user = useSelector(state => state.session.user);
+    const movies = Object.values(useSelector(state => state.movie.allMovies));
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [publicList, setPublicList] = useState(false);
+    const [listMovies, setListMovies] = useState([])
+
+
+    useEffect(() => {
+        dispatch(loadAllMovies())
+    }, [dispatch])
+
+    const handleChange = () => {
+        setPublicList(!publicList)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const newList = {
+
+        }
+
+
+        dispatch(createList(newList))
+            .then(history.push(`/${user.id}/lists/`))
     }
 
     const handleCancelClick = (e) => {
         e.preventDefault()
+        history.push(`/${user.id}/lists/`)
+    }
+
+    const addListMovies = (e) => {
+        if (listMovies.includes(e.target.value)) {
+            // there will be error handling here
+        } else {
+            setListMovies([...listMovies, e.target.value])
+        }
+    }
+
+    const removeListMovies = (listMovieId) => {
+        const index = listMovies.indexOf(listMovieId)
+        listMovies.splice(index, 1);
+        setListMovies([...listMovies]);
     }
 
 
@@ -54,10 +92,23 @@ const CreateListPage = () => {
                             <input
                                 className="create-list-public-list-input"
                                 type="checkbox"
-                                value={publicList}
-                                onChange={(e) => e.target.value}
+                                checked={publicList}
+                                onChange={handleChange}
                                 required
                             />
+                        </label>
+                    </div>
+                    <div className="create-list-add-movies">
+                        <label>
+                            Add a movie:
+                            <select
+                                value={listMovies}
+                                multiple="true"
+                                onChange={(e) => addListMovies(e)}>
+                                {movies.map(movie => (
+                                    <option value={movie.id}>{`${movie.title} ${movie.release_date.split('-')[0]}`}</option>
+                                ))}
+                            </select>
                         </label>
                     </div>
                     <div className="list-submit">
@@ -67,6 +118,13 @@ const CreateListPage = () => {
                     </div>
                     <div className='list-cancel'>
                         <button className='list-cancel-button' onClick={handleCancelClick}>Cancel</button>
+                    </div>
+                    <div className="create-list-movies-list">
+                        {listMovies.map((listMovie => (
+                            <div className="single-list-movie" key={listMovie.id}>
+
+                            </div>
+                        )))}
                     </div>
                 </form>
             </div>
