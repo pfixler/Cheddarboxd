@@ -3,37 +3,52 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { updateReview, deleteReview } from '../../store/review';
 
-const EditReviewModal = ({movie, review}) => {
+const EditReviewModal = ({review}) => {
+    // console.log('review in edit modal:', review)
     const dispatch = useDispatch();
-    const [dateWatched, setDateWatched] = useState(review.date_watched);
+    const normDateWatched = new Date(review.watch_date).toISOString().substring(0, 10);
+    // console.log('normalized date:', normDateWatched)
+    const [dateWatched, setDateWatched] = useState(normDateWatched);
+    // console.log('date watched:', dateWatched)
     const [content, setContent] = useState(review.content);
     const [rating, setRating] = useState(review.rating);
     const [like, setLike] = useState(review.like);
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
 
-    const currentDate = new Date();
+    const createdAt = new Date();
+    const stringDate = createdAt.toISOString().slice(0, 10)
+
+    const handleChange = () => {
+        setLike(!like)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const editedReview = {
-
+            ...review,
+            watch_date: dateWatched.toString().split('/').join('-'),
+            rating,
+            like,
+            content,
+            updated_at: stringDate
         }
-
+        // console.log('edited review:', editedReview)
 
         dispatch(updateReview(editedReview))
             .then(closeModal)
     }
 
-    const handleCancelClick = (e) => {
-        e.preventDefault();
+    // const handleCancelClick = (e) => {
+    //     e.preventDefault();
 
-    }
+    // }
 
     const deleteReviewFunction = (e) => {
         e.preventDefault()
         dispatch(deleteReview(review))
+            .then(closeModal)
     }
 
     return (
@@ -45,10 +60,10 @@ const EditReviewModal = ({movie, review}) => {
                 <div className="create-review-header">
                     I watched...
                     <div className="create-review-movie-title">
-                        {movie.title}
+                        {review.movie.title}
                     </div>
                     <div className="create-review-movie-release-date">
-                        {movie.release_date.split('-')[0]}
+                        {review.movie.release_date.split('-')[0]}
                     </div>
                 <form className="create-review-form" onSubmit={handleSubmit}>
                     <div className="date-watched">
@@ -56,7 +71,7 @@ const EditReviewModal = ({movie, review}) => {
                             Watched
                             <input
                                 className='date-watched-input'
-                                type='checkbox'
+                                type='date'
                                 value={dateWatched}
                                 onChange={(e) => setDateWatched(e.target.value)}
                             />
@@ -79,6 +94,9 @@ const EditReviewModal = ({movie, review}) => {
                             <input
                                 className='rating-input'
                                 type='range'
+                                min={0}
+                                max={5}
+                                step={0.5}
                                 value={rating}
                                 onChange={(e) => setRating(e.target.value)}
                             />
@@ -90,8 +108,8 @@ const EditReviewModal = ({movie, review}) => {
                             <input
                                 className='like-input'
                                 type='checkbox'
-                                value={like}
-                                onChange={(e) => setLike(e.target.value)}
+                                checked={like}
+                                onChange={handleChange}
                             />
                         </label>
                     </div>
@@ -101,7 +119,7 @@ const EditReviewModal = ({movie, review}) => {
                         </button>
                     </div>
                     <div className='cancel'>
-                        <button className='review-cancel-button' onClick={handleCancelClick}>X</button>
+                        <button className='review-cancel-button' onClick={closeModal}>X</button>
                     </div>
                     <div className='delete'>
                         <button className='review-delete-button' onClick={deleteReviewFunction}>Delete</button>

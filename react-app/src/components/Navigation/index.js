@@ -24,7 +24,7 @@ function Navigation({ isLoaded }){
 					<LoginForm setSignUpOpen={setSignUpOpen}/>
 					:
 					<div className='navbar-right-side'>
-						{sessionUser ?
+						{isLoaded && sessionUser ?
 							<ProfileButton user={sessionUser} />
 						:
 						<div className='login-signup-buttons'>

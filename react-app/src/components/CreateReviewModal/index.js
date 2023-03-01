@@ -6,30 +6,40 @@ import { createReview } from '../../store/review';
 const CreateReviewModal = ({movie}) => {
     const dispatch = useDispatch();
     const [dateWatched, setDateWatched] = useState('');
-    const [words, setWords] = useState('');
+    const [content, setContent] = useState('');
     const [rating, setRating] = useState(0);
     const [like, setLike] = useState(false)
     const [errors, setErrors] = useState([])
     const {closeModal} = useModal();
 
-    const currentDate = new Date();
+    const createdAt = new Date();
+    const stringDate = createdAt.toISOString().slice(0, 10)
+
+    const handleChange = () => {
+        setLike(!like)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // let errorArr = [];
 
         const newReview = {
-
+            watch_date: dateWatched.toString().split('/').join('-'),
+            rating,
+            like,
+            content,
+            created_at: stringDate
         }
 
 
-        dispatch(createReview(newReview))
+        dispatch(createReview(newReview, movie.id))
             .then(closeModal)
     }
 
-    const handleCancelClick = (e) => {
-        e.preventDefault();
-
-    }
+    // const handleCancelClick = (e) => {
+    //     e.preventDefault();
+    //     closeModal;
+    // }
 
     return (
         <div className="create-review-box">
@@ -51,7 +61,7 @@ const CreateReviewModal = ({movie}) => {
                             Watched
                             <input
                                 className='date-watched-input'
-                                type='checkbox'
+                                type='date'
                                 value={dateWatched}
                                 onChange={(e) => setDateWatched(e.target.value)}
                             />
@@ -63,8 +73,8 @@ const CreateReviewModal = ({movie}) => {
                             <input
                                 className='words-input'
                                 type='text'
-                                value={words}
-                                onChange={(e) => setWords(e.target.value)}
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
                             />
                         </label>
                     </div>
@@ -74,6 +84,9 @@ const CreateReviewModal = ({movie}) => {
                             <input
                                 className='rating-input'
                                 type='range'
+                                min={0}
+                                max={5}
+                                step={0.5}
                                 value={rating}
                                 onChange={(e) => setRating(e.target.value)}
                             />
@@ -85,8 +98,8 @@ const CreateReviewModal = ({movie}) => {
                             <input
                                 className='like-input'
                                 type='checkbox'
-                                value={like}
-                                onChange={(e) => setLike(e.target.value)}
+                                checked={like}
+                                onChange={handleChange}
                             />
                         </label>
                     </div>
@@ -96,7 +109,7 @@ const CreateReviewModal = ({movie}) => {
                         </button>
                     </div>
                     <div className='cancel'>
-                        <button className='review-cancel-button' onClick={handleCancelClick}>X</button>
+                        <button className='review-cancel-button' onClick={closeModal}>X</button>
                     </div>
                 </form>
                 </div>

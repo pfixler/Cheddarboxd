@@ -48,12 +48,13 @@ export const loadUserReviews = (userId) => async (dispatch) => {
     }
 }
 
-export const createReview = (review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/`, {
+export const createReview = (review, movieId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/movie/${movieId}`, {
         method:"POST",
         headers:{ 'Content-Type': 'application/json' },
         body: JSON.stringify(review),
     })
+    console.log('response:', response)
     if (response.ok) {
         const newReview = await response.json()
         dispatch(create(newReview))
@@ -66,6 +67,7 @@ export const updateReview = (review) => async (dispatch) => {
         headers:{ 'Content-Type': 'application/json' },
         body: JSON.stringify(review),
     })
+
     if (response.ok) {
         const updatedReview = await response.json()
         dispatch(update(updatedReview))

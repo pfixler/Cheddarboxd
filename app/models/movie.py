@@ -25,6 +25,20 @@ class Movie(db.Model):
     reviews = db.relationship("Review", back_populates="movie", cascade="all, delete-orphan")
     lists = db.relationship("List", secondary=list_movie, back_populates="movies")
 
+    #there will be a function for creating custom posters and backdrops with the movie title
+
+    def poster_placholder(self):
+        if self.poster_path is None:
+            new_poster = 'https://i.imgur.com/Z2MYNbj.png'
+            return new_poster
+        return self.poster_path
+
+    def backdrop_placeholder(self):
+        if self.backdrop_path is None:
+            new_backdrop = ''
+            return new_backdrop
+        return self.poster_path
+
     def simple_movie(self):
         return {
             'id': self.id,
@@ -35,7 +49,7 @@ class Movie(db.Model):
             'original_title': self.original_title,
             'overview': self.overview,
             'popularity': self.popularity,
-            'poster_path': self.poster_path,
+            'poster_path': self.poster_placholder(),
             'release_date': self.release_date,
             'title': self.title,
             'video': self.video,
@@ -54,7 +68,7 @@ class Movie(db.Model):
             'original_title': self.original_title,
             'overview': self.overview,
             'popularity': self.popularity,
-            'poster_path': self.poster_path,
+            'poster_path': self.poster_placholder(),
             'release_date': self.release_date,
             'title': self.title,
             'video': self.video,

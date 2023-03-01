@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadAllMovies } from "../../store/movie";
-import { useHistory, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./MoviesBrowser.css"
 
 const MoviesBrowser = () => {
-    // const history = useHistory();
     const dispatch = useDispatch();
     const moviesObj = useSelector(state => state.movie.allMovies)
     const movies = Object.values(moviesObj)
@@ -52,6 +51,7 @@ const MoviesBrowser = () => {
                                     // onClick={(movie) => routeToDetails(movie.id)}
                                     className="movie-image"
                                     src={movie.poster_path}
+                                    // alt={}
                                     name={movie.title}
                                 />
                         </div>
