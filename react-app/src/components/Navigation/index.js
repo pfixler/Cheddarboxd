@@ -21,7 +21,9 @@ function Navigation({ isLoaded }){
 					</NavLink>
 				</div>
 				{signUpOpen ?
-					<LoginForm setSignUpOpen={setSignUpOpen}/>
+					<div className='navbar-login-form'>
+						<LoginForm setSignUpOpen={setSignUpOpen}/>
+					</div>
 					:
 					<div className='navbar-right-side'>
 						{isLoaded && sessionUser ?

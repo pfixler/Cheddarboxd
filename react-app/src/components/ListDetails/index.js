@@ -20,9 +20,11 @@ const ListDetails = () => {
     }, [dispatch, listId])
 
     useEffect(() => {
-            if (user?.id == list?.creator?.id) {
+        if (user) {
+            if (user.id == list.creator?.id) {
                 setIsUserList(true)
             }
+        }
     }, [dispatch, isListLoaded])
 
     return (

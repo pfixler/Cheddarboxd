@@ -43,22 +43,32 @@ const CreateReviewModal = ({movie}) => {
 
     return (
         <div className="create-review-box">
-            <div className="review-movie-image">
-
+            <div className="create-review-image-box">
+                <img
+                    // onClick={(movie) => routeToDetails(movie.id)}
+                    className="create-review-image"
+                    src={movie.poster_path}
+                    // alt={}
+                    name={movie.title}
+                />
             </div>
             <div className="create-review-content">
-                <div className="create-review-header">
+                <div className='create-review-header'>
                     I watched...
+                    <button onClick={closeModal}>X</button>
+                </div>
+                <div className='create-review-movie-information'>
                     <div className="create-review-movie-title">
                         {movie.title}
                     </div>
                     <div className="create-review-movie-release-date">
                         {movie.release_date.split('-')[0]}
                     </div>
+                </div>
                 <form className="create-review-form" onSubmit={handleSubmit}>
-                    <div className="date-watched">
+                    <div className="date-watched" id='review-input-box'>
                         <label className='date-watched-label'>
-                            Watched
+                            Watched on
                             <input
                                 className='date-watched-input'
                                 type='date'
@@ -67,52 +77,50 @@ const CreateReviewModal = ({movie}) => {
                             />
                         </label>
                     </div>
-                    <div className="words">
-                        <label className='words-label'>
-                            Review
+                    <div className="review-words" id='review-input-box'>
+                        {/* <label className='words-label'> */}
                             <input
                                 className='words-input'
-                                type='text'
+                                placeholder='Add a review'
+                                type='textarea'
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                             />
-                        </label>
+                        {/* </label> */}
                     </div>
-                    <div className="rating">
-                        <label className='rating-label'>
-                            Rating
-                            <input
-                                className='rating-input'
-                                type='range'
-                                min={0}
-                                max={5}
-                                step={0.5}
-                                value={rating}
-                                onChange={(e) => setRating(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <div className="like">
-                        <label className='like-label'>
-                            Like
-                            <input
-                                className='like-input'
-                                type='checkbox'
-                                checked={like}
-                                onChange={handleChange}
-                            />
-                        </label>
+                    <div className='rating-and-like' id='review-input-box'>
+                        <div className="rating">
+                            <label className='rating-label'>
+                                Rating
+                                <input
+                                    className='rating-input'
+                                    type='range'
+                                    min={0}
+                                    max={5}
+                                    step={0.5}
+                                    value={rating}
+                                    onChange={(e) => setRating(e.target.value)}
+                                />
+                            </label>
+                        </div>
+                        <div className="like">
+                            <label className='like-label'>
+                                Like
+                                <input
+                                    className='like-input'
+                                    type='checkbox'
+                                    checked={like}
+                                    onChange={handleChange}
+                                />
+                            </label>
+                        </div>
                     </div>
                     <div className="submit">
                         <button className='review-submit-button' type='submit'>
                             Save
                         </button>
                     </div>
-                    <div className='cancel'>
-                        <button className='review-cancel-button' onClick={closeModal}>X</button>
-                    </div>
                 </form>
-                </div>
             </div>
         </div>
     )

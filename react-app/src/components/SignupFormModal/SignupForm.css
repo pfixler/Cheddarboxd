@@ -1,0 +1,74 @@
+.sign-up-form-modal-box {
+    /* max-width: 35vw; */
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 9rem);
+    /* max-height: 50vh; */
+    overflow-y: auto;
+    background-color: #456;
+    padding: 22px 36px 26px;
+    border-radius: 3px;
+}
+
+.sign-up-form-modal-header {
+    color: #9ab;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sign-up-form-modal-header button {
+    font-size: 18px;
+    background-color: transparent;
+    color: #9ab;
+    border: none;
+    cursor: pointer;
+}
+.sign-up-form-modal-header button:hover {
+    color: white;
+}
+
+.sign-up-form-modal {
+
+}
+
+.sign-up-input-box {
+    margin-bottom: 15px;
+}
+
+.sign-up-form-modal label {
+    color: white;
+}
+
+.sign-up-form-modal input {
+    font-size: 16px;
+    height: 28px;
+    line-height: 17px;
+    padding: 5px 7px;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+}
+
+.sign-up-form-modal button {
+    height: 28px;
+    background-color: #00b020;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    height: 28px;
+}
+
+.sign-up-form-modal button div {
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 600;
+}

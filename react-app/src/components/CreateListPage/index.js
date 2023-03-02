@@ -44,7 +44,7 @@ const CreateListPage = () => {
 
     const handleCancelClick = (e) => {
         e.preventDefault()
-        history.push(`/${user.id}/lists/`)
+        history.push(`/${user?.id}/lists/`)
     }
 
     const addListMovies = (e) => {

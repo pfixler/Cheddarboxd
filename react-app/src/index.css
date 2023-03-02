@@ -15,3 +15,14 @@ a:link {
     color: #EE7000;
     color: #00AC20; */
 }
+
+input {
+    background-color: #CCDDEE;
+    border: none;
+    border-radius: 3px;
+}
+
+input:active, input:focus {
+    background-color: white;
+    border: none;
+  }

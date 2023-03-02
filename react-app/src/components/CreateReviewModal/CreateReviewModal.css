@@ -1,3 +1,131 @@
 .create-review-box {
-    z-index: 2;
+    max-width: calc(100vw - 30rem);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    background-color: #456;
+    padding: 22px 36px 26px;
+    border-radius: 3px;
+    display: flex;
+}
+
+.create-review-image-box {
+    margin-right: 50px;
+    width: 20%;
+    height: 50%;
+}
+
+.create-review-image {
+    object-fit: cover;
+    max-width: 100%;
+    /* max-height: 100%; */
+    border-radius: 4px;
+}
+
+.create-review-content {
+    width: 75%;
+}
+
+.create-review-header {
+    color: #9ab;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-review-header button {
+    font-size: 18px;
+    background-color: transparent;
+    color: #9ab;
+    border: none;
+    cursor: pointer;
+}
+
+.create-review-header-button:hover {
+    color: white;
+}
+
+.create-review-movie-information {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 15px;
+}
+
+.create-review-movie-title {
+    color: white;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.create-review-movie-release-date {
+    color: #BBCCDD;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: end;
+    margin-left: 5px;
+}
+
+.create-review-form {
+    width: 100%;
+}
+
+#review-input-box {
+    margin-bottom: 15px;
+}
+
+.date-watched {
+    color: #def;
+}
+
+.date-watched input{
+    color: white;
+    background-color: #567;
+    border-radius: 2px;
+    box-shadow: 0 -1px 0 rgb(0 0 0 / 30%), 0 1px 0 hsl(0deg 0% 100% / 10%);
+    /* color: #85eb52; */
+    display: inline-block;
+    margin-left: 3px;
+    padding: 1px 5px 2px;
+}
+
+.review-words {
+
+}
+
+.review-words input {
+    height: 230px;
+    padding: 7px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.rating-and-like {
+    display: flex;
+}
+
+
+
+.create-review-form button {
+    height: 28px;
+    background-color: #00b020;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    height: 28px;
+}
+
+.create-review-form button div {
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 600;
 }
