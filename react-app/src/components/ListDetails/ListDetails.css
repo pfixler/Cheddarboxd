@@ -65,4 +65,7 @@
 
 .list-interaction {
     width: 30%;
+    z-index: 1;
 }
+
+

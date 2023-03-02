@@ -33,7 +33,7 @@ const CreateListPage = () => {
         const newList = {
             name,
             description,
-            publicList,
+            public_list:publicList,
             created_at:stringDate,
             list_movies:listMovies.join(',')
         }
@@ -101,7 +101,7 @@ const CreateListPage = () => {
                                 type="text"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                required
+                                // required
                             />
                         </label>
                     </div>
@@ -113,7 +113,7 @@ const CreateListPage = () => {
                                 type="checkbox"
                                 checked={publicList}
                                 onChange={handleChange}
-                                required
+                                // required
                             />
                         </label>
                     </div>

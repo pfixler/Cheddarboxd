@@ -11,12 +11,19 @@ const ListDetails = () => {
     const list = useSelector(state => state.list.oneList)
     const [isListLoaded, setIsListLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
+    const [isUserList, setIsUserList] = useState(false)
 
 
     useEffect(() => {
         dispatch(loadOneList(listId))
             .then(() => setIsListLoaded(true))
     }, [dispatch, listId])
+
+    useEffect(() => {
+            if (user?.id == list?.creator?.id) {
+                setIsUserList(true)
+            }
+    }, [dispatch, isListLoaded])
 
     return (
         <>
@@ -70,11 +77,13 @@ const ListDetails = () => {
                             </div>
                         </div>
                         <div className="list-interaction">
-                            {/* {user && ( */}
-                                <NavLink className="edit-list-page" to={`${user.id}/lists/${list.id}`}>
-                                    Edit List
+                            {isUserList && (
+                                <NavLink className="edit-list-page" to={`/${user.id}/lists/${list.id}`}>
+                                    <div className="edit-list-link">
+                                        Edit List
+                                    </div>
                                 </NavLink>
-                            {/* )} */}
+                            )}
                         </div>
                     </div>
                 </>

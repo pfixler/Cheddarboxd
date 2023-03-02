@@ -12,6 +12,7 @@ const EditReviewModal = ({review}) => {
     // console.log('date watched:', dateWatched)
     const [content, setContent] = useState(review.content);
     const [rating, setRating] = useState(review.rating);
+    // console.log('rating:', rating)
     const [like, setLike] = useState(review.like);
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();

@@ -112,12 +112,39 @@ def update_list(list_id):
 
     data = form.data
     if form.validate_on_submit():
-        list.name = data["name"],
-        list.description = data["description"],
-        list.public_list = data["public_list"],
+        list.name = data["name"]
+        list.description = data["description"]
+        list.public_list = data["public_list"]
         list.updated_at = data["updated_at"]
 
+        list_movies = data["list_movies"]
+
+        def append_movies(list_movies):
+            movies_arr = list_movies.split(",")
+            structured_movies = []
+
+            for movie in movies_arr:
+                movie_dict = Movie.query.get(movie)
+                structured_movies.append(movie_dict)
+
+            for movie in structured_movies:
+                if movie not in list.movies:
+                    list.movies.append(movie)
+                if list not in movie.lists:
+                    movie.lists.append(list)
+
+            orphan_movies = [movie for movie in list.movies if movie not in structured_movies]
+            # print('----------orphan movies:', orphan_movies, '--------------------')
+            # print('----------structured_movies:', structured_movies, '--------------------')
+            # print('----------list movies:', list.movies, '--------------------')
+            # print('----------list:', list, '--------------------')
+            for movie in orphan_movies:
+                list.movies.remove(movie)
+                # print('----------movie lists:', movie.lists, '--------------------')
+                # movie.lists.remove(list)
+
         db.session.add(list)
+        append_movies(list_movies)
         db.session.commit()
         return list.to_dict()
 

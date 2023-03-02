@@ -45,7 +45,7 @@ function App() {
           <Route path="/:userId/lists/:listId">
             <EditListPage />
           </Route>
-          <Route path="/lists/:listId">
+          <Route exact path="/lists/:listId">
             <ListDetails />
           </Route>
         </Switch>

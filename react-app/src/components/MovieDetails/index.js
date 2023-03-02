@@ -51,9 +51,11 @@ const MovieDetails = () => {
             for (let i in reviews) {
                 // console.log('review in for loop', reviews[i])
                 // console.log('user in for loop:', user)
-                if (user.id == reviews[i].reviewer.id) {
-                    setUserReview(reviews[i])
-                    return setUserHasReview(true)
+                if (user) {
+                    if (user.id == reviews[i].reviewer.id) {
+                        setUserReview(reviews[i])
+                        return setUserHasReview(true)
+                    }
                 }
             }
             setUserReview(null)
