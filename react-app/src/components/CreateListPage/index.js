@@ -39,12 +39,14 @@ const CreateListPage = () => {
         }
 
         dispatch(createList(newList))
-            .then(history.push(`/${user?.id}/lists/`))
+            .then(history.push(`/lists/`))
+            // .then(history.push(`/${user?.id}/lists/`))
     }
 
     const handleCancelClick = (e) => {
         e.preventDefault()
-        history.push(`/${user?.id}/lists/`)
+        history.push(`/lists/`)
+        // history.push(`/${user?.id}/lists/`)
     }
 
     const addListMovies = (e) => {
@@ -77,13 +79,14 @@ const CreateListPage = () => {
     return (
         <div className="create-list-page-box">
             <div className="create-list-header">
-
+                New List
             </div>
             <div className="create-list-form-box">
                 <form className="create-list-form" onSubmit={handleSubmit}>
                     <div className="create-list-name">
                         <label className="create-list-name-label">
                             Name of list
+                        </label>
                             <input
                                 className="create-list-name-input"
                                 type="text"
@@ -91,11 +94,11 @@ const CreateListPage = () => {
                                 onChange={(e) => setName(e.target.value)}
                                 required
                             />
-                        </label>
                     </div>
                     <div className="create-list-description">
                         <label className="create-list-description-label">
                             Description
+                        </label>
                             <input
                                 className="create-list-description-input"
                                 type="text"
@@ -103,11 +106,11 @@ const CreateListPage = () => {
                                 onChange={(e) => setDescription(e.target.value)}
                                 // required
                             />
-                        </label>
                     </div>
                     <div className="create-list-public-list">
                         <label className="create-list-public-list-label">
                             Public list
+                        </label>
                             <input
                                 className="create-list-public-list-input"
                                 type="checkbox"
@@ -115,11 +118,11 @@ const CreateListPage = () => {
                                 onChange={handleChange}
                                 // required
                             />
-                        </label>
                     </div>
                     <div className="create-list-add-movies">
                         <label>
                             Add a movie:
+                        </label>
                             <select
                                 value={listMovies}
                                 multiple="true"
@@ -128,7 +131,6 @@ const CreateListPage = () => {
                                     <option key={movie.id} value={movie.id}>{`${movie.title} ${movie.release_date.split('-')[0]}`}</option>
                                 ))}
                             </select>
-                        </label>
                     </div>
                     <div className="list-submit">
                         <button className='list-submit-button' type='submit'>

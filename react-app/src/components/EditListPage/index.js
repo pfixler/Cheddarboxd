@@ -52,18 +52,21 @@ const EditListPage = () => {
         // console.log('updated list:', updatedList)
 
         dispatch(updateList(updatedList))
-            .then(history.push(`/${user?.id}/lists/`))
+            .then(history.push(`/lists/`))
+            // .then(history.push(`/${user?.id}/lists/`))
     }
 
     const deleteListFunction = (e) => {
         e.preventDefault()
         dispatch(deleteList(list))
-            .then(history.push(`/${user?.id}/lists/`))
+            .then(history.push(`/lists/`))
+            // .then(history.push(`/${user?.id}/lists/`))
     }
 
     const handleCancelClick = (e) => {
         e.preventDefault()
-        history.push(`/${user.id}/lists/`)
+        history.push(`/lists/`)
+        // history.push(`/${user?.id}/lists/`)
     }
 
     const addListMovies = (e) => {

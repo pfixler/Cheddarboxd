@@ -59,7 +59,7 @@ def lists():
     """
 
     lists = List.query.all()
-    return {'Lists': [list.simple_list() for list in lists]}
+    return {'Lists': [list.to_dict() for list in lists]}
 
 
 @list_routes.route('/', methods=["POST"])
