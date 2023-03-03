@@ -67,8 +67,10 @@
     border: none;
 }
 
-
-
+/* .sign-in-buttons {
+    display: inline-flex;
+    justify-content: space-between;
+} */
 
 .submit-sign-in-form {
     height: 100%;
@@ -96,4 +98,8 @@
     font-size: 16px;
     line-height: 12px;
     font-weight: 600;
+}
+
+#demo-user-button {
+    margin-left: 10px;
 }
