@@ -82,6 +82,14 @@ const MovieDetails = () => {
         }
     }, [dispatch, movie])
 
+    // const isUserSignedIn = (e) => {
+    //     e.preventDefault()
+    //     if (!user) {
+    //         return window.alert("You must be signed in to leave a review")
+    //     }
+    // }
+
+
     if (!movie) {
         return null
     }
@@ -171,22 +179,27 @@ const MovieDetails = () => {
 
                                         </div>
                                     </div>
-                                    {areReviewsLoaded && userHasReview ?
-                                        <div className="review-button">
-                                        <OpenModalButton
-                                            buttonText="Edit Review"
-                                            // onItemClick={closeMenu}
-                                            modalComponent={<EditReviewModal review={userReview}/>}
-                                        />
-                                        </div>
-                                        :
-                                        <div className="review-button">
+                                    {/* {user ?
+                                        <div className="review-button">You must be logged in to give a review</div>
+                                        : */}
+                                        {areReviewsLoaded && userHasReview ?
+                                            <div className="review-button">
                                             <OpenModalButton
-                                                buttonText="Create Review"
+                                                buttonText="Edit Review"
                                                 // onItemClick={closeMenu}
-                                                modalComponent={<CreateReviewModal movie={movie}/>}
+                                                modalComponent={<EditReviewModal review={userReview}/>}
                                             />
-                                        </div>
+                                            </div>
+                                            :
+                                            <div className="review-button">
+                                                <OpenModalButton
+                                                    buttonText="Create Review"
+                                                    // onClick={isUserSignedIn}
+                                                    // onItemClick={closeMenu}
+                                                    modalComponent={<CreateReviewModal movie={movie}/>}
+                                                />
+                                            </div>
+                                        // }
                                     }
                                     <div className="lists-status">
 
