@@ -76,10 +76,10 @@ def update_review(review_id):
 
     data = form.data
     if form.validate_on_submit():
-        review.watch_date = data["watch_date"],
-        review.rating = data["rating"],
-        review.like = data["like"],
-        review.content = data["content"],
+        review.watch_date = data["watch_date"]
+        review.rating = data["rating"]
+        review.like = data["like"]
+        review.content = data["content"]
         review.updated_at = data["updated_at"]
 
         db.session.commit()

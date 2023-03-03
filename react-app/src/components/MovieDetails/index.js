@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-import { loadMovieReviews } from "../../store/review";
+import review, { loadMovieReviews } from "../../store/review";
 import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
+import EditReviewModal from "../EditReviewModal";
 
 
 const MovieDetails = () => {
@@ -17,21 +18,51 @@ const MovieDetails = () => {
     const reviews = Object.values(useSelector(state => state.review.movieReviews))
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
+    const session = useSelector(state => state.session)
     const [loadImage, setLoadImage] = useState(false)
-    const [movieReviewsNum, setMovieReviewsNum] = useState('')
-    const [movieListsNum, setMovieListsNum] = useState('')
-    const [movieLikesNum, setMovieLikesNum] = useState('')
+    const [movieReviewsNum, setMovieReviewsNum] = useState()
+    const [movieListsNum, setMovieListsNum] = useState()
+    const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
+    const [userHasReview, setUserHasReview] = useState(false)
+    // console.log('user has review?:', userHasReview)
+    // console.log('user has review:', userHasReview)
+    const [userReview, setUserReview] = useState(null)
+    // console.log('user review?:', userReview)
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
             .then(() => setIsMovieLoaded(true))
             .then(dispatch(loadMovieReviews(movieId)))
             .then(() => setAreReviewsLoaded(true))
-            .then(setTimeout(() => {
-                setLoadImage(true)
-            }, 3000))
-    }, [dispatch, movieId])
+            // .then(setTimeout(() => {
+            //     setLoadImage(true)
+            // }, 3000))
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(loadOneMovie)
+    }, [reviews])
+
+    useEffect(() => {
+        // console.log('in set user review use effect', reviews)
+        if (areReviewsLoaded) {
+            // console.log('in set user review use effect inside if statement', reviews)
+            for (let i in reviews) {
+                // console.log('review in for loop', reviews[i])
+                // console.log('user in for loop:', user)
+                if (user) {
+                    if (user.id == reviews[i].reviewer.id) {
+                        setUserReview(reviews[i])
+                        return setUserHasReview(true)
+                    }
+                }
+            }
+            setUserReview(null)
+            return setUserHasReview(false)
+        }
+    }, [dispatch, session, movie, reviews])
+
 
     useEffect(() => {
         setMovieReviewsNum(movie.reviews?.length)
@@ -49,7 +80,7 @@ const MovieDetails = () => {
         if (movie.title != movie.original_title) {
             setIsDifferentLanguage(true)
         }
-    }, [movie])
+    }, [dispatch, movie])
 
     if (!movie) {
         return null
@@ -136,14 +167,27 @@ const MovieDetails = () => {
                                         <div className="like-icon">
 
                                         </div>
+                                        <div className="rating-slider">
+
+                                        </div>
                                     </div>
-                                    <div className="rating-status">
+                                    {areReviewsLoaded && userHasReview ?
+                                        <div className="review-button">
                                         <OpenModalButton
-                                            buttonText="Review"
+                                            buttonText="Edit Review"
                                             // onItemClick={closeMenu}
-                                            modalComponent={<CreateReviewModal movie={movie}/>}
-							            />
-                                    </div>
+                                            modalComponent={<EditReviewModal review={userReview}/>}
+                                        />
+                                        </div>
+                                        :
+                                        <div className="review-button">
+                                            <OpenModalButton
+                                                buttonText="Create Review"
+                                                // onItemClick={closeMenu}
+                                                modalComponent={<CreateReviewModal movie={movie}/>}
+                                            />
+                                        </div>
+                                    }
                                     <div className="lists-status">
 
                                     </div>

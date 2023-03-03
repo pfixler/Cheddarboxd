@@ -17,7 +17,17 @@ function LoginForm({setSignUpOpen}) {
     if (data) {
       setErrors(data);
     } else {
-        // closeModal()
+      setSignUpOpen(false)
+    }
+  };
+
+  const demoUserLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    } else {
+      setSignUpOpen(false)
     }
   };
 
@@ -25,7 +35,7 @@ function LoginForm({setSignUpOpen}) {
     <div className="sign-in-form-box">
       <form className='sign-in-form' onSubmit={handleSubmit}>
         <div className="close-sign-in-form">
-          <button className='close-sign-in-button'onClick={() => setSignUpOpen(false)}>
+          <button className='close-sign-in-button' onClick={() => setSignUpOpen(false)}>
             X
           </button>
         </div>
@@ -54,6 +64,11 @@ function LoginForm({setSignUpOpen}) {
           <div className="submit-sign-in-form">
             <button className="submit-sign-in-button" type="submit">
               <div>Sign In</div>
+            </button>
+          </div>
+          <div className="submit-sign-in-form" id="demo-user-button">
+            <button className="submit-sign-in-button" onClick={demoUserLogin}>
+              <div>Demo User</div>
             </button>
           </div>
       </form>

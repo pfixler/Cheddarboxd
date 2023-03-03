@@ -1,6 +1,4 @@
-
-
-.navbar-box {
+.navbar-box.transparent {
     background-color: transparent;
 }
 
@@ -160,5 +158,5 @@
 
 .information-box {
     display: flex;
-    
+
 }

@@ -5,6 +5,7 @@ import './MovieDetails.css'
 const MovieReviews = ({reviews}) => {
     const dispatch = useDispatch()
     const [reviewsLoaded, setReviewsLoaded] = useState(false)
+
     useEffect(() => {
         if (reviews.length > 0) {
             setReviewsLoaded(true)
@@ -28,7 +29,7 @@ const MovieReviews = ({reviews}) => {
                             <div className="review-information">
                                 <div className="review-stats">
                                     <div className="reviewer-name">
-                                        {review.reviewer.username}
+                                        {review.reviewer?.username}
                                     </div>
                                     <div className="review-rating">
                                         {review.rating}
