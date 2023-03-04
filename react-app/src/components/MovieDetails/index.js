@@ -82,12 +82,10 @@ const MovieDetails = () => {
         }
     }, [dispatch, movie])
 
-    // const isUserSignedIn = (e) => {
-    //     e.preventDefault()
-    //     if (!user) {
-    //         return window.alert("You must be signed in to leave a review")
-    //     }
-    // }
+    const signInUserButton = (e) => {
+        e.preventDefault();
+        window.alert("You must be signed in to ")
+    }
 
 
     if (!movie) {
@@ -149,7 +147,9 @@ const MovieDetails = () => {
                         <div className="single-movie-information">
                             <div className="header-box">
                                 <div className="title">
-                                    {movie.title}
+                                    {/* <div className="title-text"> */}
+                                        {movie.title}
+                                    {/* </div> */}
                                 </div>
                                 <div className="header-information">
                                     <div className="release-date">
@@ -157,7 +157,7 @@ const MovieDetails = () => {
                                     </div>
                                     {isDifferentLanguage && (
                                         <div className="original-title">
-                                            {movie.original_title}
+                                            '{movie.original_title}'
                                         </div>
                                     )}
                                 </div>
@@ -167,42 +167,65 @@ const MovieDetails = () => {
                                     {movie.overview}
                                 </div>
                                 {/* the review stuff here will be a create/update form for reviews */}
-                                <div className="interaction-sidebar">
-                                    <div className="user-movie-status">
-                                        <div className="watched-icon">
+                                <div className="interaction-sidebar-box">
+                                    <div className="interaction-sidebar">
+                                        <div className="user-movie-status">
+                                            <div className="watched-status">
+                                                <div className="watched-icon">
 
-                                        </div>
-                                        <div className="like-icon">
+                                                </div>
+                                                <div className="watched-text">
+                                                    watched
+                                                </div>
+                                            </div>
+                                            <div className="like-status">
+                                                <div className="like-icon">
 
-                                        </div>
-                                        <div className="rating-slider">
+                                                </div>
+                                                <div className="like-text">
+                                                    like
+                                                </div>
+                                            </div>
+                                            <div className="rating-status">
+                                                <div className="rating-icon">
 
+                                                </div>
+                                                <div className="rating-text">
+                                                    rating
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    {/* {user ?
-                                        <div className="review-button">You must be logged in to give a review</div>
-                                        : */}
-                                        {areReviewsLoaded && userHasReview ?
+                                        {/* {user ?
                                             <div className="review-button">
-                                            <OpenModalButton
-                                                buttonText="Edit Review"
-                                                // onItemClick={closeMenu}
-                                                modalComponent={<EditReviewModal review={userReview}/>}
-                                            />
+                                                <button>
+                                                    Sign in to interact with this movie
+                                                </button>
                                             </div>
                                             :
-                                            <div className="review-button">
-                                                <OpenModalButton
-                                                    buttonText="Create Review"
-                                                    // onClick={isUserSignedIn}
-                                                    // onItemClick={closeMenu}
-                                                    modalComponent={<CreateReviewModal movie={movie}/>}
-                                                />
-                                            </div>
-                                        // }
-                                    }
-                                    <div className="lists-status">
-
+                                            <> */}
+                                                {areReviewsLoaded && userHasReview ?
+                                                    <div className="review-button">
+                                                    <OpenModalButton
+                                                        buttonText="Edit Review"
+                                                        // onItemClick={closeMenu}
+                                                        modalComponent={<EditReviewModal review={userReview}/>}
+                                                    />
+                                                    </div>
+                                                    :
+                                                    <div className="review-button">
+                                                        <OpenModalButton
+                                                            buttonText="Create Review"
+                                                            // onClick={isUserSignedIn}
+                                                            // onItemClick={closeMenu}
+                                                            modalComponent={<CreateReviewModal movie={movie}/>}
+                                                        />
+                                                    </div>
+                                                }
+                                            {/* </>
+                                        } */}
+                                        <div className="lists-status">
+                                            add to lists
+                                        </div>
                                     </div>
                                 </div>
                             </div>
