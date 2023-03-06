@@ -5,25 +5,172 @@
     padding-top: 40px;
 }
 
+.create-list-page-box label{
+    color: white;
+    padding-bottom: 5px;
+}
+
+.create-list-page-box input {
+    background-color: #2c3440;
+    font-size: 16px;
+    line-height: 17px;
+}
+
 .create-list-header {
     font-size: 24px;
     margin-bottom: 30px;
+    border-bottom: 1px solid #456;
 }
 
-.create-list-form {
+/* .create-list-form-box {
+    width: 100%;
+} */
+
+/* .create-list-form {
+    width: 100%;
+} */
+
+.list-form-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.list-form-right {
+    width: 47%;
+}
+
+/* .list-form-right input {
+    font-size: 16px;
+    line-height: 17px;
+} */
+
+.list-form-left {
+    width: 47%;
+}
+
+.create-list-name {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.create-list-name span {
+    font-style: italic;
+}
+
+.create-list-name input {
+    height: 30px;
+}
+
+.create-list-public-list {
+    display: flex;
+    align-items: center;
+}
+
+.create-list-public-list label {
+    padding: 0;
+}
+
+.create-list-public-list-input{
+    height: 24px;
+    background-color: #2c3440;
+}
+
+.create-list-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-list-description input {
+    height: 175px;
+}
+
+.bottom-side-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-list-add-movies {
+    display: flex;
+    align-items: start;
+}
+
+.create-list-add-movies label {
+    margin-right: 5px;
+}
+
+.create-list-add-movies select{
+    background-color: #2c3440;
+    color: white;
+    font-size: 16px;
+    line-height: 17px;
+    text-overflow: ellipsis;
+}
+
+.list-form-button-box {
+    display: flex;
+    align-items: center;
+}
+
+.list-form-button {
+    height: 28px;
+    background-color: #00b020;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.list-form-button div {
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 600;
+}
+
+#list-form-cancel-button {
+    margin-right: 4px;
+    background-color: gray;
+}
+
+.create-list-movies-list {
 
 }
 
+.single-list-movie {
+    border: 1px solid #345;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
 
-
+.list-movie-information {
+    display: flex;
+    align-items: center;
+}
 
 .create-list-movie-image-box {
     height: 52px;
     width: 35px;
+    margin-right: 10px;
 }
 
 .create-list-movie-image {
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+.list-movie-details {
+    display: flex;
+    align-items: center;
+}
+
+.list-movie-title {
+    margin-right: 5px;
 }

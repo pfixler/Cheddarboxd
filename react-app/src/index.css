@@ -3,11 +3,18 @@ body {
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #2c3440;
-    background-image: linear-gradient(to bottom,#14181c calc(var(--layout-flex-leaderboard-height)),#14181c calc(250px + var(--layout-flex-leaderboard-height)),#2c3440 calc(251px + var(--layout-flex-leaderboard-height)));
+    /* background: #14181c; */
+    background: linear-gradient(180deg, #2c3440, #14181c);
+    background-attachment: fixed;
     /* background-image: linear-gradient(180deg,#14181c 0,#14181c 250px,#2c3440 251px); */
     font-size: 13px;
     color: #9ab;
 }
+
+/* #root {
+    background-color: #2c3440;
+    background: linear-gradient(180deg,#14181c 0,#14181c 250px,#2c3440 251px);
+} */
 
 a:link {
     text-decoration: none;

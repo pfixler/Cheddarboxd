@@ -47,6 +47,7 @@ const SingleList = ({list}) => {
                                 {list.name}
                             </div>
                             <div className="list-maker">
+                                <i className="fas fa-user-circle" id="list-maker-icon"/>
                                 {list.creator.username}
                             </div>
                         </div>

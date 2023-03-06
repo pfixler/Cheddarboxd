@@ -204,7 +204,7 @@ const MovieDetails = () => {
                                             :
                                             <> */}
                                                 {areReviewsLoaded && userHasReview ?
-                                                    <div className="review-button">
+                                                    <div className="sidebar-button">
                                                     <OpenModalButton
                                                         buttonText="Edit Review"
                                                         // onItemClick={closeMenu}
@@ -212,7 +212,7 @@ const MovieDetails = () => {
                                                     />
                                                     </div>
                                                     :
-                                                    <div className="review-button">
+                                                    <div className="sidebar-button">
                                                         <OpenModalButton
                                                             buttonText="Create Review"
                                                             // onClick={isUserSignedIn}
@@ -223,7 +223,7 @@ const MovieDetails = () => {
                                                 }
                                             {/* </>
                                         } */}
-                                        <div className="lists-status">
+                                        <div className="sidebar-button">
                                             add to lists
                                         </div>
                                     </div>

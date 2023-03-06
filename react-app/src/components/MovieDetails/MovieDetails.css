@@ -180,7 +180,7 @@
 .synopsis-box {
     width: 62%;
     font-size: 16px;
-    max-height: 290px;
+    height: 290px;
     overflow: hidden;
 }
 
@@ -243,4 +243,83 @@
 
 }
 
+.sidebar-button {
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.sidebar-button button {
+    height: 100%;
+    background-color: transparent;
+    color: #9ab;
+    cursor: pointer;
+    border: none;
+}
+
+.sidebar-button button:hover {
+    color: white;
+}
+
+.reviews-box {
+
+}
+
+.reviews-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #456;
+}
+
+.review-content {
+
+}
+
+.single-review-box {
+    display: flex;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #456;
+    max-height: 350px;
+}
+
+.reviewer-image {
+    width: 8%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+#reviewer-icon {
+
+}
+
+.review-imformation {
+
+}
+
+.review-stats {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.reviewer-name {
+    padding-right: 10px;
+}
+
+.reviewer-name span{
+    font-weight: 600;
+}
+
+.review-rating {
+
+}
+
+.review-words {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

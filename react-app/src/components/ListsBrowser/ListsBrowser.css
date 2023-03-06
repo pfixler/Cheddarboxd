@@ -46,6 +46,8 @@
     grid-auto-rows: minmax(min-content, max-content);
     grid-auto-flow: row dense;
     gap: 40px;
+    border-top: 1px solid #456;
+    padding-top: 15px;
 }
 
 .single-list-card {
@@ -104,8 +106,17 @@
     margin: 10px 0px 6px;
     font-size: 20px;
     color: white;
+    max-height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .list-maker {
     color: #abc;
+    display: flex;
+    align-items: center;
+}
+
+#list-maker-icon {
+    padding-right: 5px;
 }

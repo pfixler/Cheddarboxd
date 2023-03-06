@@ -11,6 +11,8 @@ import ListsBrowser from "./components/ListsBrowser";
 import ListDetails from "./components/ListDetails";
 import CreateListPage from "./components/CreateListPage";
 import EditListPage from "./components/EditListPage";
+import HomePage from "./components/HomePage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route> */}
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route exact path="/movies/">
             <MoviesBrowser />
           </Route>

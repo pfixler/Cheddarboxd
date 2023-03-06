@@ -22,21 +22,20 @@ const MovieReviews = ({reviews}) => {
                 <div className="review-content">
                     {reviews?.map(review => (
                         <div className="single-review-box" key={review.id}>
-                            list
                             <div className="reviewer-image">
-                                image
+                                <i className="fas fa-user-circle fa-2x" id="reviewer-icon"/>
                             </div>
                             <div className="review-information">
                                 <div className="review-stats">
                                     <div className="reviewer-name">
-                                        {review.reviewer?.username}
+                                        Review by <span>{review.reviewer?.username}</span>
                                     </div>
                                     <div className="review-rating">
                                         {review.rating}
                                     </div>
+                                </div>
                                 <div className="review-words">
                                     {review.content}
-                                </div>
                                 </div>
                             </div>
                         </div>
