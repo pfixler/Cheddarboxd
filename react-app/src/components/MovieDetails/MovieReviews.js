@@ -31,7 +31,7 @@ const MovieReviews = ({reviews}) => {
                                         Review by <span>{review.reviewer?.username}</span>
                                     </div>
                                     <div className="review-rating">
-                                        {review.rating}
+                                        {review.rating} Stars
                                     </div>
                                 </div>
                                 <div className="review-words">

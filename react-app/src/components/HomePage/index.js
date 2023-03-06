@@ -13,6 +13,7 @@ const HomePage = () => {
     const movies = Object.values(moviesObj)
     const [areMoviesLoaded, setAreMoviesLoaded] = useState(false)
     const [movie, setMovie] = useState()
+    const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(loadAllMovies())
@@ -46,26 +47,36 @@ const HomePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="create-account-home-page">
-                        <div className="home-page-message">
-                            <p>
-                                Review the movies you have watched.
-                            </p>
-                            <p>
-                                Make lists of related movies.
-                            </p>
-                            <p>
-                                Follow and comment features coming soon.
-                            </p>
+                    {user ?
+                        <div className="account-created-home-page">
+                            <div className="welcome-message">
+                                <p>
+                                    Welcome back, {user.username}
+                                </p>
+                            </div>
                         </div>
-                        <div className='create-account-home-page-button-box'>
-                            <OpenModalButton
-                                buttonText="Get Started"
-                                // onItemClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                            />
+                        :
+                        <div className="create-account-home-page">
+                            <div className="home-page-message">
+                                <p>
+                                    Review the movies you have watched.
+                                </p>
+                                <p>
+                                    Make lists of related movies.
+                                </p>
+                                <p>
+                                    Follow and comment features coming soon.
+                                </p>
+                            </div>
+                            <div className='create-account-home-page-button-box'>
+                                <OpenModalButton
+                                    buttonText="Get Started"
+                                    // onItemClick={closeMenu}
+                                    modalComponent={<SignupFormModal />}
+                                />
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             )}
         </div>

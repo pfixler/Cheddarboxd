@@ -13,8 +13,11 @@ function LoginForm({setSignUpOpen}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const frontErrors = [];
+
     const data = await dispatch(login(credential, password));
     if (data) {
+      window.alert("Credential and password do not match.")
       setErrors(data);
     } else {
       setSignUpOpen(false)

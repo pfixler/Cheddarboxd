@@ -15,15 +15,19 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    width: 70%;
+    width: 75%;
 }
 
 .list-creator-information {
-
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #456;
+    width: 100%;
 }
 
 .list-creator-image {
-
+    margin-right: 5px;
 }
 
 .list-creator-name {
@@ -39,7 +43,8 @@
 }
 
 .list-description {
-
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .list-movies {
@@ -64,8 +69,27 @@
 }
 
 .list-interaction {
-    width: 30%;
+    width: 25%;
     z-index: 1;
+    padding-left: 5%;
 }
 
+.edit-list-link {
+    background-color: #456;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    color: #9ab
+}
 
+.list-sidebar-button {
+    background-color: #456;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    color: #9ab
+}

@@ -19,9 +19,9 @@ const CreateReviewModal = ({movie}) => {
         setLike(!like)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // let errorArr = [];
+        let errorArr = [];
 
         const newReview = {
             watch_date: dateWatched.toString().split('/').join('-'),
@@ -31,9 +31,17 @@ const CreateReviewModal = ({movie}) => {
             created_at: stringDate
         }
 
+        if (errorArr.length > 0) {
+            return window.alert(`${errorArr}`)
+        }
 
-        dispatch(createReview(newReview, movie.id))
-            .then(closeModal)
+
+        const data = await dispatch(createReview(newReview, movie.id))
+            if (data) {
+                window.alert(`${data}`);
+            } else {
+                closeModal();
+            }
     }
 
     // const handleCancelClick = (e) => {
