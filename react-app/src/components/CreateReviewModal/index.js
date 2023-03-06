@@ -23,6 +23,10 @@ const CreateReviewModal = ({movie}) => {
         e.preventDefault();
         let errorArr = [];
 
+        if (content.length > 5000) {
+            errorArr.push("Review content must not be greater than 5000 characters")
+        }
+
         const newReview = {
             watch_date: dateWatched.toString().split('/').join('-'),
             rating,
@@ -76,12 +80,13 @@ const CreateReviewModal = ({movie}) => {
                 <form className="create-review-form" onSubmit={handleSubmit}>
                     <div className="date-watched" id='review-input-box'>
                         <label className='date-watched-label'>
-                            Watched on
+                            Watched on*
                             <input
                                 className='date-watched-input'
                                 type='date'
                                 value={dateWatched}
                                 onChange={(e) => setDateWatched(e.target.value)}
+                                required
                             />
                         </label>
                     </div>

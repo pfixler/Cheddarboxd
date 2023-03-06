@@ -29,6 +29,15 @@ const CreateListPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const errorArr = [];
+
+        if (name.length > 255) {
+            errorArr.push("Name must not be more than 255 characters")
+        }
+
+        if (description.length > 5000) {
+            errorArr.push("Description must not be more than 5000 characters")
+        }
 
         const newList = {
             name,
@@ -38,11 +47,15 @@ const CreateListPage = () => {
             list_movies:listMovies.join(',')
         }
 
+        if (errorArr.length > 0) {
+            return window.alert(`${errorArr}`)
+        }
+
         const data = await dispatch(createList(newList))
             if (data) {
                 window.alert(`${data}`);
             } else {
-                history.push(`/lists/`);
+                history.push(`/lists/${newList.id}`);
             }
             // .then(history.push(`/lists/`))
             // .then(history.push(`/${user?.id}/lists/`))
