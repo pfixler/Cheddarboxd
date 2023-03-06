@@ -55,7 +55,7 @@ const CreateListPage = () => {
             if (data) {
                 window.alert(`${data}`);
             } else {
-                history.push(`/lists/${newList.id}`);
+                history.push(`/lists/`);
             }
             // .then(history.push(`/lists/`))
             // .then(history.push(`/${user?.id}/lists/`))
