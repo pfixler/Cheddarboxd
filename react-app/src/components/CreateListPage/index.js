@@ -27,7 +27,7 @@ const CreateListPage = () => {
         setPublicList(!publicList)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const newList = {
@@ -38,8 +38,13 @@ const CreateListPage = () => {
             list_movies:listMovies.join(',')
         }
 
-        dispatch(createList(newList))
-            .then(history.push(`/lists/`))
+        const data = await dispatch(createList(newList))
+            if (data) {
+                window.alert(`${data}`);
+            } else {
+                history.push(`/lists/`);
+            }
+            // .then(history.push(`/lists/`))
             // .then(history.push(`/${user?.id}/lists/`))
     }
 

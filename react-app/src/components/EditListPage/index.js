@@ -37,7 +37,7 @@ const EditListPage = () => {
         setPublicList(!publicList)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const updatedList = {
@@ -51,8 +51,13 @@ const EditListPage = () => {
 
         // console.log('updated list:', updatedList)
 
-        dispatch(updateList(updatedList))
-            .then(history.push(`/lists/`))
+        const data = await dispatch(updateList(updatedList))
+            if (data) {
+                window.alert(`${data}`);
+            } else {
+                history.push(`/lists/`);
+            }
+            // .then(history.push(`/lists/`))
             // .then(history.push(`/${user?.id}/lists/`))
     }
 

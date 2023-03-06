@@ -169,7 +169,7 @@ const MovieDetails = () => {
                                 {/* the review stuff here will be a create/update form for reviews */}
                                 <div className="interaction-sidebar-box">
                                     <div className="interaction-sidebar">
-                                        <div className="user-movie-status">
+                                        {/* <div className="user-movie-status">
                                             <div className="watched-status">
                                                 <div className="watched-icon">
 
@@ -194,15 +194,9 @@ const MovieDetails = () => {
                                                     rating
                                                 </div>
                                             </div>
-                                        </div>
-                                        {/* {user ?
-                                            <div className="review-button">
-                                                <button>
-                                                    Sign in to interact with this movie
-                                                </button>
-                                            </div>
-                                            :
-                                            <> */}
+                                        </div> */}
+                                        {user ?
+                                            <>
                                                 {areReviewsLoaded && userHasReview ?
                                                     <div className="sidebar-button">
                                                     <OpenModalButton
@@ -221,11 +215,15 @@ const MovieDetails = () => {
                                                         />
                                                     </div>
                                                 }
-                                            {/* </>
-                                        } */}
-                                        <div className="sidebar-button">
+                                            </>
+                                            :
+                                            <div className="sidebar-button" id="not-signed-in-sidebar">
+                                                    Sign in to interact with this movie
+                                            </div>
+                                        }
+                                        {/* <div className="sidebar-button">
                                             add to lists
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>

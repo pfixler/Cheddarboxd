@@ -52,7 +52,7 @@ const ListDetails = () => {
                         <div className="list-information">
                             <div className="list-creator-information">
                                 <div className="list-creator-image">
-
+                                    <i className="fas fa-user-circle fa-2x"/>
                                 </div>
                                 <div className="list-creator-name">
                                     List by {list.creator.first_name} {list.creator.last_name}
@@ -79,13 +79,17 @@ const ListDetails = () => {
                             </div>
                         </div>
                         <div className="list-interaction">
-                            {isUserList && (
-                                <NavLink className="edit-list-page" to={`/${user.id}/lists/${list.id}`}>
+                            {isUserList ?
+                                <NavLink className="edit-list-page" to={`/${user?.id}/lists/${list?.id}`}>
                                     <div className="edit-list-link">
                                         Edit List
                                     </div>
                                 </NavLink>
-                            )}
+                            :
+                                <div className="list-sidebar-button" id="not-signed-in-list-sidebar">
+                                    Only the creator of a list can edit it
+                                </div>
+                            }
                         </div>
                     </div>
                 </>

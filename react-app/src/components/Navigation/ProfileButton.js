@@ -51,7 +51,7 @@ function ProfileButton({ user }) {
                   {user.username}
                 </button>
               </div>
-              <div className="dropdown-links">
+              {/* <div className="dropdown-links">
                 <div className="dropdown-home-link">
                   <NavLink exact to={'/'}>
                     Home
@@ -62,9 +62,9 @@ function ProfileButton({ user }) {
                     Profile
                   </NavLink>
                 </div>
-                <div>
-                  <button onClick={handleLogout}>Log Out</button>
-                </div>
+              </div> */}
+              <div className="log-out-button-box">
+                <button onClick={handleLogout}>Log Out</button>
               </div>
             </div>
           </div>

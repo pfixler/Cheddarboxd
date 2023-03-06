@@ -1,0 +1,11 @@
+.edit-review-buttons {
+    display: flex;
+}
+
+#save-edit-review {
+    margin-right: 5px;
+}
+
+#delete-edit-review {
+
+}
