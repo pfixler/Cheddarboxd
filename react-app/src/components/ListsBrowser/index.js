@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { loadAllLists } from "../../store/list";
 import { useHistory, NavLink } from "react-router-dom";
@@ -12,11 +12,12 @@ const ListsBrowser = () => {
     const listsObj = useSelector(state => state.list.allLists);
     const user = useSelector(state => state.session.user);
     const lists = Object.values(listsObj);
+    const listLength = lists.length;
 
 
     useEffect(() => {
         dispatch(loadAllLists())
-    }, [dispatch])
+    }, [dispatch, listLength])
 
 
     if (!lists) {

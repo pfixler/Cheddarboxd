@@ -82,11 +82,13 @@ const EditReviewModal = ({review}) => {
                     <div className="words">
                         <label className='words-label'>
                             Review
-                            <input
+                            <textarea
                                 className='words-input'
+                                placeholder='Add a review *required'
                                 type='text'
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
+                                required
                             />
                         </label>
                     </div>

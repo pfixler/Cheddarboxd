@@ -131,7 +131,9 @@
 }
 
 .single-movie-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 50px;
     position: relative;
     z-index: 1;
 }
@@ -141,22 +143,183 @@
 }
 
 .header-box {
-
+    display: flex;
+    margin-bottom: 30px;
+    align-items: baseline;
 }
 
 .title {
+    color: white;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin-right: 7px;
+}
 
+.header-information {
+    display: flex;
+    align-items: center;
 }
 
 .release-date {
-
+    font-size: 16px;
+    color: #DDEEFF;
+    margin-right: 7px;
 }
 
 .original-title {
-
+    font-size: 16px;
+    font-style: italic;
 }
 
 .information-box {
     display: flex;
 
+}
+
+.synopsis-box {
+    width: 62%;
+    font-size: 16px;
+    height: 290px;
+    overflow: hidden;
+}
+
+.interaction-sidebar-box {
+    width: 38%;
+    padding-left: 5%;
+}
+
+.interaction-sidebar {
+    background-color: #456;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-movie-status {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.watched-status {
+    display: flex;
+    flex-direction: column;
+}
+
+.watched-icon {
+
+}
+
+.watched-text {
+
+}
+
+.like-status {
+    display: flex;
+    flex-direction: column;
+}
+
+.like-icon {
+
+}
+
+.like-text {
+
+}
+
+.rating-status {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-icon {
+
+}
+
+.rating-text {
+
+}
+
+.sidebar-button {
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-button button {
+    height: 100%;
+    background-color: transparent;
+    color: #9ab;
+    cursor: pointer;
+    border: none;
+}
+
+.sidebar-button button:hover {
+    color: white;
+}
+
+.reviews-box {
+
+}
+
+.reviews-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #456;
+}
+
+.review-content {
+
+}
+
+.single-review-box {
+    display: flex;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #456;
+    max-height: 350px;
+}
+
+.reviewer-image {
+    width: 8%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+#reviewer-icon {
+
+}
+
+.review-imformation {
+
+}
+
+.review-stats {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.reviewer-name {
+    padding-right: 10px;
+}
+
+.reviewer-name span{
+    font-weight: 600;
+}
+
+.review-rating {
+
+}
+
+.review-words {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

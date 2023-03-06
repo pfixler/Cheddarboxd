@@ -79,10 +79,13 @@
 
 .navbar-links {
   margin-left: 15px;
+  display: flex;
   align-items: center;
 }
 
 .navbar-links button{
+  display: flex;
+  align-items: center;
   color: #9ab;
   background-color: transparent;
   border: none;
@@ -94,6 +97,10 @@
 
 .navbar-links button:hover{
   color: white;
+}
+
+#navbar-profile-icon {
+  padding-right: 3px;
 }
 
 .dropdown-menu {
