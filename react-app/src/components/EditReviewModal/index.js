@@ -6,10 +6,10 @@ import '../CreateReviewModal/CreateReviewModal.css'
 import './EditReviewModal.css'
 
 const EditReviewModal = ({review}) => {
-    // console.log('review in edit modal:', review)
+    console.log('review in edit modal:', review)
     const dispatch = useDispatch();
-    const normDateWatched = new Date(review.watch_date).toISOString().substring(0, 10);
-    // console.log('normalized date:', normDateWatched)
+    const normDateWatched = new Date(review?.watch_date).toISOString().substring(0, 10);
+    console.log('normalized date:', normDateWatched)
     const [dateWatched, setDateWatched] = useState(normDateWatched);
     // console.log('date watched:', dateWatched)
     const [content, setContent] = useState(review.content);
@@ -29,6 +29,10 @@ const EditReviewModal = ({review}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let errorArr = [];
+
+        if (content.length > 5000) {
+            errorArr.push("Review content must not be greater than 5000 characters")
+        }
 
         const editedReview = {
             ...review,
@@ -90,12 +94,13 @@ const EditReviewModal = ({review}) => {
                 <form className="create-review-form" onSubmit={handleSubmit}>
                     <div className="date-watched" id='review-input-box'>
                         <label className='date-watched-label'>
-                            Watched on
+                            Watched on*
                             <input
                                 className='date-watched-input'
                                 type='date'
                                 value={dateWatched}
                                 onChange={(e) => setDateWatched(e.target.value)}
+                                required
                             />
                         </label>
                     </div>
