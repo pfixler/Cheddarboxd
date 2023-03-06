@@ -79,12 +79,13 @@ const CreateReviewModal = ({movie}) => {
                     </div>
                     <div className="review-words" id='review-input-box'>
                         {/* <label className='words-label'> */}
-                            <input
+                            <textarea
                                 className='words-input'
-                                placeholder='Add a review'
+                                placeholder='Add a review *required'
                                 type='textarea'
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
+                                required
                             />
                         {/* </label> */}
                     </div>

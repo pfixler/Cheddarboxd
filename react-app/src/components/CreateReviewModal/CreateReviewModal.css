@@ -97,7 +97,7 @@
 
 }
 
-.review-words input {
+.review-words textarea {
     height: 230px;
     padding: 7px 10px;
     box-sizing: border-box;

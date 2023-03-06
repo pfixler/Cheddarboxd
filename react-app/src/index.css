@@ -29,7 +29,20 @@ input {
     border-radius: 3px;
 }
 
+textarea {
+    background-color: #CCDDEE;
+    border: none;
+    border-radius: 3px;
+}
+
 input:active, input:focus {
     background-color: white;
     border: none;
+    color: black;
+  }
+
+textarea:active, textarea:focus {
+    background-color: white;
+    border: none;
+    color: black;
   }

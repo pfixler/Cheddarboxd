@@ -115,7 +115,7 @@ const CreateListPage = () => {
                                 <label className="create-list-description-label">
                                     Description
                                 </label>
-                                    <input
+                                    <textarea
                                         className="create-list-description-input"
                                         type="textarea"
                                         value={description}

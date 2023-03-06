@@ -1,3 +1,11 @@
+input {
+    color: #89a;
+}
+
+textarea {
+    color: #89a;
+}
+
 .create-list-page-box {
     margin-left: 12%;
     margin-right: 12%;
@@ -10,11 +18,11 @@
     padding-bottom: 5px;
 }
 
-.create-list-page-box input {
+/* .create-list-page-box input {
     background-color: #2c3440;
     font-size: 16px;
     line-height: 17px;
-}
+} */
 
 .create-list-header {
     font-size: 24px;
@@ -61,6 +69,9 @@
 
 .create-list-name input {
     height: 30px;
+    background-color: #2c3440;
+    font-size: 16px;
+    line-height: 17px;
 }
 
 .create-list-public-list {
@@ -72,8 +83,13 @@
     padding: 0;
 }
 
-.create-list-public-list-input{
+.create-list-public-list input[type=checkbox]{
     height: 24px;
+    width: 24px;
+    background-color: #2c3440;
+}
+
+.create-list-public-list input[type=checkbox]:checked {
     background-color: #2c3440;
 }
 
@@ -82,13 +98,17 @@
     flex-direction: column;
 }
 
-.create-list-description input {
+.create-list-description textarea {
     height: 175px;
+    background-color: #2c3440;
+    font-size: 16px;
+    line-height: 17px;
 }
 
 .bottom-side-inputs {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .create-list-add-movies {
@@ -136,6 +156,10 @@
     background-color: gray;
 }
 
+#list-form-delete-button {
+    margin-right: 4px;
+}
+
 .create-list-movies-list {
 
 }
@@ -146,7 +170,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 12px;
 }
 
 .list-movie-information {
@@ -164,6 +188,7 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+    border-radius: 5px;
 }
 
 .list-movie-details {
@@ -173,4 +198,21 @@
 
 .list-movie-title {
     margin-right: 5px;
+    font-size: 21px;
+    color: white;
+}
+
+.list-movie-release-year {
+    font-size: 17px;
+}
+
+.remove-list-movie-button-box button {
+    font-size: 18px;
+    background-color: transparent;
+    color: #9ab;
+    border: none;
+    cursor: pointer;
+}
+.remove-list-movie-button-box button:hover {
+    color: white;
 }
