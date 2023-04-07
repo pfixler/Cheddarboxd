@@ -25,10 +25,9 @@ const MovieDetails = () => {
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
     const [userHasReview, setUserHasReview] = useState(false)
-    // console.log('user has review?:', userHasReview)
-    // console.log('user has review:', userHasReview)
+
     const [userReview, setUserReview] = useState(null)
-    // console.log('user review?:', userReview)
+
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
@@ -45,12 +44,12 @@ const MovieDetails = () => {
     }, [reviews])
 
     useEffect(() => {
-        // console.log('in set user review use effect', reviews)
+
         if (areReviewsLoaded) {
-            // console.log('in set user review use effect inside if statement', reviews)
+
             for (let i in reviews) {
-                // console.log('review in for loop', reviews[i])
-                // console.log('user in for loop:', user)
+
+
                 if (user) {
                     if (user.id == reviews[i].reviewer.id) {
                         setUserReview(reviews[i])

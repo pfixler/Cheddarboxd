@@ -49,22 +49,7 @@ def seed_movies():
         vote_average=7.5,
         vote_count=699
     )
-    # maybe remove
-    movie4 = Movie(
-        backdrop_path="https://image.tmdb.org/t/p/original/jZreyEq1OBO03PVqNeCyHclwwjL.jpg",
-        genre_ids='35,80,9648',
-        tmdb_id=53776,
-        original_language="fr",
-        original_title="Poupoupidou",
-        overview="The ambiguous suicide of a local beauty, weathergirl, cheese model, and Marilyn Monroe look-a-like finds an eager sleuth in David Rousseau, best-selling crime novelist. When Rousseau visits a remote Alps village for the reading of his friend's will he unwittingly, but irresistibly, gets caught in the tangled web of murder and small town politics in this off-beat mystery.",
-        popularity=5.734,
-        poster_path="https://image.tmdb.org/t/p/original/wgsDeQoKzZgJU3TGpslhnhDqGkq.jpg",
-        release_date="2011-01-12",
-        title="Nobody Else But You",
-        video=False,
-        vote_average=6.2,
-        vote_count=74
-    )
+
 
     movie5 = Movie(
         backdrop_path="https://image.tmdb.org/t/p/original/cgJnz8qsePxCt5SejMoO0GlCRs0.jpg",
@@ -322,21 +307,6 @@ def seed_movies():
         vote_count=0
     )
 
-    movie21 = Movie(
-        backdrop_path=None,
-        genre_ids='99',
-        tmdb_id=348124,
-        original_language="en",
-        original_title="Comment se fait le fromage de Hollande",
-        overview="Documentary about making cheese in the Netherlands.",
-        popularity=0.6,
-        poster_path=None,
-        release_date="1909-12-08",
-        title="Comment se fait le fromage de Hollande",
-        video=False,
-        vote_average=6,
-        vote_count=1
-    )
 
     movie22 = Movie(
         backdrop_path="https://image.tmdb.org/t/p/original/gTSxIWgKepVThG1fYn4XSpVMq6B.jpg",
@@ -354,28 +324,13 @@ def seed_movies():
         vote_count=3
     )
 
-    movie23 = Movie(
-        backdrop_path=None,
-        genre_ids='35,27',
-        tmdb_id=5655,
-        original_language="en",
-        original_title="Dairy of Terror",
-        overview="",
-        popularity=0.6,
-        poster_path=None,
-        release_date="2007-11-25",
-        title="Dairy of Terror",
-        video=False,
-        vote_average=0,
-        vote_count=0
-    )
 
-    all_movies = [movie1, movie2, movie3, movie4,
+    all_movies = [movie1, movie2, movie3,
                   movie5, movie6, movie7, movie8,
                   movie9, movie10, movie11, movie12,
                   movie13, movie14, movie15, movie16,
                   movie17, movie18, movie19, movie20,
-                  movie21, movie22, movie23]
+                  movie22]
     add_movies = [db.session.add(movie) for movie in all_movies]
     db.session.commit()
 
