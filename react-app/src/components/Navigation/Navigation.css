@@ -103,6 +103,10 @@
   padding-right: 3px;
 }
 
+.dropdown-items {
+  display: flex;
+}
+
 /* .dropdown-menu {
   background-color: #89a;
   border-radius: 4px;
@@ -126,4 +130,11 @@
   position: absolute;
   background-color: #89a;
   cursor: pointer;
+}
+
+.profile-page-link {
+  position: absolute;
+  background-color: #89a;
+  cursor: pointer;
+  color: black;
 }

@@ -11,6 +11,7 @@ import SignupFormModal from "../SignupFormModal"
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const [signUpOpen, setSignUpOpen] = useState(false);
+	// console.log('session user:', sessionUser)
 
 	return (
 		<div className='navbar-box solid transparent'>
@@ -54,6 +55,13 @@ function Navigation({ isLoaded }){
 								<button>Lists</button>
 							</NavLink>
 						</div>
+						{sessionUser && (
+							<div className='navbar-links' id='navbar-profile'>
+								<NavLink exact to={`/users/${sessionUser.id}`}>
+									<button>Profile</button>
+								</NavLink>
+							</div>
+						)}
 					</div>
 				}
 			</div>

@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 const SingleList = ({list}) => {
     const dispatch = useDispatch()
-    console.log('list:', list)
+    // console.log('list:', list)
     const [listMovies, setListMovies] = useState()
     // const listMoviesTotal = list.movies;
     // const listMovies = listMoviesTotal.slice(4)
-    console.log('list movies:', listMovies)
+    // console.log('list movies:', listMovies)
 
     useEffect(() => {
         if (list) {

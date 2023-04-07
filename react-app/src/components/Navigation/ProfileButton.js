@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import './Navigation.css'
 // import OpenModalButton from "../OpenModalButton";
 // import LoginForm from "../LoginForm";
 // import SignupFormModal from "../SignupFormModal";
 
 function ProfileButton({ user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -34,6 +35,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push("/")
   };
 
   const ulClassName = "profile-dropdown-list" + (showMenu ? "" : " hidden");
@@ -63,9 +65,16 @@ function ProfileButton({ user }) {
                   </NavLink>
                 </div>
               </div> */}
-              <div className="log-out-button-box">
-                <button onClick={handleLogout}>Log Out</button>
-              </div>
+              {/* <div className="dropdown-items"> */}
+                <div className="log-out-button-box">
+                  <button onClick={handleLogout}>Log Out</button>
+                </div>
+                {/* <div className="profile-page-link">
+                  <NavLink to={`/users/${user.id}`}>
+                    Profile
+                  </NavLink>
+                </div> */}
+              {/* </div> */}
             </div>
           </div>
       :

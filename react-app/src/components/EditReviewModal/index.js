@@ -6,10 +6,10 @@ import '../CreateReviewModal/CreateReviewModal.css'
 import './EditReviewModal.css'
 
 const EditReviewModal = ({review}) => {
-    console.log('review in edit modal:', review)
+    // console.log('review in edit modal:', review)
     const dispatch = useDispatch();
     const normDateWatched = new Date(review?.watch_date).toISOString().substring(0, 10);
-    console.log('normalized date:', normDateWatched)
+    // console.log('normalized date:', normDateWatched)
     const [dateWatched, setDateWatched] = useState(normDateWatched);
     // console.log('date watched:', dateWatched)
     const [content, setContent] = useState(review.content);

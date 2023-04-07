@@ -12,6 +12,7 @@ import ListDetails from "./components/ListDetails";
 import CreateListPage from "./components/CreateListPage";
 import EditListPage from "./components/EditListPage";
 import HomePage from "./components/HomePage";
+import ProfilePage from "./components/ProfilePage";
 
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route exact path="/lists/:listId">
             <ListDetails />
+          </Route>
+          <Route exact path="/users/:userId">
+            <ProfilePage />
           </Route>
         </Switch>
       )}
