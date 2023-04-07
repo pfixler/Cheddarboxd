@@ -17,12 +17,11 @@ const EditListPage = () => {
     const [name, setName] = useState(list.name);
     const [description, setDescription] = useState(list.description);
     const [publicList, setPublicList] = useState(list.public_list);
-    // console.log('public list in list:', list.public_list)
-    // console.log('public list:', publicList)
+
     const listMoviesArr = list.movies.map((movie => movie.id));
     const [listMovies, setListMovies] = useState(listMoviesArr);
     const [listMoviesLoaded, setListMoviesLoaded] = useState(false);
-    // console.log('list movies:', listMovies)
+
 
     const createdAt = new Date();
     const stringDate = createdAt.toISOString().slice(0, 10);
@@ -62,7 +61,7 @@ const EditListPage = () => {
             return window.alert(`${errorArr}`)
         }
 
-        // console.log('updated list:', updatedList)
+        
 
         const data = await dispatch(updateList(updatedList))
             if (data) {

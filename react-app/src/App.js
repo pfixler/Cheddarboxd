@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MoviesBrowser from "./components/MoviesBrowser";
@@ -12,6 +10,8 @@ import ListDetails from "./components/ListDetails";
 import CreateListPage from "./components/CreateListPage";
 import EditListPage from "./components/EditListPage";
 import HomePage from "./components/HomePage";
+import ProfilePage from "./components/ProfilePage";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -53,8 +53,12 @@ function App() {
           <Route exact path="/lists/:listId">
             <ListDetails />
           </Route>
+          <Route exact path="/users/:userId">
+            <ProfilePage />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

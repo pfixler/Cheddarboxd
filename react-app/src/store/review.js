@@ -54,7 +54,7 @@ export const createReview = (review, movieId) => async (dispatch) => {
         headers:{ 'Content-Type': 'application/json' },
         body: JSON.stringify(review),
     })
-    console.log('response:', response)
+
     if (response.ok) {
         const newReview = await response.json()
         dispatch(create(newReview))

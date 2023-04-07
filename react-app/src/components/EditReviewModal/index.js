@@ -6,15 +6,15 @@ import '../CreateReviewModal/CreateReviewModal.css'
 import './EditReviewModal.css'
 
 const EditReviewModal = ({review}) => {
-    console.log('review in edit modal:', review)
+
     const dispatch = useDispatch();
     const normDateWatched = new Date(review?.watch_date).toISOString().substring(0, 10);
-    console.log('normalized date:', normDateWatched)
+
     const [dateWatched, setDateWatched] = useState(normDateWatched);
-    // console.log('date watched:', dateWatched)
+
     const [content, setContent] = useState(review.content);
     const [rating, setRating] = useState(review.rating);
-    // console.log('rating:', rating)
+
     const [like, setLike] = useState(review.like);
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
@@ -42,7 +42,7 @@ const EditReviewModal = ({review}) => {
             content,
             updated_at: stringDate
         }
-        // console.log('edited review:', editedReview)
+
         if (errorArr.length > 0) {
             return window.alert(`${errorArr}`)
         }

@@ -25,7 +25,7 @@ const HomePage = () => {
             const randomIndex = Math.floor(Math.random() * movies.length);
             setMovie(movies[randomIndex])
         }
-    }, [movies])
+    }, [dispatch, movies])
 
     if (!movies) {
         return null
