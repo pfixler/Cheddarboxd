@@ -11,7 +11,7 @@ import SignupFormModal from "../SignupFormModal"
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const [signUpOpen, setSignUpOpen] = useState(false);
-	// console.log('session user:', sessionUser)
+
 
 	return (
 		<div className='navbar-box solid transparent'>

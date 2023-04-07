@@ -18,9 +18,9 @@ const unfollow = () => {
 
 
 export const loadUserDetails = (userId) => async (dispatch) => {
-    // console.log('before fetch')
+
     const response = await fetch(`/api/users/${userId}`)
-    // console.log('after repsonse:', response)
+
 
     if (response.ok) {
         const user = await response.json();

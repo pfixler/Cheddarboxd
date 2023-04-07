@@ -14,7 +14,6 @@ const CreateListPage = () => {
     const [description, setDescription] = useState('');
     const [publicList, setPublicList] = useState(false);
     const [listMovies, setListMovies] = useState([])
-    // console.log('list movies:', listMovies)
 
     const createdAt = new Date();
     const stringDate = createdAt.toISOString().slice(0, 10)

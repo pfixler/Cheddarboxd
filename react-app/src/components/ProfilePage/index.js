@@ -9,12 +9,12 @@ const ProfilePage = () => {
     const { userId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const profileUser = useSelector(state => state.user.user);
-    // console.log('profile user:', profileUser)
+
 
     const [sameUser, setSameUser] = useState(false);
 
     useEffect(() => {
-        // console.log('in use effect')
+
         dispatch(loadUserDetails(userId))
 
         if (sessionUser && profileUser) {
