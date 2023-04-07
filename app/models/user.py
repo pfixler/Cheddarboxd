@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .follows import follows
 
 
 class User(db.Model, UserMixin):
@@ -18,6 +19,17 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.String)
     updated_at = db.Column(db.String)
+
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic",
+        cascade="all, delete"
+    )
+
 
     reviews = db.relationship("Review", back_populates="reviewer", cascade="all, delete-orphan")
     lists = db.relationship("List", back_populates="creator", cascade="all, delete-orphan")
@@ -44,6 +56,16 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
         }
 
+    def network_user(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'num_reviews': len(self.reviews),
+            'num_lists': len(self.lists),
+            'following': len([user.simple_user() for user in self.following]),
+            'followers': len([user.simple_user() for user in self.followers])
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -54,5 +76,7 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'created_at': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
-            'lists': [list.to_dict() for list in self.lists]
+            'lists': [list.to_dict() for list in self.lists],
+            'following': [user.network_user() for user in self.following],
+            'followers': [user.network_user() for user in self.followers]
         }
