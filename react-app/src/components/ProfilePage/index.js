@@ -12,21 +12,26 @@ const ProfilePage = () => {
 
 
     const [sameUser, setSameUser] = useState(false);
+    const [profileUserLoaded, setProfileUserLoaded] = useState(false)
 
     useEffect(() => {
 
         dispatch(loadUserDetails(userId))
+
+
+    }, [dispatch])
+
+    useEffect(() => {
+        setProfileUserLoaded(true)
 
         if (sessionUser && profileUser) {
             if (sessionUser.id == profileUser.id) {
                 setSameUser(true)
             }
         }
-    }, [dispatch])
+    }, [profileUser])
 
-    if (profileUser.length < 1) {
-        return null
-    }
+
 
     return (
         <div className="profile-page-box">
@@ -36,6 +41,7 @@ const ProfilePage = () => {
                         <div className="profile-image">
                             <i className="fas fa-user-circle fa-7x" id="profile-page-profile-icon"/>
                         </div>
+                        {profileUserLoaded && (
                         <div className='profile-image-labels'>
                             <div className='profile-username'>
                                 {profileUser.username}
@@ -50,12 +56,14 @@ const ProfilePage = () => {
                             </div>
                             }
                         </div>
+                        )}
                     </div>
+                    {profileUserLoaded && (
                     <div className="profile-header-right">
                         <div className="profile-statistics">
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.reviews?.length}
+                                    {profileUser.reviews.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     reviews
@@ -63,7 +71,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.lists?.length}
+                                    {profileUser.lists.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     lists
@@ -71,7 +79,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.following?.length}
+                                    {profileUser.following.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     following
@@ -79,7 +87,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.followers?.length}
+                                    {profileUser.followers.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     followers
@@ -87,6 +95,7 @@ const ProfilePage = () => {
                             </div>
                         </div>
                     </div>
+                    )}
                 </div>
                 <div className="profile-navbar">
                     <div className="profile-navbar-profile-link">
@@ -124,6 +133,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </div>
+            {profileUserLoaded && (
             <div className="profile=page-body">
                 <div className="profile-body-favorite-films">
 
@@ -135,6 +145,7 @@ const ProfilePage = () => {
 
                 </div>
             </div>
+            )}
         </div>
     )
 }

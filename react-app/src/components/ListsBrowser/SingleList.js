@@ -31,11 +31,12 @@ const SingleList = ({list}) => {
     return (
         <>
             {listMovies && (
-                <div className="single-list-card" key={list.id}>
+                <div className="single-list-card">
                     <NavLink to={`/lists/${list.id}`}>
                         <div className="list-images">
                             {listMovies.map((movie, idx) => (
                                 <img
+                                    key={movie.id}
                                     className={`list-images-image _${idx}`}
                                     src={movie.poster_path}
                                 />
