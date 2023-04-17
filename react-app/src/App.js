@@ -53,7 +53,7 @@ function App() {
           <Route exact path="/lists/:listId">
             <ListDetails />
           </Route>
-          <Route exact path="/users/:userId">
+          <Route exact path="/profiles/:profileId">
             <ProfilePage />
           </Route>
         </Switch>

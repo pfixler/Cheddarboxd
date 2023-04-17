@@ -2,34 +2,34 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import './ProfilePage.css';
-import { loadUserDetails } from '../../store/user';
+import { loadProfileDetails } from '../../store/profile';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
-    const { userId } = useParams();
+    const { profileId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const profileUser = useSelector(state => state.user.user);
+    const profile = useSelector(state => state.profile.profile);
 
 
     const [sameUser, setSameUser] = useState(false);
-    const [profileUserLoaded, setProfileUserLoaded] = useState(false)
+    const [profileLoaded, setProfileLoaded] = useState(false)
 
     useEffect(() => {
 
-        dispatch(loadUserDetails(userId))
+        dispatch(loadProfileDetails(profileId))
 
 
     }, [dispatch])
 
     useEffect(() => {
-        setProfileUserLoaded(true)
+        setProfileLoaded(true)
 
-        if (sessionUser && profileUser) {
-            if (sessionUser.id == profileUser.id) {
+        if (sessionUser && profile) {
+            if (sessionUser.id == profile.id) {
                 setSameUser(true)
             }
         }
-    }, [profileUser])
+    }, [profile])
 
 
 
@@ -41,10 +41,10 @@ const ProfilePage = () => {
                         <div className="profile-image">
                             <i className="fas fa-user-circle fa-7x" id="profile-page-profile-icon"/>
                         </div>
-                        {profileUserLoaded && (
+                        {profileLoaded && (
                         <div className='profile-image-labels'>
                             <div className='profile-username'>
-                                {profileUser.username}
+                                {profile.username}
                             </div>
                             {sameUser ?
                             <div className="edit-profile-button">
@@ -58,12 +58,12 @@ const ProfilePage = () => {
                         </div>
                         )}
                     </div>
-                    {profileUserLoaded && (
+                    {profileLoaded && (
                     <div className="profile-header-right">
                         <div className="profile-statistics">
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser.reviews.length}
+                                    {profile.reviews.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     reviews
@@ -71,7 +71,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser.lists.length}
+                                    {profile.lists.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     lists
@@ -79,7 +79,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser.following.length}
+                                    {profile.following.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     following
@@ -87,7 +87,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser.followers.length}
+                                    {profile.followers.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     followers
@@ -133,7 +133,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </div>
-            {profileUserLoaded && (
+            {profileLoaded && (
             <div className="profile=page-body">
                 <div className="profile-body-favorite-films">
 
