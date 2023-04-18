@@ -12,26 +12,24 @@ const ProfilePage = () => {
 
 
     const [sameUser, setSameUser] = useState(false);
-    const [profileLoaded, setProfileLoaded] = useState(false)
+    const [profileLoaded, setProfileLoaded] = useState(false);
+
 
     useEffect(() => {
 
         dispatch(loadProfileDetails(profileId))
-
+            .then(() => setProfileLoaded(true))
 
     }, [dispatch])
 
     useEffect(() => {
-        setProfileLoaded(true)
 
-        if (sessionUser && profile) {
             if (sessionUser.id == profile.id) {
                 setSameUser(true)
             }
-        }
     }, [profile])
 
-
+    console.log(profile)
 
     return (
         <div className="profile-page-box">
