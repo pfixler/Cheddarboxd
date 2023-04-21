@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import './ProfilePage.css';
@@ -95,41 +95,42 @@ const ProfilePage = () => {
                     </div>
                     )}
                 </div>
-                <div className="profile-navbar">
-                    <div className="profile-navbar-profile-link">
-
-                    </div>
-                    <div className="profile-navbar-activity-link">
-
-                    </div>
-                    <div className="profile-navbar-films-link">
-
-                    </div>
-                    <div className="profile-navbar-diary-link">
-
-                    </div>
-                    <div className="profile-navbar-reviews-link">
-
-                    </div>
-                    <div className="profile-navbar-watchlist-link">
-
-                    </div>
-                    <div className="profile-navbar-lists-link">
-
-                    </div>
-                    <div className="profile-navbar-likes-link">
-
-                    </div>
-                    <div className="profile-navbar-tags-link">
-
-                    </div>
-                    <div className="profile-navbar-network-link">
-
-                    </div>
-                    <div className="profile-navbar-invitations-link">
-
-                    </div>
-                </div>
+                {/* same as app.js? */}
+                <ul className="profile-navbar">
+                    <li className="profile-navbar-profile-link">
+                        {/* <NavLink>Profile</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-activity-link">
+                        {/* <NavLink>Activity</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-films-link">
+                        {/* <NavLink>Films</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-diary-link">
+                        {/* <NavLink>Diary</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-reviews-link">
+                        {/* <NavLink>Reviews</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-watchlist-link">
+                        {/* <NavLink>Watchlist</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-lists-link">
+                        {/* <NavLink>Lists</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-likes-link">
+                        {/* <NavLink>Likes</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-tags-link">
+                        {/* <NavLink>Tags</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-network-link">
+                        {/* <NavLink>Network</NavLink> */}
+                    </li>
+                    <li className="profile-navbar-invitations-link">
+                        {/* <NavLink>Invitations</NavLink> */}
+                    </li>
+                </ul>
             </div>
             {profileLoaded && (
             <div className="profile=page-body">
