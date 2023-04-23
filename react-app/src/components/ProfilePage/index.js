@@ -41,9 +41,9 @@ const ProfilePage = () => {
                         </div>
                         {profileLoaded && (
                         <div className='profile-image-labels'>
-                            <div className='profile-username'>
+                            <h1 className='profile-username'>
                                 {profile.username}
-                            </div>
+                            </h1>
                             {sameUser ?
                             <div className="edit-profile-button">
                                 <button>Edit Profile</button>
@@ -98,38 +98,38 @@ const ProfilePage = () => {
                 {/* same as app.js? */}
                 <nav className="profile-navbar">
                     <ul className="profile-navbar-list">
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Profile</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Profile</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Activity</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Activity</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Films</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Films</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Diary</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Diary</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Reviews</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Reviews</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Watchlist</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Watchlist</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Lists</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Lists</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Likes</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Likes</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Tags</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Tags</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Network</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Network</NavLink>
                         </li>
-                        <li className="profile-navbar-list-item">
-                            {/* <NavLink>Invitations</NavLink> */}
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Invitations</NavLink>
                         </li>
                     </ul>
                 </nav>

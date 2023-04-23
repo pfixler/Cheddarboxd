@@ -11,6 +11,7 @@
 .profile-information {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 
 .profile-header-left {
@@ -57,7 +58,7 @@
     text-overflow: ellipsis;
     vertical-align: middle;
     white-space: nowrap;
-    font-size: 24px;
+    /* font-size: 24px; */
     color: white;
 }
 
@@ -100,5 +101,29 @@
 }
 
 .profile-navbar {
+    border: 1px solid #24303c;
+    border-radius: 3px;
+}
+
+.profile-navbar-list {
+    box-sizing: border-box;
     display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.profile-navbar-list .navitem {
+    font-size: inherit;
+    line-height: 1.38461538;
+}
+
+.profile-navbar-list-item {
+    color: #9ab;
+    display: block;
+    font-size: 1.15384615rem;
+    line-height: 1.33333333;
+    padding: 12px 0.96153846rem;
+    position: relative;
 }
