@@ -96,41 +96,43 @@ const ProfilePage = () => {
                     )}
                 </div>
                 {/* same as app.js? */}
-                <ul className="profile-navbar">
-                    <li className="profile-navbar-profile-link">
-                        {/* <NavLink>Profile</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-activity-link">
-                        {/* <NavLink>Activity</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-films-link">
-                        {/* <NavLink>Films</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-diary-link">
-                        {/* <NavLink>Diary</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-reviews-link">
-                        {/* <NavLink>Reviews</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-watchlist-link">
-                        {/* <NavLink>Watchlist</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-lists-link">
-                        {/* <NavLink>Lists</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-likes-link">
-                        {/* <NavLink>Likes</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-tags-link">
-                        {/* <NavLink>Tags</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-network-link">
-                        {/* <NavLink>Network</NavLink> */}
-                    </li>
-                    <li className="profile-navbar-invitations-link">
-                        {/* <NavLink>Invitations</NavLink> */}
-                    </li>
-                </ul>
+                <nav className="profile-navbar">
+                    <ul className="profile-navbar-list">
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Profile</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Activity</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Films</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Diary</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Reviews</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Watchlist</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Lists</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Likes</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Tags</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Network</NavLink> */}
+                        </li>
+                        <li className="profile-navbar-list-item">
+                            {/* <NavLink>Invitations</NavLink> */}
+                        </li>
+                    </ul>
+                </nav>
             </div>
             {profileLoaded && (
             <div className="profile=page-body">
