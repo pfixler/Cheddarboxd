@@ -135,14 +135,33 @@ const ProfilePage = () => {
                 </nav>
             </div>
             {profileLoaded && (
-            <div className="profile=page-body">
-                <div className="profile-body-favorite-films">
-
+            <div className="profile-page-body">
+                <div className='left-side'>
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Favorite Films
+                        </h2>
+                        <p className='favorite-films-content'>
+                            Don't forget to select your favorite films!
+                        </p>
+                    </div>
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Recent Activity
+                        </h2>
+                    </div>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Recent Reviews
+                        </h2>
+                    </div>
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Following
+                        </h2>
+                    </div>
                 </div>
-                <div className="profile-body-recent-likes">
-
-                </div>
-                <div className="profile-body-following">
+                <div className='right-side'>
 
                 </div>
             </div>

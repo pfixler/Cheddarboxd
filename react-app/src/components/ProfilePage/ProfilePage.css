@@ -127,3 +127,27 @@
     padding: 12px 0.96153846rem;
     position: relative;
 }
+
+.profile-page-body {
+    display: flex;
+}
+
+.profile-body-header {
+    border-bottom: 1px solid #456;
+    color: #9ab;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: 0.76923077rem;
+    margin-top: 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    margin: 18px 0 12px;
+}
+
+.favorite-films-content {
+    margin-bottom: 0.70588235em;
+    font-size: 1.15384615rem;
+    word-break: break-word;
+    line-height: 1.5;
+}
