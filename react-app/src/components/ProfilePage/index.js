@@ -141,9 +141,24 @@ const ProfilePage = () => {
                         <h2 className='profile-body-header'>
                             Favorite Films
                         </h2>
+                        {/* conditional here- has the user selected at least one favorite film */}
                         <p className='favorite-films-content'>
                             Don't forget to select your favorite films!
                         </p>
+                        <ul className='favorite-films-poster-list'>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                        </ul>
                     </div>
                     <div className="profile-body-section">
                         <h2 className='profile-body-header'>
