@@ -132,6 +132,10 @@
     display: flex;
 }
 
+.left-side {
+    width: 65.7%;
+}
+
 .profile-body-header {
     border-bottom: 1px solid #456;
     color: #9ab;
@@ -160,6 +164,8 @@
     overflow: hidden;
     position: relative;
     z-index: 0;
+    padding: 0;
+    /* margin: 0; */
 }
 
 .favorite-films-poster-list-placeholder {
@@ -173,4 +179,8 @@
     /* display: inline-block; */
     overflow: hidden;
     position: relative;
+}
+
+.right-side {
+    width: 30%;
 }
