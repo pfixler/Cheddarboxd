@@ -177,7 +177,26 @@ const ProfilePage = () => {
                     </div>
                 </div>
                 <div className='right-side'>
-
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Watchlist
+                        </h2>
+                    </div>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Diary
+                        </h2>
+                    </div>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Ratings
+                        </h2>
+                    </div>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Recent Lists
+                        </h2>
+                    </div>
                 </div>
             </div>
             )}
