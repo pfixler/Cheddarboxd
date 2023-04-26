@@ -6,6 +6,8 @@
 }
 
 .profile-page-header {
+    margin-bottom: 3.07692308rem;
+    overflow: hidden;
 }
 
 .profile-information {
@@ -130,10 +132,11 @@
 
 .profile-page-body {
     display: flex;
+    justify-content: space-between;
 }
 
 .left-side {
-    width: 65.7%;
+    width: 66%;
 }
 
 .profile-body-header {
@@ -146,7 +149,10 @@
     margin-top: 0;
     padding-bottom: 5px;
     text-transform: uppercase;
-    margin: 18px 0 12px;
+}
+
+.profile-body-section {
+    padding-bottom: 2.30769231rem;
 }
 
 .favorite-films-content {
@@ -182,5 +188,5 @@
 }
 
 .right-side {
-    width: 30%;
+    width: 27%;
 }
