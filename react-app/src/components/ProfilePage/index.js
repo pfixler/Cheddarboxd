@@ -45,8 +45,8 @@ const ProfilePage = () => {
                                 {profile.username}
                             </h1>
                             {sameUser ?
-                            <div className="edit-profile-button">
-                                <button>Edit Profile</button>
+                            <div>
+                                <NavLink to="/settings" className="edit-profile-button">Edit Profile</NavLink>
                             </div>
                             :
                             <div className="follow-button">

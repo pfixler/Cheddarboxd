@@ -28,7 +28,7 @@
     margin-left: 13px;
 }
 
-.profile-image-labels button{
+.profile-image-labels .edit-profile-button {
     text-align: center;
     font-size: 13px;
     background: #567;
