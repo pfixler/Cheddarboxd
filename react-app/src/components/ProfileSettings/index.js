@@ -27,7 +27,138 @@ const ProfileSettings = () => {
                 </div>
                 <form className="profile-settings-form">
                     <div className="personal-settings">
-
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Username
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Given Name
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Family Name
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Email Address
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Location
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Website
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Bio
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Pronouns
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Posters
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Replies
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Include profile in the members section
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="profile-settings-field">
+                            <label className="profile-settings-label">
+                                Adult Content
+                            </label>
+                            <input
+                                className="profile-settings-input"
+                                type="text"
+                                // value={name}
+                                // onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="favorite-films">
                         <div className="favorite-films-header">
