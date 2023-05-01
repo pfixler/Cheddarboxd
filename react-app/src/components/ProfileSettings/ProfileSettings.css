@@ -1,0 +1,49 @@
+.profile-settings-header {
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: #abc;
+    font-size: 2rem;
+    line-height: 1.23076923;
+}
+
+.profile-settings-navbar {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #456;
+    color: #678;
+    font-size: 11px;
+    line-height: 1;
+    min-height: 30px;
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.profile-settings-navbar-list {
+    padding: 0;
+    display: flex;
+}
+
+.profile-settings-navbar-list-item {
+    /* float: left; */
+    font-size: 1rem;
+    letter-spacing: .075em;
+    line-height: 1;
+    margin: 0 15px 0 0;
+    text-transform: uppercase;
+    color: #00e054;
+    padding: 0 0 5px;
+}
+
+.profile-settings-navbar-list-item .selected {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+
+
+
+
+.profile-settings-change-fields {
+    display: flex;
+}
