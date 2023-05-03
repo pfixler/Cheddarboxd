@@ -179,17 +179,17 @@ const ProfileSettings = () => {
                                     Drag posters to reorder.
                                 </p>
                             </div>
-                            <ul className='favorite-films-poster-list edit'>
-                                <li className='favorite-films-poster-list-placeholder edit'>
+                            <ul className='edit-favorite-films-poster-list'>
+                                <li className='edit-favorite-films-poster-list-placeholder'>
 
                                 </li>
-                                <li className='favorite-films-poster-list-placeholder edit'>
+                                <li className='edit-favorite-films-poster-list-placeholder'>
 
                                 </li>
-                                <li className='favorite-films-poster-list-placeholder edit'>
+                                <li className='edit-favorite-films-poster-list-placeholder'>
 
                                 </li>
-                                <li className='favorite-films-poster-list-placeholder'>
+                                <li className='edit-favorite-films-poster-list-placeholder'>
 
                                 </li>
                             </ul>
