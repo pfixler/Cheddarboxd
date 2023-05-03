@@ -46,4 +46,27 @@
 
 .profile-settings-change-fields {
     display: flex;
+    justify-content: space-between;
+}
+
+.personal-settings {
+    width: 45%;
+}
+
+.profile-settings-name-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-settings-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-input {
+    width: 49%;
+}
+
+.favorite-films {
+    width: 45%;
 }

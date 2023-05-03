@@ -46,8 +46,8 @@ const ProfileSettings = () => {
                                     // onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
-                            <div className="profile-settings-name-imputs">
-                                <div className="profile-settings-field">
+                            <div className="profile-settings-name-inputs">
+                                <div className="profile-settings-field name-input">
                                     <label className="profile-settings-label">
                                         Given Name
                                     </label>
@@ -58,7 +58,7 @@ const ProfileSettings = () => {
                                         // onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
-                                <div className="profile-settings-field">
+                                <div className="profile-settings-field name-input">
                                     <label className="profile-settings-label">
                                         Family Name
                                     </label>
