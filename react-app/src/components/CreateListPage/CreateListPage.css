@@ -128,12 +128,12 @@ textarea {
     text-overflow: ellipsis;
 }
 
-.list-form-button-box {
+/* .button-box {
     display: flex;
     align-items: center;
 }
 
-.list-form-button {
+.submit-button {
     height: 28px;
     background-color: #00b020;
     box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
@@ -144,16 +144,34 @@ textarea {
     box-sizing: border-box;
 }
 
-.list-form-button div {
+.cancel-button {
+    height: 28px;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: gray;
+}
+
+.submit-button span {
     padding: 6px 12px;
     font-size: 16px;
     line-height: 12px;
     font-weight: 600;
 }
 
+.cancel-button span {
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 600;
+} */
+
 #list-form-cancel-button {
     margin-right: 4px;
-    background-color: gray;
+    /* background-color: gray; */
 }
 
 #list-form-delete-button {
