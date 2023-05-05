@@ -156,15 +156,15 @@ const CreateListPage = () => {
                                     ))}
                                 </select>
                         </div>
-                        <div className="list-form-button-box">
-                            {/* <div className='list-form-button'> */}
-                                <button className='list-form-button' id="list-form-cancel-button" type="button" onClick={handleCancelClick}>
-                                    <div>Cancel</div>
+                        <div className="buttons-box">
+                            {/* <div className='cancel-button'> */}
+                                <button className='grey-button' id="list-form-cancel-button" type="button" onClick={handleCancelClick}>
+                                    <span>Cancel</span>
                                 </button>
                             {/* </div> */}
                             {/* <div className="list-form-button"> */}
-                                <button className='list-form-button' type='submit'>
-                                    <div>Save</div>
+                                <button className='green-button' type='submit'>
+                                    <span>Save</span>
                                 </button>
                             {/* </div> */}
                         </div>

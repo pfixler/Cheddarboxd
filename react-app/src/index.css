@@ -71,3 +71,52 @@ textarea:active, textarea:focus {
     border: none;
     color: black;
   }
+
+  .buttons-box {
+    display: flex;
+    align-items: center;
+}
+
+  .green-button {
+    height: 29px;
+    background-color: #00b020;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #f4fcf0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.grey-button {
+    height: 29px;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
+    color: #c8d4e0;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #567;
+}
+
+.green-button span {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    line-height: 12px;
+    margin: 0;
+    padding: 9px 12px 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.grey-button span {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    line-height: 12px;
+    margin: 0;
+    padding: 9px 12px 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}

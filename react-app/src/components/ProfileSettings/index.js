@@ -195,12 +195,12 @@ const ProfileSettings = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="profile-settings-buttons">
-                        <button className="change-password-button">
-                            Change Password
+                    <div className="buttons-box edit-profile-buttons">
+                        <button className="grey-button" id="change-password-button">
+                            <span>Change Password</span>
                         </button>
-                        <button className="submit-profile-changes-button">
-                            Save Changes
+                        <button className="green-button">
+                            <span>Save Changes</span>
                         </button>
                     </div>
                 </form>
