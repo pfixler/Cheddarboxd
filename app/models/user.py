@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     first_name = db.Column(db.String(40))
     last_name = db.Column(db.String(40))
+    location = db.Column(db.String(100))
+    website = db.Column(db.String(100))
     bio = db.Column(db.String(1000))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.String)
@@ -52,6 +54,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'location': self.location,
+            'website': self.website,
             'bio': self.bio,
             'created_at': self.created_at,
         }
@@ -73,6 +77,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'location': self.location,
+            'website': self.website,
             'bio': self.bio,
             'created_at': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
