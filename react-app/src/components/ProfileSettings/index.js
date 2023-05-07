@@ -1,10 +1,45 @@
 import "./ProfileSettings.css"
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { updateProfile } from "../../store/profile";
 
 
 const ProfileSettings = () => {
-    //testing
+    const dispatch = useDispatch();
+
+    const user = useSelector(state => state.session.user)
+
+    const [username, setUsername] = useState(user.username)
+    const [firstName, setFirstName] = useState(user.first_name)
+    const [lastName, setLastName] = useState(user.last_name)
+    const [email, setEmail] = useState(user.email)
+    const [location, setLocation] = useState(user.location)
+    const [website, setWebsite] = useState(user.website)
+    const [bio, setBio] = useState(user.bio)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const errorArr = [];
+
+        const updatedProfile = {
+            ...user,
+            username,
+            first_name:firstName,
+            last_name:lastName,
+            email,
+            location,
+            website,
+            bio
+        }
 
 
+        const data = await dispatch(updateProfile(updatedProfile))
+            if (data) {
+                window.alert(`${data}`);
+            } else {
+                window.alert("Youre profile has been successfully updated");
+            }
+    }
 
     return (
         <div className="profile-settings-box content">
@@ -32,7 +67,7 @@ const ProfileSettings = () => {
                         Profile
                     </h2>
                 </div>
-                <form className="profile-settings-form">
+                <form className="profile-settings-form" onSubmit={handleSubmit}>
                     <div className="profile-settings-change-fields">
                         <div className="personal-settings">
                             <div className="profile-settings-field">
@@ -42,8 +77,9 @@ const ProfileSettings = () => {
                                 <input
                                     className="profile-settings-input"
                                     type="text"
-                                    // value={name}
-                                    // onChange={(e) => setName(e.target.value)}
+                                    required
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                 />
                             </div>
                             <div className="profile-settings-name-inputs">
@@ -54,8 +90,8 @@ const ProfileSettings = () => {
                                     <input
                                         className="profile-settings-input"
                                         type="text"
-                                        // value={name}
-                                        // onChange={(e) => setName(e.target.value)}
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
                                     />
                                 </div>
                                 <div className="profile-settings-field name-input">
@@ -65,8 +101,8 @@ const ProfileSettings = () => {
                                     <input
                                         className="profile-settings-input"
                                         type="text"
-                                        // value={name}
-                                        // onChange={(e) => setName(e.target.value)}
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -77,8 +113,9 @@ const ProfileSettings = () => {
                                 <input
                                     className="profile-settings-input"
                                     type="text"
-                                    // value={name}
-                                    // onChange={(e) => setName(e.target.value)}
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div className="profile-settings-field">
@@ -88,8 +125,8 @@ const ProfileSettings = () => {
                                 <input
                                     className="profile-settings-input"
                                     type="text"
-                                    // value={name}
-                                    // onChange={(e) => setName(e.target.value)}
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
                                 />
                             </div>
                             <div className="profile-settings-field">
@@ -99,8 +136,8 @@ const ProfileSettings = () => {
                                 <input
                                     className="profile-settings-input"
                                     type="text"
-                                    // value={name}
-                                    // onChange={(e) => setName(e.target.value)}
+                                    value={website}
+                                    onChange={(e) => setWebsite(e.target.value)}
                                 />
                             </div>
                             <div className="profile-settings-field">
@@ -110,8 +147,8 @@ const ProfileSettings = () => {
                                 <input
                                     className="profile-settings-input"
                                     type="text"
-                                    // value={name}
-                                    // onChange={(e) => setName(e.target.value)}
+                                    value={bio}
+                                    onChange={(e) => setBio(e.target.value)}
                                 />
                             </div>
                             {/* <div className="profile-settings-field">
@@ -199,7 +236,7 @@ const ProfileSettings = () => {
                         <button className="grey-button" id="change-password-button">
                             <span>Change Password</span>
                         </button>
-                        <button className="green-button">
+                        <button className="green-button" type="submit">
                             <span>Save Changes</span>
                         </button>
                     </div>
