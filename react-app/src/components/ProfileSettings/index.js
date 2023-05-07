@@ -2,12 +2,10 @@ import "./ProfileSettings.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { updateProfile } from "../../store/profile";
-import { useHistory } from "react-router-dom";
 
 
 const ProfileSettings = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const user = useSelector(state => state.session.user)
 
