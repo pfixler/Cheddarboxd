@@ -8,12 +8,14 @@ const ProfileSettings = () => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user)
+    console.log('user', user)
 
     const [username, setUsername] = useState(user.username)
     const [firstName, setFirstName] = useState(user.first_name)
     const [lastName, setLastName] = useState(user.last_name)
     const [email, setEmail] = useState(user.email)
     const [location, setLocation] = useState(user.location)
+    console.log('location', location)
     const [website, setWebsite] = useState(user.website)
     const [bio, setBio] = useState(user.bio)
 
@@ -38,6 +40,7 @@ const ProfileSettings = () => {
                 window.alert(`${data}`);
             } else {
                 window.alert("Youre profile has been successfully updated");
+
             }
     }
 

@@ -35,8 +35,11 @@ def update_profile(profile_id):
     profile = User.query.get(profile_id)
     form = EditProfileForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print('profile before--------', profile.simple_user())
 
     data = form.data
+    print('data--------', data)
+    print('valid?', form.validate_on_submit())
     if form.validate_on_submit():
         profile.username = data["username"]
         profile.email = data["email"]
@@ -46,8 +49,9 @@ def update_profile(profile_id):
         profile.website = data["website"]
         profile.bio = data["bio"]
 
-        db.session.add(profile)
+        # db.session.add(profile)
         db.session.commit()
-        return profile.simple_user
+        print('profile after --------', profile.simple_user())
+        return profile.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}
