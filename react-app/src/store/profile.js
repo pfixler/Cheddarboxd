@@ -35,14 +35,17 @@ export const loadProfileDetails = (profileId) => async (dispatch) => {
 }
 
 export const updateProfile = (profile) => async (dispatch) => {
+    console.log('profile in thunk', profile)
     const response = await fetch(`/api/profiles/${profile.id}`, {
         method:"PUT",
         headers:{ 'Content-Type': 'application/json' },
         body: JSON.stringify(profile),
     })
+    console.log('response', response)
 
     if (response.ok) {
         const updatedProfile = await response.json()
+        console.log('updated profile', updatedProfile)
         dispatch(update(updatedProfile))
     }
 }
@@ -54,7 +57,7 @@ const profile = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_PROFILE_DETAILS:
-            newState = {...state, profile: {}};
+            newState = {profile: {}};
             newState.profile = action.profile;
             return newState;
         case UPDATE_PROFILE:
