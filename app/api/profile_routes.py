@@ -33,7 +33,7 @@ def update_profile(profile_id):
     Update Profile
     """
     profile = User.query.get(profile_id)
-    form = EditProfileForm
+    form = EditProfileForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     data = form.data
