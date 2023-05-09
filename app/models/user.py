@@ -83,6 +83,6 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
             'lists': [list.to_dict() for list in self.lists],
-            'following': [user.network_user() for user in self.following],
-            'followers': [user.network_user() for user in self.followers]
+            'following': {user.id: user.network_user() for user in self.following},
+            'followers': {user.id: user.network_user() for user in self.followers}
         }
