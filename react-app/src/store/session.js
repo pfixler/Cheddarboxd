@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const UPDATE_USER = 'user/UPDATE_USER';
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -11,7 +12,11 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const initialState = { user: null };
+const update = (user) => ({
+    type: UPDATE_USER,
+    user
+})
+
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -28,6 +33,7 @@ export const authenticate = () => async (dispatch) => {
 		dispatch(setUser(data));
 	}
 };
+
 
 export const login = (credential, password) => async (dispatch) => {
 	const response = await fetch("/api/auth/login", {
@@ -55,6 +61,7 @@ export const login = (credential, password) => async (dispatch) => {
 	}
 };
 
+
 export const logout = () => async (dispatch) => {
 	const response = await fetch("/api/auth/logout", {
 		headers: {
@@ -66,6 +73,7 @@ export const logout = () => async (dispatch) => {
 		dispatch(removeUser());
 	}
 };
+
 
 export const signUp = (username, email, password) => async (dispatch) => {
 	const response = await fetch("/api/auth/signup", {
@@ -94,12 +102,31 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+
+export const updateUser = (user) => async (dispatch) => {
+    const response = await fetch(`/api/profiles/${user.id}`, {
+        method:"PUT",
+        headers:{ 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+    })
+
+    if (response.ok) {
+		const updatedUser = await response.json()
+        dispatch(update(updatedUser))
+    }
+}
+
+
+const initialState = { user: null };
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case UPDATE_USER:
+			return { user: action.user }
 		default:
 			return state;
 	}

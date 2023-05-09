@@ -26,13 +26,13 @@ def get_profiles():
     profiles = User.query.all()
     return {'profiles': [profile.to_dict() for profile in profiles]}
 
-@profile_routes.route('/<int:profile_id>', methods=["PUT"])
+@profile_routes.route('/<int:user_id>', methods=["PUT"])
 @login_required
-def update_profile(profile_id):
+def update_profile(user_id):
     """
     Update Profile
     """
-    profile = User.query.get(profile_id)
+    profile = User.query.get(user_id)
     form = EditProfileForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     print('profile before--------', profile.simple_user())
