@@ -13,6 +13,7 @@ const ProfilePage = () => {
 
     const [sameUser, setSameUser] = useState(false);
     const [profileLoaded, setProfileLoaded] = useState(false);
+    const [userFollowing, setUserFollowing] = useState(false);
 
 
     useEffect(() => {
@@ -27,9 +28,12 @@ const ProfilePage = () => {
             if (sessionUser.id == profile.id) {
                 setSameUser(true)
             }
-    }, [profile])
+            if (sessionUser.following[profile.id]) {
+                setUserFollowing(true)
+            }
+    }, [dispatch, profile])
 
-    console.log(profile)
+
 
     return (
         <div className="profile-page-box">
@@ -45,13 +49,23 @@ const ProfilePage = () => {
                                 {profile.username}
                             </h1>
                             {sameUser ?
-                            <div>
-                                <NavLink to="/settings" className="edit-profile-button">Edit Profile</NavLink>
-                            </div>
-                            :
-                            <div className="follow-button">
-                                <button>Follow</button>
-                            </div>
+                                <div className='buttons-box'>
+                                    <NavLink to="/settings" className="grey-button">
+                                        <span>Edit Profile</span>
+                                    </NavLink>
+                                </div>
+                                :
+                                <div className="buttons-box">
+                                    {userFollowing ?
+                                        <button className="green-button">
+                                            <span>Following</span>
+                                        </button>
+                                        :
+                                        <button className="grey-button">
+                                            <span>Follow</span>
+                                        </button>
+                                    }
+                                </div>
                             }
                         </div>
                         )}

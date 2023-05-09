@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom";
 import './MovieDetails.css'
 
 const MovieReviews = ({reviews}) => {
@@ -23,7 +24,9 @@ const MovieReviews = ({reviews}) => {
                     {reviews?.map(review => (
                         <div className="single-review-box" key={review.id}>
                             <div className="reviewer-image">
-                                <i className="fas fa-user-circle fa-2x" id="reviewer-icon"/>
+                                <NavLink to={`/profiles/${review.reviewer?.id}`}>
+                                    <i className="fas fa-user-circle fa-2x" id="reviewer-icon"/>
+                                </NavLink>
                             </div>
                             <div className="review-information">
                                 <div className="review-stats">
