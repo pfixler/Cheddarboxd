@@ -1,21 +1,19 @@
 import "./ProfileSettings.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { updateProfile } from "../../store/profile";
+import { updateUser } from "../../store/session";
 
 
 const ProfileSettings = () => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user)
-    console.log('user', user)
 
     const [username, setUsername] = useState(user.username)
     const [firstName, setFirstName] = useState(user.first_name)
     const [lastName, setLastName] = useState(user.last_name)
     const [email, setEmail] = useState(user.email)
     const [location, setLocation] = useState(user.location)
-    console.log('location', location)
     const [website, setWebsite] = useState(user.website)
     const [bio, setBio] = useState(user.bio)
 
@@ -35,7 +33,7 @@ const ProfileSettings = () => {
         }
 
 
-        const data = await dispatch(updateProfile(updatedProfile))
+        const data = await dispatch(updateUser(updatedProfile))
             if (data) {
                 window.alert(`${data}`);
             } else {
