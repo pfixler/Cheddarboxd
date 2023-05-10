@@ -31,7 +31,7 @@ const ProfilePage = () => {
             if (sessionUser.following[profile.id]) {
                 setUserFollowing(true)
             }
-    }, [dispatch, profile])
+    }, [profile])
 
 
 
@@ -91,7 +91,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profile.following.length}
+                                    {profile.following.length || 0}
                                 </div>
                                 <div className="profile-stat-word">
                                     following
@@ -99,7 +99,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profile.followers.length}
+                                    {profile.followers.length || 0}
                                 </div>
                                 <div className="profile-stat-word">
                                     followers
