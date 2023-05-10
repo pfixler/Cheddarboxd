@@ -97,6 +97,7 @@ textarea:active, textarea:focus {
     border-radius: 3px;
     box-sizing: border-box;
     background-color: #567;
+    display: flex;
 }
 
 .green-button span {
