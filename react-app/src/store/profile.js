@@ -14,13 +14,15 @@ const loadProfile = (profile) => ({
 //     profile
 // })
 
-const follow = () => {
+const follow = (profile) => ({
+    type: FOLLOW_PROFILE,
+    profile
+})
 
-}
-
-const unfollow = () => {
-
-}
+const unfollow = (profile) => ({
+    type: UNFOLLOW_PROFILE,
+    profile
+})
 
 
 export const loadProfileDetails = (profileId) => async (dispatch) => {
@@ -49,6 +51,19 @@ export const loadProfileDetails = (profileId) => async (dispatch) => {
 //         dispatch(update(updatedProfile))
 //     }
 // }
+
+export const followProfile = (profile) => async (dispatch) => {
+    const response = await fetch(`/api/follows/user/${profile.id}`, {
+        method: "POST",
+        headers:{ 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
+    })
+
+    if (response.ok) {
+        const data = response.json()
+        dispatch
+    }
+}
 
 
 const initialState = { profile: {} }
