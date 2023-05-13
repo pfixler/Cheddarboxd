@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import './ProfilePage.css';
 import { loadProfileDetails } from '../../store/profile';
+import { unFollowProfile, followProfile } from '../../store/session';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,20 @@ const ProfilePage = () => {
             if (sessionUser.following[profile.id]) {
                 setUserFollowing(true)
             }
-    }, [profile])
+    }, [dispatch, profile])
+
+
+    const followProfileFunction = (profile) => {
+        // e.preventDefault();
+        dispatch(followProfile(profile));
+        setUserFollowing(!userFollowing);
+    }
+
+    const unFollowProfileFunction = (profile) => {
+        // e.preventDefault();
+        dispatch(unFollowProfile(profile));
+        setUserFollowing(!userFollowing);
+    }
 
 
 
@@ -57,11 +71,11 @@ const ProfilePage = () => {
                                 :
                                 <div className="buttons-box">
                                     {userFollowing ?
-                                        <button className="green-button">
+                                        <button className="green-button" onClick={() => unFollowProfileFunction(profile)}>
                                             <span>Following</span>
                                         </button>
                                         :
-                                        <button className="grey-button">
+                                        <button className="grey-button" onClick={() => followProfileFunction(profile)}>
                                             <span>Follow</span>
                                         </button>
                                     }

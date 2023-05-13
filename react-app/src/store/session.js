@@ -137,7 +137,8 @@ export const followProfile = (profile) => async (dispatch) => {
 
     if (response.ok) {
         const data = response.json()
-        dispatch(follow(profile))
+        dispatch(follow(profile.id))
+		return data
     }
 }
 
@@ -150,7 +151,8 @@ export const unFollowProfile = (profile) => async (dispatch) => {
 
     if (response.ok) {
         const data = response.json()
-        dispatch(unfollow(profile))
+        dispatch(unfollow(profile.id))
+		return data
     }
 }
 
@@ -164,6 +166,12 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case UPDATE_USER:
+			return { user: action.user }
+		case FOLLOW_PROFILE:
+			return { user: action.user }
+		case UNFOLLOW_PROFILE:
+			let newState;
+			
 			return { user: action.user }
 		default:
 			return state;
