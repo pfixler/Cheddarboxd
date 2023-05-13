@@ -136,9 +136,9 @@ export const followProfile = (profile) => async (dispatch) => {
     })
 
     if (response.ok) {
-        const data = response.json()
-        dispatch(follow(profile.id))
-		return data
+        const newFollow = await response.json()
+        dispatch(follow(newFollow))
+		return newFollow
     }
 }
 
@@ -150,8 +150,8 @@ export const unFollowProfile = (profile) => async (dispatch) => {
     })
 
     if (response.ok) {
-        const data = response.json()
-        dispatch(unfollow(profile.id))
+        const data = await response.json()
+        dispatch(unfollow(profile))
 		return data
     }
 }
@@ -160,6 +160,7 @@ export const unFollowProfile = (profile) => async (dispatch) => {
 const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
+	let newState;
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
@@ -168,11 +169,13 @@ export default function reducer(state = initialState, action) {
 		case UPDATE_USER:
 			return { user: action.user }
 		case FOLLOW_PROFILE:
-			return { user: action.user }
+			newState = { ...state }
+			newState.user.following[action.profile.id] = action.profile
+			return newState
 		case UNFOLLOW_PROFILE:
-			let newState;
-			
-			return { user: action.user }
+			newState = { ...state }
+			delete newState.user.following[action.profile.id]
+			return newState
 		default:
 			return state;
 	}
