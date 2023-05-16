@@ -13,6 +13,7 @@ function Navigation({ isLoaded }){
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 	const [signUpOpen, setSignUpOpen] = useState(false);
+	
 
 	const sessionUserProfileClick = async (e) => {
 		// e.preventDefault();
@@ -52,7 +53,7 @@ function Navigation({ isLoaded }){
 						</div>
 						}
 						<ul className='navbar-links'>
-							
+
 						</ul>
 						<div className='navbar-links' id='navbar-films'>
 							<NavLink exact to="/movies">
