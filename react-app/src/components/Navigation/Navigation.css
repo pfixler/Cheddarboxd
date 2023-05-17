@@ -138,3 +138,11 @@
   cursor: pointer;
   color: black;
 }
+
+.test-icon {
+  background-position: -280px -850px;
+  background-image: url(../../images/cheddarboxd-icons.svg);
+  background-size: 800px 1000px;
+  height: 40px;
+  width: 50px;
+}
