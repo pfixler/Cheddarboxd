@@ -60,9 +60,6 @@ function Navigation({ isLoaded }){
 								<button>Films</button>
 							</NavLink>
 						</div>
-						<div className='test-icon'>
-							
-						</div>
 						<div className='navbar-links' id='navbar-lists'>
 							<NavLink exact to="/lists">
 								<button>Lists</button>
