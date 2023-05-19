@@ -168,61 +168,48 @@ const MovieDetails = () => {
                                 {/* the review stuff here will be a create/update form for reviews */}
                                 <div className="interaction-sidebar-box">
                                     <div className="interaction-sidebar">
-                                        {/* <div className="user-movie-status">
-                                            <div className="watched-status">
-                                                <div className="watched-icon">
-
-                                                </div>
-                                                <div className="watched-text">
-                                                    watched
-                                                </div>
-                                            </div>
-                                            <div className="like-status">
-                                                <div className="like-icon">
-
-                                                </div>
-                                                <div className="like-text">
-                                                    like
-                                                </div>
-                                            </div>
-                                            <div className="rating-status">
-                                                <div className="rating-icon">
-
-                                                </div>
-                                                <div className="rating-text">
-                                                    rating
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                        {user ?
-                                            <>
-                                                {areReviewsLoaded && userHasReview ?
-                                                    <div className="sidebar-button">
+                                    {user ?
+                                        <ul className="interaction-actions">
+                                            <li className="action-row">
+                                                <span className="icon box">
+                                                    <div className="watch-icon">Watch</div>
+                                                </span>
+                                                <span className="icon box">
+                                                    <div className="like-icon">Like</div>
+                                                </span>
+                                                <span className="icon box">
+                                                    <div className="watchlist-icon">Watchlist</div>
+                                                </span>
+                                            </li>
+                                            <li className="action-row">
+                                                <span className="rating box">
+                                                    <div className="rating-icon">Rate</div>
+                                                </span>
+                                            </li>
+                                            {areReviewsLoaded && userHasReview ?
+                                                <li className="action-row">
+                                                <OpenModalButton
+                                                    buttonText="Edit your review"
+                                                    // onItemClick={closeMenu}
+                                                    modalComponent={<EditReviewModal review={userReview}/>}
+                                                />
+                                                </li>
+                                                :
+                                                <li className="action-row">
                                                     <OpenModalButton
-                                                        buttonText="Edit Review"
+                                                        buttonText="Review or log"
+                                                        // onClick={isUserSignedIn}
                                                         // onItemClick={closeMenu}
-                                                        modalComponent={<EditReviewModal review={userReview}/>}
+                                                        modalComponent={<CreateReviewModal movie={movie}/>}
                                                     />
-                                                    </div>
-                                                    :
-                                                    <div className="sidebar-button">
-                                                        <OpenModalButton
-                                                            buttonText="Create Review"
-                                                            // onClick={isUserSignedIn}
-                                                            // onItemClick={closeMenu}
-                                                            modalComponent={<CreateReviewModal movie={movie}/>}
-                                                        />
-                                                    </div>
-                                                }
-                                            </>
-                                            :
-                                            <div className="sidebar-button" id="not-signed-in-sidebar">
-                                                    Sign in to interact with this movie
-                                            </div>
-                                        }
-                                        {/* <div className="sidebar-button">
-                                            add to lists
-                                        </div> */}
+                                                </li>
+                                            }
+                                        </ul>
+                                        :
+                                        <div className="action-row" id="not-signed-in-sidebar">
+                                                Sign in to interact with this movie
+                                        </div>
+                                    }
                                     </div>
                                 </div>
                             </div>

@@ -52,9 +52,9 @@ function Navigation({ isLoaded }){
 							</div>
 						</div>
 						}
-						<ul className='navbar-links'>
+						{/* <ul className='navbar-links'>
 
-						</ul>
+						</ul> */}
 						<div className='navbar-links' id='navbar-films'>
 							<NavLink exact to="/movies">
 								<button>Films</button>
