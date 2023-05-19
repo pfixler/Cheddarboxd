@@ -139,7 +139,7 @@
   color: black;
 }
 
-.test-icon {
+.watch-icon::before {
   background-position: -280px -850px;
   background-image: url(../../images/cheddarboxd-icons.svg);
   background-size: 800px 1000px;
