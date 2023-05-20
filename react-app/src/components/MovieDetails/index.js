@@ -95,6 +95,8 @@ const MovieDetails = () => {
         return null
     }
 
+    let placeholder = 0;
+
 
     return (
         <>
@@ -181,10 +183,23 @@ const MovieDetails = () => {
                                                     <div className="action-icon watchlist">Watchlist</div>
                                                 </span>
                                             </li>
-                                            <li className="action-row">
-                                                <span className="icon-box">
-                                                    <div className="rating-icon">Rate</div>
-                                                </span>
+                                            <li className="action-row rate">
+                                                <span className="rate-label">Rate</span>
+                                                <input
+                                                    className="rating-field"
+                                                    type='range'
+                                                    min={0}
+                                                    max={10}
+                                                    step={1}
+                                                    // value={rating}
+                                                    // onChange={(e) => setRating(e.target.value)}
+                                                />
+                                                <div className="rate-movie-box">
+                                                    <div className="rate-movie-range">
+                                                        <div className="rate-movie-selected" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                        <div className="rate-movie-hover" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             {areReviewsLoaded && userHasReview ?
                                                 <li className="action-row">
