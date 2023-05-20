@@ -199,7 +199,8 @@
 }
 
 .interaction-actions {
-
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .action-row {
@@ -209,6 +210,13 @@
     color: #bcd;
     padding: 10px 0;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#top-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .user-movie-status {
@@ -222,13 +230,41 @@
     flex-direction: column;
 }
 
-.watch-icon::before {
-    background-position: -280px -850px;
-    background-image: url(../../images/cheddarboxd-icons.svg);
+.icon-box {
+    color: #bcd;
+    cursor: pointer;
+    display: block;
+}
+
+.action-icon {
+    min-width: 50px;
+    display: block;
+    height: 100%;
+}
+
+.action-icon::before {
     background-size: 800px 1000px;
     height: 40px;
     width: 50px;
+    content: "";
+    display: block;
+    margin: 0 auto 3px;
   }
+
+.action-icon.watch::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -280px -850px;
+}
+
+.action-icon.like::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -340px -850px;
+}
+
+.action-icon.watchlist::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -400px -850px;
+}
 
 .watched-text {
 

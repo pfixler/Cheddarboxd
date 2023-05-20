@@ -17,7 +17,8 @@ nav {
 }
 
 html {
-    font-size: 13px
+    font-size: 13px;
+    height: 100%;
 }
 
 h2 {
@@ -35,6 +36,7 @@ body {
     font-size: 13px;
     color: #9ab;
     /* min-height: 100vh; */
+    height: 100%;
 }
 
 .content {

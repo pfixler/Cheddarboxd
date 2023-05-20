@@ -170,19 +170,19 @@ const MovieDetails = () => {
                                     <div className="interaction-sidebar">
                                     {user ?
                                         <ul className="interaction-actions">
-                                            <li className="action-row">
-                                                <span className="icon box">
-                                                    <div className="watch-icon">Watch</div>
+                                            <li className="action-row" id="top-icons">
+                                                <span className="icon-box">
+                                                    <span className="action-icon watch">Watch</span>
                                                 </span>
-                                                <span className="icon box">
-                                                    <div className="like-icon">Like</div>
+                                                <span className="icon-box">
+                                                    <div className="action-icon like">Like</div>
                                                 </span>
-                                                <span className="icon box">
-                                                    <div className="watchlist-icon">Watchlist</div>
+                                                <span className="icon-box">
+                                                    <div className="action-icon watchlist">Watchlist</div>
                                                 </span>
                                             </li>
                                             <li className="action-row">
-                                                <span className="rating box">
+                                                <span className="icon-box">
                                                     <div className="rating-icon">Rate</div>
                                                 </span>
                                             </li>
@@ -197,13 +197,16 @@ const MovieDetails = () => {
                                                 :
                                                 <li className="action-row">
                                                     <OpenModalButton
-                                                        buttonText="Review or log"
+                                                        buttonText="Review or log..."
                                                         // onClick={isUserSignedIn}
                                                         // onItemClick={closeMenu}
                                                         modalComponent={<CreateReviewModal movie={movie}/>}
                                                     />
                                                 </li>
                                             }
+                                            <li className="action-row">
+                                                <div>Add to list</div>
+                                            </li>
                                         </ul>
                                         :
                                         <div className="action-row" id="not-signed-in-sidebar">
