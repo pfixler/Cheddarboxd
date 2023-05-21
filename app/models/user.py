@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follows import follows
+from .watchlist import watchlist
 
 
 class User(db.Model, UserMixin):
@@ -35,6 +36,8 @@ class User(db.Model, UserMixin):
 
     reviews = db.relationship("Review", back_populates="reviewer", cascade="all, delete-orphan")
     lists = db.relationship("List", back_populates="creator", cascade="all, delete-orphan")
+
+    watchlist = db.relationship("Movie", secondary=watchlist, back_populates="users")
 
     @property
     def password(self):
@@ -84,5 +87,6 @@ class User(db.Model, UserMixin):
             'reviews': [review.to_dict() for review in self.reviews],
             'lists': [list.to_dict() for list in self.lists],
             'following': {user.id: user.network_user() for user in self.following},
-            'followers': {user.id: user.network_user() for user in self.followers}
+            'followers': {user.id: user.network_user() for user in self.followers},
+            'watchlist': {movie.id: movie.simple_movie() for movie in self.watchlist}
         }
