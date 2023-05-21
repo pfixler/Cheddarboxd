@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-import review, { loadMovieReviews } from "../../store/review";
+import { loadMovieReviews } from "../../store/review";
+import { getWatchlist, addToWatchlist, removeFromWatchlist } from "../../store/watchlist";
 import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
 import OpenModalButton from "../OpenModalButton";
@@ -19,6 +20,8 @@ const MovieDetails = () => {
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
     const session = useSelector(state => state.session)
+    const watchlist = useSelector(state => state.watchlist)
+
     const [loadImage, setLoadImage] = useState(false)
     const [movieReviewsNum, setMovieReviewsNum] = useState()
     const [movieListsNum, setMovieListsNum] = useState()
@@ -30,7 +33,7 @@ const MovieDetails = () => {
 
     const [reviewWatch, setReviewWatch] = useState(userHasReview)
     const [reviewLike, setReviewLike] = useState(userReview.like)
-    const [reviewWatchlist, setReviewWatchlist] = useState(user.watchlist.movieId)
+    const [reviewWatchlist, setReviewWatchlist] = useState(watchlist?.movieId)
     const [reviewRating, setReviewRating] = useState(userReview.rating)
 
 
@@ -39,6 +42,7 @@ const MovieDetails = () => {
             .then(() => setIsMovieLoaded(true))
             .then(dispatch(loadMovieReviews(movieId)))
             .then(() => setAreReviewsLoaded(true))
+            .then(dispatch(getWatchlist))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
@@ -100,7 +104,13 @@ const MovieDetails = () => {
     }
 
     const movieWatchlistFunction = () => {
-
+        if (reviewWatchlist == true) {
+            dispatch(addToWatchlist(movie))
+                .then()
+        }
+        else {
+            dispatch(removeFromWatchlist(movie))
+        }
     }
 
 
@@ -193,13 +203,13 @@ const MovieDetails = () => {
                                         <ul className="interaction-actions">
                                             <li className="action-row" id="top-icons">
                                                 <span className="icon-box">
-                                                    <span className="action-icon watch on">Watch</span>
+                                                    <span className="action-icon watch on" content="Watch"></span>
                                                 </span>
                                                 <span className="icon-box">
-                                                    <div className="action-icon like">Like</div>
+                                                    <div className="action-icon like on" content="Like"></div>
                                                 </span>
-                                                <span className="icon-box">
-                                                    <div className="action-icon watchlist">Watchlist</div>
+                                                <span className="icon-box" onClick={movieWatchlistFunction()}>
+                                                    <div className="action-icon watchlist on" content="Watchlist"></div>
                                                 </span>
                                             </li>
                                             <li className="action-row rate">

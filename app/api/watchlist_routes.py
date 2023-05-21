@@ -8,6 +8,16 @@ from .auth_routes import validation_errors_to_error_messages, authenticate, unau
 watchlist_routes = Blueprint('watchlist', __name__)
 
 
+@watchlist_routes.route('/<int:user_id>')
+def get_watchlist(user_id):
+    """
+    Get a user's watchlist
+    """
+
+    user = User.query.get(user_id)
+
+    return user.watchlist()
+
 @watchlist_routes.route('/<int:movie_id>', methods=["POST"])
 @login_required
 def add_movie(movie_id):
