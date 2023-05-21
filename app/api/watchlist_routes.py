@@ -15,6 +15,7 @@ def get_watchlist(user_id):
     """
 
     user = User.query.get(user_id)
+    print("--------------------", current_user.watchlist)
     return {'Watchlist': [movie.simple_movie() for movie in user.watchlist]}
 
 @watchlist_routes.route('/<int:movie_id>', methods=["POST"])
@@ -39,8 +40,12 @@ def remove_movie(movie_id):
     """
 
     movie = Movie.query.get(movie_id)
+    print('movie------------before', movie)
+    print('user----------------before', current_user)
     current_user.watchlist.remove(movie)
     movie.on_watchlist.remove(current_user)
+    print('movie------------after', movie)
+    print('user----------------after', current_user)
     db.session.commit()
 
     return {'watchlist': [movie.simple_movie() for movie in current_user.watchlist]}

@@ -36,9 +36,10 @@ const MovieDetails = () => {
 
     const [hasLiked, setHasLiked] = useState(userReview?.like)
     const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
-
-    const [onWatchlist, setOnWatchlist] = useState(watchlist?.movieId)
-    const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? "" : " on")
+    
+    const [onWatchlist, setOnWatchlist] = useState()
+    console.log("onwatchlist after", onWatchlist)
+    const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
     // useEffect(() => {
 
     // }, [reviewWatchlist])
@@ -50,12 +51,22 @@ const MovieDetails = () => {
         dispatch(loadOneMovie(movieId))
             .then(() => setIsMovieLoaded(true))
             .then(dispatch(loadMovieReviews(movieId)))
-            .then(() => setAreReviewsLoaded(true))
-            .then(dispatch(getWatchlist(user.id)))
+                .then(() => setAreReviewsLoaded(true))
+                .then(dispatch(getWatchlist(user.id)))
+                    .then(() => onWatchListFunction(movieId))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
     }, [dispatch])
+
+    const onWatchListFunction = (movieId) => {
+        if (watchlist[movieId]) {
+            setOnWatchlist(true)
+        }
+        else {
+            setOnWatchlist(false)
+        }
+    }
 
     useEffect(() => {
         dispatch(loadOneMovie)
