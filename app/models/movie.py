@@ -26,7 +26,7 @@ class Movie(db.Model):
     reviews = db.relationship("Review", back_populates="movie", cascade="all, delete-orphan")
     lists = db.relationship("List", secondary=list_movie, back_populates="movies")
 
-    on_watchlist = db.relationship("User", secondary=watchlist, back_populates="movies")
+    on_watchlist = db.relationship("User", secondary=watchlist, back_populates="watchlist")
 
     #there will be a function for creating custom posters and backdrops with the movie title
 

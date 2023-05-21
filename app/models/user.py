@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="reviewer", cascade="all, delete-orphan")
     lists = db.relationship("List", back_populates="creator", cascade="all, delete-orphan")
 
-    watchlist = db.relationship("Movie", secondary=watchlist, back_populates="users")
+    watchlist = db.relationship("Movie", secondary=watchlist, back_populates="on_watchlist")
 
     @property
     def password(self):
