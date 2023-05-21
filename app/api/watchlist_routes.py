@@ -8,7 +8,7 @@ from .auth_routes import validation_errors_to_error_messages, authenticate, unau
 watchlist_routes = Blueprint('watchlist', __name__)
 
 
-@watchlist_routes.route('/user/watchlist/<int:movie_id>', methods=["POST"])
+@watchlist_routes.route('/<int:movie_id>', methods=["POST"])
 @login_required
 def add_movie(movie_id):
     """
@@ -22,7 +22,7 @@ def add_movie(movie_id):
 
     return current_user.watchlist()
 
-@watchlist_routes.route('/user/watchlist/<int:movie_id>', methods=["DELETE"])
+@watchlist_routes.route('/<int:movie_id>', methods=["DELETE"])
 @login_required
 def remove_movie(movie_id):
     """
