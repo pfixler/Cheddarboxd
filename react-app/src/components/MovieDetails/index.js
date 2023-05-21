@@ -32,8 +32,15 @@ const MovieDetails = () => {
     const [userReview, setUserReview] = useState(null)
 
     const [reviewWatch, setReviewWatch] = useState(userHasReview)
+
+
     const [reviewLike, setReviewLike] = useState(userReview.like)
     const [reviewWatchlist, setReviewWatchlist] = useState(watchlist?.movieId)
+    const watchlistIconClassName = "action-icon watchlist" + (reviewWatchlist ? "" : "on")
+    useEffect(() => {
+
+    }, [reviewWatchlist])
+
     const [reviewRating, setReviewRating] = useState(userReview.rating)
 
 
