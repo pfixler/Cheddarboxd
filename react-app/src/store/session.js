@@ -142,7 +142,7 @@ export const followProfile = (profile) => async (dispatch) => {
     }
 }
 
-export const unFollowProfile = (profile) => async (dispatch) => {
+export const unfollowProfile = (profile) => async (dispatch) => {
     const response = await fetch(`/api/follows/user/${profile.id}`, {
         method: "DELETE",
         headers:{ 'Content-Type': 'application/json' },

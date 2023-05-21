@@ -63,6 +63,11 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
         }
 
+    def watchlist(self):
+        return {
+            'watchlist': {movie.id: movie.simple_movie() for movie in self.watchlist}
+        }
+
     def network_user(self):
         return {
             'id': self.id,
