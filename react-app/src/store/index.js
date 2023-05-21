@@ -5,9 +5,10 @@ import movie from './movie';
 import review from './review';
 import list from './list';
 import profile from './profile';
+import watchlist from './watchlist';
 
 const rootReducer = combineReducers({
-  session, movie, review, list, profile
+  session, movie, review, list, profile, watchlist
 });
 
 
