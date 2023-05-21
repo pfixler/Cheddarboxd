@@ -131,3 +131,12 @@ textarea:active, textarea:focus {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+/* icon universal styles */
+.action-icon::before {
+    background-image: url(./images/cheddarboxd-icons.svg);
+}
+
+.rate-icon {
+    background-image: url(./images/cheddarboxd-icons.svg);
+}

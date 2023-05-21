@@ -79,5 +79,5 @@ class Movie(db.Model):
             'vote_count': self.vote_count,
             'reviews': [review.simple_review() for review in self.reviews],
             'lists': [list.simple_list() for list in self.lists],
-            'on_watchlist': [movie.simple_movie() for movie in self.on_watchlist]
+            'on_watchlist': [user.simple_user() for user in self.on_watchlist]
         }

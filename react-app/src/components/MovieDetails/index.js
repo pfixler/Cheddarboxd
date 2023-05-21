@@ -31,10 +31,19 @@ const MovieDetails = () => {
 
     const [userReview, setUserReview] = useState(null)
 
-    const [reviewWatch, setReviewWatch] = useState(userHasReview)
-    const [reviewLike, setReviewLike] = useState(userReview.like)
-    const [reviewWatchlist, setReviewWatchlist] = useState(watchlist?.movieId)
-    const [reviewRating, setReviewRating] = useState(userReview.rating)
+    const [hasWatched, setHasWatched] = useState(userHasReview)
+    const watchIconClassName = "action-icon like" + (hasWatched ? "" : " on")
+
+    const [hasLiked, setHasLiked] = useState(userReview?.like)
+    const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
+
+    const [onWatchlist, setOnWatchlist] = useState(watchlist?.movieId)
+    const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? "" : " on")
+    // useEffect(() => {
+
+    // }, [reviewWatchlist])
+
+    const [reviewRating, setReviewRating] = useState(userReview?.rating)
 
 
     useEffect(() => {
@@ -42,7 +51,7 @@ const MovieDetails = () => {
             .then(() => setIsMovieLoaded(true))
             .then(dispatch(loadMovieReviews(movieId)))
             .then(() => setAreReviewsLoaded(true))
-            .then(dispatch(getWatchlist))
+            .then(dispatch(getWatchlist(user.id)))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
@@ -103,13 +112,14 @@ const MovieDetails = () => {
 
     }
 
-    const movieWatchlistFunction = () => {
-        if (reviewWatchlist == true) {
+    const watchlistClick = () => {
+        if (!onWatchlist) {
             dispatch(addToWatchlist(movie))
-                .then()
+                .then(setOnWatchlist(true))
         }
         else {
             dispatch(removeFromWatchlist(movie))
+                .then(setOnWatchlist(false))
         }
     }
 
@@ -203,13 +213,13 @@ const MovieDetails = () => {
                                         <ul className="interaction-actions">
                                             <li className="action-row" id="top-icons">
                                                 <span className="icon-box">
-                                                    <span className="action-icon watch on" content="Watch"></span>
+                                                    <span className="action-icon watch on">Watch</span>
                                                 </span>
                                                 <span className="icon-box">
-                                                    <div className="action-icon like on" content="Like"></div>
+                                                    <div className="action-icon like on">Like</div>
                                                 </span>
-                                                <span className="icon-box" onClick={movieWatchlistFunction()}>
-                                                    <div className="action-icon watchlist on" content="Watchlist"></div>
+                                                <span className="icon-box" onClick={() => watchlistClick()}>
+                                                    <div className={watchlistIconClassName}>Watchlist</div>
                                                 </span>
                                             </li>
                                             <li className="action-row rate">
@@ -224,9 +234,9 @@ const MovieDetails = () => {
                                                     // onChange={(e) => setRating(e.target.value)}
                                                 />
                                                 <div className="rate-movie-box">
-                                                    <div className="rate-movie-range">
-                                                        <div className="rate-movie-selected" style={{height:32+"px", width:placeholder+"px"}}></div>
-                                                        <div className="rate-movie-hover" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                    <div className="rate-icon range">
+                                                        <div className="rate-icon selected" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                        <div className="rate-icon hover" style={{height:32+"px", width:placeholder+"px"}}></div>
                                                     </div>
                                                 </div>
                                             </li>
