@@ -28,6 +28,11 @@ const MovieDetails = () => {
 
     const [userReview, setUserReview] = useState(null)
 
+    const [reviewWatch, setReviewWatch] = useState(userHasReview)
+    const [reviewLike, setReviewLike] = useState(userReview.like)
+    const [reviewWatchlist, setReviewWatchlist] = useState(user.watchlist.movieId)
+    const [reviewRating, setReviewRating] = useState(userReview.rating)
+
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
@@ -86,6 +91,18 @@ const MovieDetails = () => {
         window.alert("You must be signed in to ")
     }
 
+    const movieWatchFunction = () => {
+
+    }
+
+    const movieLikeFunction = () => {
+
+    }
+
+    const movieWatchlistFunction = () => {
+
+    }
+
 
     if (!movie) {
         return null
@@ -96,6 +113,8 @@ const MovieDetails = () => {
     }
 
     let placeholder = 0;
+
+
 
 
     return (
@@ -174,7 +193,7 @@ const MovieDetails = () => {
                                         <ul className="interaction-actions">
                                             <li className="action-row" id="top-icons">
                                                 <span className="icon-box">
-                                                    <span className="action-icon watch">Watch</span>
+                                                    <span className="action-icon watch on">Watch</span>
                                                 </span>
                                                 <span className="icon-box">
                                                     <div className="action-icon like">Like</div>

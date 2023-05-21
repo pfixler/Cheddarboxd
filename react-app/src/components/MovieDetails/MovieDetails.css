@@ -260,6 +260,11 @@
     background-position: -280px -850px;
 }
 
+.action-icon.watch.on::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -280px -890px;
+}
+
 .action-icon.like::before {
     background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -340px -850px;
