@@ -1,5 +1,5 @@
-const GET_WATCHLIST = '/watchlist/GET_WATCHLIST';
-const ADD_TO_WATCHLIST = '/watchlist/ADD_TO_WATCHLIST';
+const GET_WATCHLIST = 'watchlist/GET_WATCHLIST';
+const ADD_TO_WATCHLIST = 'watchlist/ADD_TO_WATCHLIST';
 const REMOVE_FROM_WATCHLIST = 'watchlist/REMOVE_FROM_WATCHLIST';
 
 const get = (watchlist) => ({
@@ -59,7 +59,7 @@ const watchlist = (state=initialState, action) => {
     switch (action.type) {
         case GET_WATCHLIST:
             newState = {};
-            action.watchlist.forEach((movie) => {
+            action.watchlist.Watchlist.forEach((movie) => {
                 newState[movie.id] = movie
             });
             return newState;

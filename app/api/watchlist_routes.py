@@ -15,8 +15,7 @@ def get_watchlist(user_id):
     """
 
     user = User.query.get(user_id)
-
-    return user.watchlist()
+    return {'Watchlist': [movie.simple_movie() for movie in user.watchlist]}
 
 @watchlist_routes.route('/<int:movie_id>', methods=["POST"])
 @login_required
@@ -26,11 +25,11 @@ def add_movie(movie_id):
     """
 
     movie = Movie.query.get(movie_id)
-    current_user.watchlist.append(movie)
-    movie.on_watchlist.append(current_user)
+    current_user.watchlist.append(movie.simple_movie())
+    movie.on_watchlist.append(current_user.simple_user())
     db.session.commit()
 
-    return current_user.watchlist()
+    return {'watchlist': [movie.simple_movie() for movie in current_user.watchlist]}
 
 @watchlist_routes.route('/<int:movie_id>', methods=["DELETE"])
 @login_required
@@ -44,4 +43,4 @@ def remove_movie(movie_id):
     movie.on_watchlist.remove(current_user)
     db.session.commit()
 
-    return current_user.watchlist()
+    return {'watchlist': [movie.simple_movie() for movie in current_user.watchlist]}

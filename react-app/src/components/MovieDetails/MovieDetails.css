@@ -244,10 +244,7 @@
     min-width: 50px;
     display: block;
     height: 100%;
-}
-
-.action-icon:hover {
-    content: "Remove";
+    cursor: pointer;
 }
 
 .action-icon::before {
@@ -260,27 +257,22 @@
   }
 
 .action-icon.watch::before {
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -280px -850px;
 }
 
 .action-icon.watch.on::before {
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -280px -890px;
 }
 
 .action-icon.like::before {
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -340px -850px;
 }
 
 .action-icon.watchlist::before {
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -400px -850px;
 }
 
 .action-icon.watchlist.on::before {
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -400px -890px;
 }
 
@@ -303,30 +295,27 @@
     margin-top: 4px;
 }
 
-.rate-movie-range {
+.rate-icon.range {
     width: 180px;
     height: 32px;
-    background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: 1px -890px;
     margin: 0 auto;
 }
 
-.rate-movie-selected {
+.rate-icon.selected {
     background-position: 1px -925px;
-    background-image: url(../../images/cheddarboxd-icons.svg);
 }
 
-.rate-movie-selected:hover {
+.rate-icon.selected:hover {
     display: none;
 }
 
-.rate-movie-hover {
+.rate-icon.hover {
     display: none;
 }
 
-.rate-movie-hover:hover {
+.rate-icon.hover:hover {
     background-position: 1px -960px;
-    background-image: url(../../images/cheddarboxd-icons.svg);
 }
 
 .action-row button {
