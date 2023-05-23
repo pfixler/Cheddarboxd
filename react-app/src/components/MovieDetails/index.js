@@ -36,6 +36,7 @@ const MovieDetails = () => {
 
     const [hasLiked, setHasLiked] = useState(userReview?.like)
     const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
+
     
     const [onWatchlist, setOnWatchlist] = useState()
     console.log("onwatchlist after", onWatchlist)
