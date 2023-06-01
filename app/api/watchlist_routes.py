@@ -26,8 +26,8 @@ def add_movie(movie_id):
     """
 
     movie = Movie.query.get(movie_id)
-    current_user.watchlist.append(movie.simple_movie())
-    movie.on_watchlist.append(current_user.simple_user())
+    current_user.watchlist.append(movie)
+    # movie.on_watchlist.append(current_user.simple_user())
     db.session.commit()
 
     return {'watchlist': [movie.simple_movie() for movie in current_user.watchlist]}
@@ -40,12 +40,8 @@ def remove_movie(movie_id):
     """
 
     movie = Movie.query.get(movie_id)
-    print('movie------------before', movie)
-    print('user----------------before', current_user)
     current_user.watchlist.remove(movie)
-    movie.on_watchlist.remove(current_user)
-    print('movie------------after', movie)
-    print('user----------------after', current_user)
+    # movie.on_watchlist.remove(current_user)
     db.session.commit()
 
     return {'watchlist': [movie.simple_movie() for movie in current_user.watchlist]}
