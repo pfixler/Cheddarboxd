@@ -39,7 +39,7 @@ const MovieDetails = () => {
     const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
 
 
-    const [onWatchlist, setOnWatchlist] = useState(false)
+    const [onWatchlist, setOnWatchlist] = useState()
     const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
     // useEffect(() => {
 
@@ -50,15 +50,20 @@ const MovieDetails = () => {
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
-            .then(() => setIsMovieLoaded(true))
-            .then(dispatch(loadMovieReviews(movieId)))
-                .then(() => setAreReviewsLoaded(true))
-                .then(dispatch(getWatchlist(user.id)))
-                    .then(() => onWatchListFunction(movieId))
+            .then(setIsMovieLoaded(true))
+                .then(dispatch(loadMovieReviews(movieId)))
+                    .then(setAreReviewsLoaded(true))
+                        .then(dispatch(getWatchlist(user.id)))
+                            // .then(onWatchListFunction(movieId))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
     }, [dispatch])
+
+    useEffect(() => {
+        // dispatch(getWatchlist(user.id))
+        onWatchListFunction(movieId)
+    }, [watchlist])
 
     const onWatchListFunction = (movieId) => {
         if (watchlist[movieId]) {
@@ -166,6 +171,10 @@ const MovieDetails = () => {
         return null
     }
 
+    if (!watchlist) {
+        return null
+    }
+
     let placeholder = 0;
 
 
@@ -227,7 +236,7 @@ const MovieDetails = () => {
                                 </div>
                                 <div className="header-information">
                                     <div className="release-date">
-                                        {movie.release_date.split('-')[0]}
+                                        {movie.release_date?.split('-')[0]}
                                     </div>
                                     {isDifferentLanguage && (
                                         <div className="original-title">
