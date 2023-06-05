@@ -58,7 +58,7 @@ const watchlist = (state=initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_WATCHLIST:
-            newState = {};
+            newState = {...state};
             action.watchlist.Watchlist.forEach((movie) => {
                 newState[movie.id] = movie
             });

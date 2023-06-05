@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-import { loadMovieReviews } from "../../store/review";
+import { loadMovieReviews, updateReview, createReview, deleteReview } from "../../store/review";
 import { getWatchlist, addToWatchlist, removeFromWatchlist } from "../../store/watchlist";
 import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
@@ -32,14 +32,14 @@ const MovieDetails = () => {
     const [userReview, setUserReview] = useState(null)
 
     const [hasWatched, setHasWatched] = useState(userHasReview)
-    const watchIconClassName = "action-icon like" + (hasWatched ? "" : " on")
+    const watchIconClassName = "action-icon watch" + (hasWatched ? "" : " on")
+
 
     const [hasLiked, setHasLiked] = useState(userReview?.like)
     const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
 
-    
+
     const [onWatchlist, setOnWatchlist] = useState()
-    console.log("onwatchlist after", onWatchlist)
     const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
     // useEffect(() => {
 
@@ -50,15 +50,20 @@ const MovieDetails = () => {
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
-            .then(() => setIsMovieLoaded(true))
-            .then(dispatch(loadMovieReviews(movieId)))
-                .then(() => setAreReviewsLoaded(true))
-                .then(dispatch(getWatchlist(user.id)))
-                    .then(() => onWatchListFunction(movieId))
+            .then(setIsMovieLoaded(true))
+                .then(dispatch(loadMovieReviews(movieId)))
+                    .then(setAreReviewsLoaded(true))
+                        .then(dispatch(getWatchlist(user.id)))
+                            // .then(onWatchListFunction(movieId))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
     }, [dispatch])
+
+    useEffect(() => {
+        // dispatch(getWatchlist(user.id))
+        onWatchListFunction(movieId)
+    }, [watchlist])
 
     const onWatchListFunction = (movieId) => {
         if (watchlist[movieId]) {
@@ -116,11 +121,33 @@ const MovieDetails = () => {
         window.alert("You must be signed in to ")
     }
 
-    const movieWatchFunction = () => {
+    const createdAt = new Date();
+    const stringDate = createdAt.toISOString().slice(0, 10)
 
+
+    const watchClick = () => {
+        if (!userHasReview) {
+            dispatch(createReview({
+                watch_date: '',
+                rating: 0,
+                like: false,
+                content: '',
+                created_at: stringDate
+            }))
+                .then(setHasWatched(true))
+        }
+        else {
+            if (!hasLiked && !reviewRating) {
+                dispatch(deleteReview(userReview))
+                    .then(hasWatched(false))
+            }
+            else {
+                window.alert(`${movie.title} can not be removed from your films because there is activity on it`)
+            }
+        }
     }
 
-    const movieLikeFunction = () => {
+    const likeClick = () => {
 
     }
 
@@ -141,6 +168,10 @@ const MovieDetails = () => {
     }
 
     if (!reviews) {
+        return null
+    }
+
+    if (!watchlist) {
         return null
     }
 
@@ -205,7 +236,7 @@ const MovieDetails = () => {
                                 </div>
                                 <div className="header-information">
                                     <div className="release-date">
-                                        {movie.release_date.split('-')[0]}
+                                        {movie.release_date?.split('-')[0]}
                                     </div>
                                     {isDifferentLanguage && (
                                         <div className="original-title">
@@ -224,11 +255,11 @@ const MovieDetails = () => {
                                     {user ?
                                         <ul className="interaction-actions">
                                             <li className="action-row" id="top-icons">
-                                                <span className="icon-box">
-                                                    <span className="action-icon watch on">Watch</span>
+                                                <span className="icon-box" onClick={() => watchClick()}>
+                                                    <span className={watchIconClassName}>Watch</span>
                                                 </span>
-                                                <span className="icon-box">
-                                                    <div className="action-icon like on">Like</div>
+                                                <span className="icon-box" onClick={() => likeClick()}>
+                                                    <div className={likeIconClassName}>Like</div>
                                                 </span>
                                                 <span className="icon-box" onClick={() => watchlistClick()}>
                                                     <div className={watchlistIconClassName}>Watchlist</div>

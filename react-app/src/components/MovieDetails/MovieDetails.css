@@ -268,6 +268,10 @@
     background-position: -340px -850px;
 }
 
+.action-icon.like.on::before {
+    background-position: -340px -890px;
+}
+
 .action-icon.watchlist::before {
     background-position: -400px -850px;
 }
