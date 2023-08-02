@@ -28,11 +28,11 @@ const MovieDetails = () => {
     const [movieListsNum, setMovieListsNum] = useState()
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
-    const [userHasReview, setUserHasReview] = useState(false)
 
     const [userReview, setUserReview] = useState()
 
-    const [hasWatched, setHasWatched] = useState()
+    // const [hasWatched, setHasWatched] = useState()
+    const [userHasReview, setUserHasReview] = useState(false)
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
     console.log('user has review', userHasReview)
 
@@ -102,7 +102,7 @@ const MovieDetails = () => {
                     }
                 }
             }
-            setUserReview(null)
+            // setUserReview(null)
             return setUserHasReview(false)
         }
     }, [dispatch, session, movie, reviews])
@@ -143,13 +143,13 @@ const MovieDetails = () => {
                 like: false,
                 content: '',
                 created_at: stringDate
-            }))
-                .then(setHasWatched(true))
+            }, movieId))
+                .then(setUserHasReview(true))
         }
         else {
             if (!hasLiked && !reviewRating) {
                 dispatch(deleteReview(userReview))
-                    .then(hasWatched(false))
+                    .then(setUserHasReview(false))
             }
             else {
                 window.alert(`${movie.title} can not be removed from your films because there is activity on it`)
