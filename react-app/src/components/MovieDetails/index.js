@@ -17,6 +17,7 @@ const MovieDetails = () => {
     const movie = useSelector(state => state.movie.oneMovie)
     const [isMovieLoaded, setIsMovieLoaded] = useState(false)
     const reviews = Object.values(useSelector(state => state.review.movieReviews))
+    // const userReviews = Object.values(useSelector(state => state.review.userReviews))
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
     const session = useSelector(state => state.session)
@@ -29,14 +30,14 @@ const MovieDetails = () => {
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
     const [userHasReview, setUserHasReview] = useState(false)
 
-    const [userReview, setUserReview] = useState(null)
+    const [userReview, setUserReview] = useState()
 
-    const [hasWatched, setHasWatched] = useState(userHasReview)
-    const watchIconClassName = "action-icon watch" + (hasWatched ? "" : " on")
-
+    const [hasWatched, setHasWatched] = useState()
+    const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
+    console.log('user has review', userHasReview)
 
     const [hasLiked, setHasLiked] = useState(userReview?.like)
-    const likeIconClassName = "action-icon like" + (hasLiked ? "" : " on")
+    const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
 
 
     const [onWatchlist, setOnWatchlist] = useState()
@@ -73,6 +74,15 @@ const MovieDetails = () => {
             setOnWatchlist(false)
         }
     }
+
+    // const isReviewedFunction = (movieId) => {
+    //     if (userReviews[movieId]) {
+    //         setHasWatched(true)
+    //     }
+    //     else {
+    //         setHasWatched(false)
+    //     }
+    // }
 
     useEffect(() => {
         dispatch(loadOneMovie)
