@@ -8,6 +8,7 @@ const CreateReviewModal = ({movie}) => {
     const [dateWatched, setDateWatched] = useState('');
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(0);
+    //should this be 0 or null or something else
     const [like, setLike] = useState(false)
     const [errors, setErrors] = useState([])
     const {closeModal} = useModal();

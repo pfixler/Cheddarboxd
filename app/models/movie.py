@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .list_movie import list_movie
+from .watchlist import watchlist
 
 class Movie(db.Model):
     __tablename__ = 'movies'
@@ -24,6 +25,8 @@ class Movie(db.Model):
 
     reviews = db.relationship("Review", back_populates="movie", cascade="all, delete-orphan")
     lists = db.relationship("List", secondary=list_movie, back_populates="movies")
+
+    on_watchlist = db.relationship("User", secondary=watchlist, back_populates="watchlist")
 
     #there will be a function for creating custom posters and backdrops with the movie title
 
@@ -75,5 +78,6 @@ class Movie(db.Model):
             'vote_average': self.vote_average,
             'vote_count': self.vote_count,
             'reviews': [review.simple_review() for review in self.reviews],
-            'lists': [list.simple_list() for list in self.lists]
+            'lists': [list.simple_list() for list in self.lists],
+            'on_watchlist': {user.id: user.simple_user() for user in self.on_watchlist}
         }

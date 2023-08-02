@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadOneMovie } from "../../store/movie";
-import review, { loadMovieReviews } from "../../store/review";
+import { loadMovieReviews, updateReview, createReview, deleteReview } from "../../store/review";
+import { getWatchlist, addToWatchlist, removeFromWatchlist } from "../../store/watchlist";
 import MovieReviews from "./MovieReviews";
 import './MovieDetails.css'
 import OpenModalButton from "../OpenModalButton";
@@ -16,28 +17,72 @@ const MovieDetails = () => {
     const movie = useSelector(state => state.movie.oneMovie)
     const [isMovieLoaded, setIsMovieLoaded] = useState(false)
     const reviews = Object.values(useSelector(state => state.review.movieReviews))
+    // const userReviews = Object.values(useSelector(state => state.review.userReviews))
     const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
     const user = useSelector(state => state.session.user)
     const session = useSelector(state => state.session)
+    const watchlist = useSelector(state => state.watchlist)
+
     const [loadImage, setLoadImage] = useState(false)
     const [movieReviewsNum, setMovieReviewsNum] = useState()
     const [movieListsNum, setMovieListsNum] = useState()
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
-    const [userHasReview, setUserHasReview] = useState(false)
 
-    const [userReview, setUserReview] = useState(null)
+    const [userReview, setUserReview] = useState()
+
+    // const [hasWatched, setHasWatched] = useState()
+    const [userHasReview, setUserHasReview] = useState(false)
+    const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
+    console.log('user has review', userHasReview)
+
+    const [hasLiked, setHasLiked] = useState(userReview?.like)
+    const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
+
+
+    const [onWatchlist, setOnWatchlist] = useState()
+    const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
+    // useEffect(() => {
+
+    // }, [reviewWatchlist])
+
+    const [reviewRating, setReviewRating] = useState(userReview?.rating)
 
 
     useEffect(() => {
         dispatch(loadOneMovie(movieId))
-            .then(() => setIsMovieLoaded(true))
-            .then(dispatch(loadMovieReviews(movieId)))
-            .then(() => setAreReviewsLoaded(true))
+            .then(setIsMovieLoaded(true))
+                .then(dispatch(loadMovieReviews(movieId)))
+                    .then(setAreReviewsLoaded(true))
+                        .then(dispatch(getWatchlist(user.id)))
+                            // .then(onWatchListFunction(movieId))
             // .then(setTimeout(() => {
             //     setLoadImage(true)
             // }, 3000))
     }, [dispatch])
+
+    useEffect(() => {
+        // dispatch(getWatchlist(user.id))
+        onWatchListFunction(movieId)
+    }, [watchlist])
+
+    const onWatchListFunction = (movieId) => {
+        if (watchlist[movieId]) {
+            setOnWatchlist(true)
+        }
+        else {
+            setOnWatchlist(false)
+        }
+    }
+
+    // const isReviewedFunction = (movieId) => {
+    //     if (userReviews[movieId]) {
+    //         setHasWatched(true)
+    //     }
+    //     else {
+    //         setHasWatched(false)
+    //     }
+    // }
 
     useEffect(() => {
         dispatch(loadOneMovie)
@@ -57,7 +102,7 @@ const MovieDetails = () => {
                     }
                 }
             }
-            setUserReview(null)
+            // setUserReview(null)
             return setUserHasReview(false)
         }
     }, [dispatch, session, movie, reviews])
@@ -86,6 +131,47 @@ const MovieDetails = () => {
         window.alert("You must be signed in to ")
     }
 
+    const createdAt = new Date();
+    const stringDate = createdAt.toISOString().slice(0, 10)
+
+
+    const watchClick = () => {
+        if (!userHasReview) {
+            dispatch(createReview({
+                watch_date: '',
+                rating: 0,
+                like: false,
+                content: '',
+                created_at: stringDate
+            }, movieId))
+                .then(setUserHasReview(true))
+        }
+        else {
+            if (!hasLiked && !reviewRating) {
+                dispatch(deleteReview(userReview))
+                    .then(setUserHasReview(false))
+            }
+            else {
+                window.alert(`${movie.title} can not be removed from your films because there is activity on it`)
+            }
+        }
+    }
+
+    const likeClick = () => {
+
+    }
+
+    const watchlistClick = () => {
+        if (!onWatchlist) {
+            dispatch(addToWatchlist(movie))
+                .then(setOnWatchlist(true))
+        }
+        else {
+            dispatch(removeFromWatchlist(movie))
+                .then(setOnWatchlist(false))
+        }
+    }
+
 
     if (!movie) {
         return null
@@ -94,6 +180,14 @@ const MovieDetails = () => {
     if (!reviews) {
         return null
     }
+
+    if (!watchlist) {
+        return null
+    }
+
+    let placeholder = 0;
+
+
 
 
     return (
@@ -152,7 +246,7 @@ const MovieDetails = () => {
                                 </div>
                                 <div className="header-information">
                                     <div className="release-date">
-                                        {movie.release_date.split('-')[0]}
+                                        {movie.release_date?.split('-')[0]}
                                     </div>
                                     {isDifferentLanguage && (
                                         <div className="original-title">
@@ -168,61 +262,64 @@ const MovieDetails = () => {
                                 {/* the review stuff here will be a create/update form for reviews */}
                                 <div className="interaction-sidebar-box">
                                     <div className="interaction-sidebar">
-                                        {/* <div className="user-movie-status">
-                                            <div className="watched-status">
-                                                <div className="watched-icon">
-
+                                    {user ?
+                                        <ul className="interaction-actions">
+                                            <li className="action-row" id="top-icons">
+                                                <span className="icon-box" onClick={() => watchClick()}>
+                                                    <span className={watchIconClassName}>Watch</span>
+                                                </span>
+                                                <span className="icon-box" onClick={() => likeClick()}>
+                                                    <div className={likeIconClassName}>Like</div>
+                                                </span>
+                                                <span className="icon-box" onClick={() => watchlistClick()}>
+                                                    <div className={watchlistIconClassName}>Watchlist</div>
+                                                </span>
+                                            </li>
+                                            <li className="action-row rate">
+                                                <span className="rate-label">Rate</span>
+                                                <input
+                                                    className="rating-field"
+                                                    type='range'
+                                                    min={0}
+                                                    max={10}
+                                                    step={1}
+                                                    // value={rating}
+                                                    // onChange={(e) => setRating(e.target.value)}
+                                                />
+                                                <div className="rate-movie-box">
+                                                    <div className="rate-icon range">
+                                                        <div className="rate-icon selected" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                        <div className="rate-icon hover" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                    </div>
                                                 </div>
-                                                <div className="watched-text">
-                                                    watched
-                                                </div>
-                                            </div>
-                                            <div className="like-status">
-                                                <div className="like-icon">
-
-                                                </div>
-                                                <div className="like-text">
-                                                    like
-                                                </div>
-                                            </div>
-                                            <div className="rating-status">
-                                                <div className="rating-icon">
-
-                                                </div>
-                                                <div className="rating-text">
-                                                    rating
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                        {user ?
-                                            <>
-                                                {areReviewsLoaded && userHasReview ?
-                                                    <div className="sidebar-button">
+                                            </li>
+                                            {areReviewsLoaded && userHasReview ?
+                                                <li className="action-row">
+                                                <OpenModalButton
+                                                    buttonText="Edit your review"
+                                                    // onItemClick={closeMenu}
+                                                    modalComponent={<EditReviewModal review={userReview}/>}
+                                                />
+                                                </li>
+                                                :
+                                                <li className="action-row">
                                                     <OpenModalButton
-                                                        buttonText="Edit Review"
+                                                        buttonText="Review or log..."
+                                                        // onClick={isUserSignedIn}
                                                         // onItemClick={closeMenu}
-                                                        modalComponent={<EditReviewModal review={userReview}/>}
+                                                        modalComponent={<CreateReviewModal movie={movie}/>}
                                                     />
-                                                    </div>
-                                                    :
-                                                    <div className="sidebar-button">
-                                                        <OpenModalButton
-                                                            buttonText="Create Review"
-                                                            // onClick={isUserSignedIn}
-                                                            // onItemClick={closeMenu}
-                                                            modalComponent={<CreateReviewModal movie={movie}/>}
-                                                        />
-                                                    </div>
-                                                }
-                                            </>
-                                            :
-                                            <div className="sidebar-button" id="not-signed-in-sidebar">
-                                                    Sign in to interact with this movie
-                                            </div>
-                                        }
-                                        {/* <div className="sidebar-button">
-                                            add to lists
-                                        </div> */}
+                                                </li>
+                                            }
+                                            <li className="action-row">
+                                                <div>Add to list</div>
+                                            </li>
+                                        </ul>
+                                        :
+                                        <div className="action-row" id="not-signed-in-sidebar">
+                                                Sign in to interact with this movie
+                                        </div>
+                                    }
                                     </div>
                                 </div>
                             </div>

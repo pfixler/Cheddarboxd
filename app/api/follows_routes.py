@@ -9,6 +9,7 @@ follow_routes = Blueprint('follows', __name__)
 
 
 @follow_routes.route('/user/<int:user_id>', methods=["POST"])
+@login_required
 def follow_user(user_id):
     """
     Follow user
@@ -17,11 +18,11 @@ def follow_user(user_id):
     user = User.query.get(user_id)
     current_user.following.append(user)
     db.session.commit()
-
-    return {'Response': "Successfully Followed"}
+    return user.network_user()
 
 
 @follow_routes.route('/user/<int:user_id>', methods=["DELETE"])
+@login_required
 def unfollow_user(user_id):
     """
     Unfollow user

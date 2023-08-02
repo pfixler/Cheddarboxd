@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follows import follows
+from .watchlist import watchlist
 
 
 class User(db.Model, UserMixin):
@@ -15,6 +16,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     first_name = db.Column(db.String(40))
     last_name = db.Column(db.String(40))
+    location = db.Column(db.String(100))
+    website = db.Column(db.String(100))
     bio = db.Column(db.String(1000))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.String)
@@ -34,6 +37,8 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="reviewer", cascade="all, delete-orphan")
     lists = db.relationship("List", back_populates="creator", cascade="all, delete-orphan")
 
+    watchlist = db.relationship("Movie", secondary=watchlist, back_populates="on_watchlist")
+
     @property
     def password(self):
         return self.hashed_password
@@ -52,9 +57,16 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'location': self.location,
+            'website': self.website,
             'bio': self.bio,
             'created_at': self.created_at,
         }
+
+    # def user_watchlist(self):
+    #     return {
+    #         'watchlist': [movie.simple_movie() for movie in self.watchlist]
+    #     }
 
     def network_user(self):
         return {
@@ -73,10 +85,13 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'location': self.location,
+            'website': self.website,
             'bio': self.bio,
             'created_at': self.created_at,
             'reviews': [review.to_dict() for review in self.reviews],
             'lists': [list.to_dict() for list in self.lists],
-            'following': [user.network_user() for user in self.following],
-            'followers': [user.network_user() for user in self.followers]
+            'following': {user.id: user.network_user() for user in self.following},
+            'followers': {user.id: user.network_user() for user in self.followers},
+            'watchlist': {movie.id: movie.simple_movie() for movie in self.watchlist}
         }

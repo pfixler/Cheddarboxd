@@ -9,5 +9,7 @@ class ReviewForm(FlaskForm):
     rating = FloatField("rating")
     like = BooleanField("like")
     content = StringField("content")
-    created_at = StringField("created_at", validators=[DataRequired()])
+    created_at = StringField("created_at")
+    # created_at = StringField("created_at", validators=[DataRequired()])
+    # should data be required?
     updated_at = StringField("updated_at")

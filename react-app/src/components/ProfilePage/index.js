@@ -1,32 +1,53 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import './ProfilePage.css';
-import { loadUserDetails } from '../../store/user';
+import { loadProfileDetails } from '../../store/profile';
+import { unfollowProfile, followProfile } from '../../store/session';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
-    const { userId } = useParams();
+    const { profileId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const profileUser = useSelector(state => state.user.user);
+    const profile = useSelector(state => state.profile.profile);
 
 
     const [sameUser, setSameUser] = useState(false);
+    const [profileLoaded, setProfileLoaded] = useState(false);
+    const [userFollowing, setUserFollowing] = useState(false);
+
 
     useEffect(() => {
 
-        dispatch(loadUserDetails(userId))
+        dispatch(loadProfileDetails(profileId))
+            .then(() => setProfileLoaded(true))
 
-        if (sessionUser && profileUser) {
-            if (sessionUser.id == profileUser.id) {
-                setSameUser(true)
-            }
-        }
     }, [dispatch])
 
-    if (profileUser.length < 1) {
-        return null
+    useEffect(() => {
+
+            if (sessionUser.id == profile.id) {
+                setSameUser(true)
+            }
+            if (sessionUser.following[profile.id]) {
+                setUserFollowing(true)
+            }
+    }, [dispatch, profile])
+
+
+    const followProfileFunction = (profile) => {
+        // e.preventDefault();
+        dispatch(followProfile(profile));
+        setUserFollowing(!userFollowing);
     }
+
+    const unfollowProfileFunction = (profile) => {
+        // e.preventDefault();
+        dispatch(unfollowProfile(profile));
+        setUserFollowing(!userFollowing);
+    }
+
+
 
     return (
         <div className="profile-page-box">
@@ -36,26 +57,39 @@ const ProfilePage = () => {
                         <div className="profile-image">
                             <i className="fas fa-user-circle fa-7x" id="profile-page-profile-icon"/>
                         </div>
+                        {profileLoaded && (
                         <div className='profile-image-labels'>
-                            <div className='profile-username'>
-                                {profileUser.username}
-                            </div>
+                            <h1 className='profile-username'>
+                                {profile.username}
+                            </h1>
                             {sameUser ?
-                            <div className="edit-profile-button">
-                                <button>Edit Profile</button>
-                            </div>
-                            :
-                            <div className="follow-button">
-                                <button>Follow</button>
-                            </div>
+                                <div className='buttons-box'>
+                                    <NavLink to="/settings" className="grey-button">
+                                        <span>Edit Profile</span>
+                                    </NavLink>
+                                </div>
+                                :
+                                <div className="buttons-box">
+                                    {userFollowing ?
+                                        <button className="green-button" onClick={() => unfollowProfileFunction(profile)}>
+                                            <span>Following</span>
+                                        </button>
+                                        :
+                                        <button className="grey-button" onClick={() => followProfileFunction(profile)}>
+                                            <span>Follow</span>
+                                        </button>
+                                    }
+                                </div>
                             }
                         </div>
+                        )}
                     </div>
+                    {profileLoaded && (
                     <div className="profile-header-right">
                         <div className="profile-statistics">
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.reviews?.length}
+                                    {profile.reviews.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     reviews
@@ -63,7 +97,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.lists?.length}
+                                    {profile.lists.length}
                                 </div>
                                 <div className="profile-stat-word">
                                     lists
@@ -71,7 +105,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.following?.length}
+                                    {profile.following.length || 0}
                                 </div>
                                 <div className="profile-stat-word">
                                     following
@@ -79,7 +113,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="stats-count">
                                 <div className="profile-stat-number">
-                                    {profileUser?.followers?.length}
+                                    {profile.followers.length || 0}
                                 </div>
                                 <div className="profile-stat-word">
                                     followers
@@ -87,54 +121,113 @@ const ProfilePage = () => {
                             </div>
                         </div>
                     </div>
+                    )}
                 </div>
-                <div className="profile-navbar">
-                    <div className="profile-navbar-profile-link">
+                {/* same as app.js? */}
+                <nav className="profile-navbar">
+                    <ul className="profile-navbar-list">
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Profile</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Activity</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Films</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Diary</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Reviews</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Watchlist</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Lists</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Likes</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Tags</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Network</NavLink>
+                        </li>
+                        <li className='navitem'>
+                            <NavLink exact to="/" className="profile-navbar-list-item">Invitations</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            {profileLoaded && (
+            <div className="profile-page-body">
+                <div className='left-side'>
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Favorite Films
+                        </h2>
+                        {/* conditional here- has the user selected at least one favorite film */}
+                        <p className='favorite-films-content'>
+                            Don't forget to select your favorite films!
+                        </p>
+                        <ul className='favorite-films-poster-list'>
+                            <li className='favorite-films-poster-list-placeholder'>
 
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                            <li className='favorite-films-poster-list-placeholder'>
+
+                            </li>
+                        </ul>
                     </div>
-                    <div className="profile-navbar-activity-link">
-
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Recent Activity
+                        </h2>
                     </div>
-                    <div className="profile-navbar-films-link">
-
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Recent Reviews
+                        </h2>
                     </div>
-                    <div className="profile-navbar-diary-link">
-
+                    <div className="profile-body-section">
+                        <h2 className='profile-body-header'>
+                            Following
+                        </h2>
                     </div>
-                    <div className="profile-navbar-reviews-link">
-
+                </div>
+                <div className='right-side'>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Watchlist
+                        </h2>
                     </div>
-                    <div className="profile-navbar-watchlist-link">
-
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Diary
+                        </h2>
                     </div>
-                    <div className="profile-navbar-lists-link">
-
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Ratings
+                        </h2>
                     </div>
-                    <div className="profile-navbar-likes-link">
-
-                    </div>
-                    <div className="profile-navbar-tags-link">
-
-                    </div>
-                    <div className="profile-navbar-network-link">
-
-                    </div>
-                    <div className="profile-navbar-invitations-link">
-
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Recent Lists
+                        </h2>
                     </div>
                 </div>
             </div>
-            <div className="profile=page-body">
-                <div className="profile-body-favorite-films">
-
-                </div>
-                <div className="profile-body-recent-likes">
-
-                </div>
-                <div className="profile-body-following">
-
-                </div>
-            </div>
+            )}
         </div>
     )
 }

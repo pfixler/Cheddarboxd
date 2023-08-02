@@ -195,7 +195,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
+}
+
+.interaction-actions {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.action-row {
+    display: flex;
+    border-bottom: 1px solid #2c3440;
+    box-sizing: border-box;
+    color: #bcd;
+    padding: 10px 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#top-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .user-movie-status {
@@ -209,58 +230,108 @@
     flex-direction: column;
 }
 
-.watched-icon {
-
+.icon-box {
+    color: #bcd;
+    cursor: pointer;
+    display: block;
 }
 
-.watched-text {
-
+.icon-box:hover {
+    color: white;
 }
 
-.like-status {
-    display: flex;
-    flex-direction: column;
-}
-
-.like-icon {
-
-}
-
-.like-text {
-
-}
-
-.rating-status {
-    display: flex;
-    flex-direction: column;
-}
-
-.rating-icon {
-
-}
-
-.rating-text {
-
-}
-
-.sidebar-button {
-    /* padding-top: 10px; */
-    width: 100%;
+.action-icon {
+    min-width: 50px;
+    display: block;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
 }
 
-.sidebar-button button {
+.action-icon::before {
+    background-size: 800px 1000px;
+    height: 40px;
+    width: 50px;
+    content: "";
+    display: block;
+    margin: 0 auto 3px;
+  }
+
+.action-icon.watch::before {
+    background-position: -280px -850px;
+}
+
+.action-icon.watch.on::before {
+    background-position: -280px -890px;
+}
+
+.action-icon.like::before {
+    background-position: -340px -850px;
+}
+
+.action-icon.like.on::before {
+    background-position: -340px -890px;
+}
+
+.action-icon.watchlist::before {
+    background-position: -400px -850px;
+}
+
+.action-icon.watchlist.on::before {
+    background-position: -400px -890px;
+}
+
+.action-row.rate {
+    flex-direction: column;
+}
+
+.rating-field {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #2c3641;
+    font-size: 10px;
+    height: 10px;
+    position: absolute;
+}
+
+.rate-movie-box {
+    display: block;
+    margin-top: 4px;
+}
+
+.rate-icon.range {
+    width: 180px;
+    height: 32px;
+    background-position: 1px -890px;
+    margin: 0 auto;
+}
+
+.rate-icon.selected {
+    background-position: 1px -925px;
+}
+
+.rate-icon.selected:hover {
+    display: none;
+}
+
+.rate-icon.hover {
+    display: none;
+}
+
+.rate-icon.hover:hover {
+    background-position: 1px -960px;
+}
+
+.action-row button {
     height: 100%;
     background-color: transparent;
-    color: #9ab;
+    color: #bcd;
     cursor: pointer;
     border: none;
+    text-align: center;
 }
 
-.sidebar-button button:hover {
+.action-row button:hover {
     color: white;
 }
 

@@ -5,12 +5,13 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from .models import db, User, Review, List, list_movie, Movie
-from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.movie_routes import movie_routes
 from .api.review_routes import review_routes
 from .api.list_routes import list_routes
 from .api.follows_routes import follow_routes
+from .api.profile_routes import profile_routes
+from .api.watchlist_routes import watchlist_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,12 +31,13 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(profile_routes, url_prefix='/api/profiles')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(movie_routes, url_prefix='/api/movies')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(list_routes, url_prefix='/api/lists')
 app.register_blueprint(follow_routes, url_prefix='/api/follows')
+app.register_blueprint(watchlist_routes, url_prefix='/api/watchlist')
 db.init_app(app)
 Migrate(app, db)
 

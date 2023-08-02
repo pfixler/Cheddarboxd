@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import '../MovieDetails/MovieDetails.css';
 import OpenModalButton from "../OpenModalButton";
 import LoginForm from "../LoginForm";
 import SignupFormModal from "../SignupFormModal"
+import { loadProfileDetails } from '../../store/profile';
 
 function Navigation({ isLoaded }){
+	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 	const [signUpOpen, setSignUpOpen] = useState(false);
 
+
+	const sessionUserProfileClick = async (e) => {
+		// e.preventDefault();
+		await dispatch(loadProfileDetails(sessionUser.id))
+	}
 
 	return (
 		<div className='navbar-box solid transparent'>
@@ -45,6 +52,9 @@ function Navigation({ isLoaded }){
 							</div>
 						</div>
 						}
+						{/* <ul className='navbar-links'>
+
+						</ul> */}
 						<div className='navbar-links' id='navbar-films'>
 							<NavLink exact to="/movies">
 								<button>Films</button>
@@ -57,8 +67,10 @@ function Navigation({ isLoaded }){
 						</div>
 						{sessionUser && (
 							<div className='navbar-links' id='navbar-profile'>
-								<NavLink exact to={`/users/${sessionUser.id}`}>
-									<button>Profile</button>
+								<NavLink exact to={`/profiles/${sessionUser.id}`}>
+									<button>
+										Profile
+									</button>
 								</NavLink>
 							</div>
 						)}
