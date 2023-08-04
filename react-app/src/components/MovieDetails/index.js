@@ -158,7 +158,37 @@ const MovieDetails = () => {
     }
 
     const likeClick = () => {
+        if (!hasLiked && !userHasReview) {
+            dispatch(createReview({
+                watch_date: '',
+                rating: 0,
+                like: true,
+                content: '',
+                created_at: stringDate
+            }, movieId))
+                .then(setUserHasReview(true))
+                .then(setHasLiked(true))
+        }
+        else if (!hasLiked) {
+            const updatedReview = {
+                ...userReview,
+                like:true,
+                updated_at: stringDate
+            }
 
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(true))
+        }
+        else {
+            const updatedReview = {
+                ...userReview,
+                like: false,
+                updated_at: stringDate
+            }
+
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(false))
+        }
     }
 
     const watchlistClick = () => {
