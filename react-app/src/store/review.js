@@ -1,6 +1,7 @@
 
 const LOAD_MOVIE_REVIEWS = 'reviews/LOAD_MOVIE_REVIEWS';
 const LOAD_USER_REVIEWS = 'reivews/LOAD_USER_REVIEWS';
+const LOAD_SINGLE_REVIEW = 'reviews/LOAD_SINGLE_REVIEW';
 const CREATE_REVIEW = 'review/CREATE_REVIEW';
 const UPDATE_REVIEW = 'review/UPDATE_REVIEW';
 const DELETE_REVIEW = 'review/DELETE_REVIEW';
@@ -13,6 +14,11 @@ const loadMovie = (reviews) => ({
 const loadUser = (reviews) => ({
     type: LOAD_USER_REVIEWS,
     reviews
+})
+
+const loadSingle = (review) => ({
+    type: LOAD_SINGLE_REVIEW,
+    review
 })
 
 const create = (review) => ({
@@ -45,6 +51,16 @@ export const loadUserReviews = (userId) => async (dispatch) => {
     if (response.ok) {
         const userReviews = await response.json();
         dispatch(loadUser(userReviews))
+    }
+}
+
+export const loadSingleReview = (userId, movieId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/user/${userId}`)
+    //change this
+
+    if (response.ok) {
+        const userReview = await response.json();
+        dispatch(loadSingle(userReview));
     }
 }
 
