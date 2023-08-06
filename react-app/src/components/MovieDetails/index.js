@@ -29,16 +29,17 @@ const MovieDetails = () => {
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
 
-    const [userReview, setUserReview] = useState()
+    const [userReview, setUserReview] = useState(null)
+    console.log('user review', userReview)
 
     // const [hasWatched, setHasWatched] = useState()
     const [userHasReview, setUserHasReview] = useState(false)
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
-    console.log('user has review', userHasReview)
+    // console.log('user has review', userHasReview)
 
-    const [hasLiked, setHasLiked] = useState(userReview?.like)
+    const [hasLiked, setHasLiked] = useState(false)
     const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
-
+    console.log('user has liked', hasLiked)
 
     const [onWatchlist, setOnWatchlist] = useState()
     const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
@@ -98,6 +99,7 @@ const MovieDetails = () => {
                 if (user) {
                     if (user.id == reviews[i].reviewer.id) {
                         setUserReview(reviews[i])
+                        setHasLiked(userReview?.like)
                         return setUserHasReview(true)
                     }
                 }
@@ -105,7 +107,7 @@ const MovieDetails = () => {
             // setUserReview(null)
             return setUserHasReview(false)
         }
-    }, [dispatch, session, movie, reviews])
+    }, [dispatch, reviews])
 
 
     useEffect(() => {
