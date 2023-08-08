@@ -29,18 +29,19 @@ const MovieDetails = () => {
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
 
-    const [userReview, setUserReview] = useState()
+    const [userReview, setUserReview] = useState(false)
 
     // const [hasWatched, setHasWatched] = useState()
     const [userHasReview, setUserHasReview] = useState(false)
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
     console.log('user has review', userHasReview)
 
-    const [hasLiked, setHasLiked] = useState(userReview?.like)
+    const [hasLiked, setHasLiked] = useState(false)
+    console.log('has liked', hasLiked)
     const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
 
 
-    const [onWatchlist, setOnWatchlist] = useState()
+    const [onWatchlist, setOnWatchlist] = useState(false)
     const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
     // useEffect(() => {
 
@@ -98,14 +99,16 @@ const MovieDetails = () => {
                 if (user) {
                     if (user.id == reviews[i].reviewer.id) {
                         setUserReview(reviews[i])
+                        setHasLiked(reviews[i].like)
                         return setUserHasReview(true)
                     }
                 }
             }
             // setUserReview(null)
+            setHasLiked(false)
             return setUserHasReview(false)
         }
-    }, [dispatch, session, movie, reviews])
+    }, [reviews])
 
 
     useEffect(() => {
@@ -158,7 +161,37 @@ const MovieDetails = () => {
     }
 
     const likeClick = () => {
+        if (!hasLiked && !userHasReview) {
+            dispatch(createReview({
+                watch_date: '',
+                rating: 0,
+                like: true,
+                content: '',
+                created_at: stringDate
+            }, movieId))
+                .then(setUserHasReview(true))
+                .then(setHasLiked(true))
+        }
+        else if (!hasLiked) {
+            const updatedReview = {
+                ...userReview,
+                like:true,
+                updated_at: stringDate
+            }
 
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(true))
+        }
+        else {
+            const updatedReview = {
+                ...userReview,
+                like: false,
+                updated_at: stringDate
+            }
+
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(false))
+        }
     }
 
     const watchlistClick = () => {
