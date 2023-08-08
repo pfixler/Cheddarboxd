@@ -15,7 +15,6 @@ def get_watchlist(user_id):
     """
 
     user = User.query.get(user_id)
-    print("--------------------", current_user.watchlist)
     return {'Watchlist': [movie.simple_movie() for movie in user.watchlist]}
 
 @watchlist_routes.route('/<int:movie_id>', methods=["POST"])
