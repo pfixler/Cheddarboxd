@@ -13,15 +13,21 @@ import EditReviewModal from "../EditReviewModal";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
+    console.log('movie id', movieId);
     const dispatch = useDispatch();
     const movie = useSelector(state => state.movie.oneMovie)
-    const [isMovieLoaded, setIsMovieLoaded] = useState(false)
-    const reviews = Object.values(useSelector(state => state.review.movieReviews))
+    console.log('movie', movie)
+    // const [isMovieLoaded, setIsMovieLoaded] = useState(false)
+    const reviewsObj = useSelector(state => state.review.movieReviews)
+    const reviews = Object.values(reviewsObj)
+    console.log('reviews', reviews)
     // const userReviews = Object.values(useSelector(state => state.review.userReviews))
-    const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
+    // const [areReviewsLoaded, setAreReviewsLoaded] = useState(false)
+    // console.log('are reviews loaded', areReviewsLoaded)
     const user = useSelector(state => state.session.user)
     const session = useSelector(state => state.session)
     const watchlist = useSelector(state => state.watchlist)
+    console.log('watchlist', watchlist)
 
     const [loadImage, setLoadImage] = useState(false)
     const [movieReviewsNum, setMovieReviewsNum] = useState()
@@ -29,43 +35,41 @@ const MovieDetails = () => {
     const [movieLikesNum, setMovieLikesNum] = useState()
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
 
-    const [userReview, setUserReview] = useState(null)
+    const [userReview, setUserReview] = useState()
     console.log('user review', userReview)
 
     // const [hasWatched, setHasWatched] = useState()
-    const [userHasReview, setUserHasReview] = useState(false)
+    const [userHasReview, setUserHasReview] = useState()
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
-    // console.log('user has review', userHasReview)
+    console.log('user has review', userHasReview)
 
-    const [hasLiked, setHasLiked] = useState(false)
+    const [hasLiked, setHasLiked] = useState()
     const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
     console.log('user has liked', hasLiked)
 
     const [onWatchlist, setOnWatchlist] = useState()
     const watchlistIconClassName = "action-icon watchlist" + (onWatchlist ? " on" : "")
+    console.log('on watchlist', onWatchlist)
     // useEffect(() => {
 
     // }, [reviewWatchlist])
 
-    const [reviewRating, setReviewRating] = useState(userReview?.rating)
+    const [reviewRating, setReviewRating] = useState()
 
 
     useEffect(() => {
+        dispatch(loadMovieReviews(movieId))
         dispatch(loadOneMovie(movieId))
-            .then(setIsMovieLoaded(true))
-                .then(dispatch(loadMovieReviews(movieId)))
-                    .then(setAreReviewsLoaded(true))
-                        .then(dispatch(getWatchlist(user.id)))
-                            // .then(onWatchListFunction(movieId))
-            // .then(setTimeout(() => {
-            //     setLoadImage(true)
-            // }, 3000))
-    }, [dispatch])
-
-    useEffect(() => {
-        // dispatch(getWatchlist(user.id))
+        dispatch(getWatchlist(user.id))
         onWatchListFunction(movieId)
-    }, [watchlist])
+        // setIsMovieLoaded(true)
+        // setAreReviewsLoaded(true)
+    }, [dispatch, movieId])
+
+    // useEffect(() => {
+    //     // dispatch(getWatchlist(user.id))
+    //     console.log('in watchlist use effect')
+    // }, [watchlist])
 
     const onWatchListFunction = (movieId) => {
         if (watchlist[movieId]) {
@@ -85,29 +89,61 @@ const MovieDetails = () => {
     //     }
     // }
 
-    useEffect(() => {
-        dispatch(loadOneMovie)
-    }, [reviews])
+    // useEffect(() => {
+    //     dispatch(loadOneMovie)
+    // }, [reviews])
 
     useEffect(() => {
-
-        if (areReviewsLoaded) {
-
-            for (let i in reviews) {
-
-
-                if (user) {
-                    if (user.id == reviews[i].reviewer.id) {
-                        setUserReview(reviews[i])
-                        setHasLiked(userReview?.like)
-                        return setUserHasReview(true)
-                    }
-                }
+        console.log('in reviews use effect')
+        // userHasReviewFunction(reviews)
+        for (let i in reviews) {
+            // if (user) {
+            if (user.id == reviews[i].reviewer.id) {
+                setUserReview(reviews[i])
+                // setHasLiked(userReview?.like)
+                return setUserHasReview(true)
+                // if (userReview.like) {
+                //     setHasLiked(true)
+                // }
+                // else {
+                //     setHasLiked(false)
+                // }
             }
-            // setUserReview(null)
-            return setUserHasReview(false)
+            // }
+
+        setUserReview(null)
+        setUserHasReview(false)
         }
-    }, [dispatch, reviews])
+    }, [reviewsObj])
+
+    // const userHasReviewFunction = (reviews) => {
+    //     // if (areReviewsLoaded) {
+    //         for (let i in reviews) {
+    //             // if (user) {
+    //             if (user.id == reviews[i].reviewer.id) {
+    //                 setUserReview(reviews[i])
+    //                 // setHasLiked(userReview?.like)
+    //                 return setUserHasReview(true)
+    //                 // if (userReview.like) {
+    //                 //     setHasLiked(true)
+    //                 // }
+    //                 // else {
+    //                 //     setHasLiked(false)
+    //                 // }
+    //             }
+    //             // }
+    //         setUserHasReview(false)
+
+    //         // }
+    //     }
+    //     // setUserReview(null)
+    //     // return setUserHasReview(false)
+    // }
+
+    useEffect(() => {
+        console.log('in like use effect')
+        setHasLiked(userReview?.like)
+    }, [userReview])
 
 
     useEffect(() => {
@@ -138,7 +174,7 @@ const MovieDetails = () => {
 
 
     const watchClick = () => {
-        if (!userHasReview) {
+        if (!userReview) {
             dispatch(createReview({
                 watch_date: '',
                 rating: 0,
@@ -160,7 +196,7 @@ const MovieDetails = () => {
     }
 
     const likeClick = () => {
-        if (!hasLiked && !userHasReview) {
+        if (!hasLiked && !userReview) {
             dispatch(createReview({
                 watch_date: '',
                 rating: 0,
@@ -184,7 +220,7 @@ const MovieDetails = () => {
         else {
             const updatedReview = {
                 ...userReview,
-                like: false,
+                like:false,
                 updated_at: stringDate
             }
 
@@ -224,7 +260,7 @@ const MovieDetails = () => {
 
     return (
         <>
-            {isMovieLoaded && (
+            {movie && (
             <>
                 <div className="single-movie-backdrop">
                     <div className="backdrop-images-holder">
@@ -325,7 +361,7 @@ const MovieDetails = () => {
                                                     </div>
                                                 </div>
                                             </li>
-                                            {areReviewsLoaded && userHasReview ?
+                                            {userReview ?
                                                 <li className="action-row">
                                                 <OpenModalButton
                                                     buttonText="Edit your review"
@@ -355,7 +391,7 @@ const MovieDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                            {areReviewsLoaded && (
+                            {reviews && (
                                 <MovieReviews reviews={reviews} />
                             )}
                         </div>
