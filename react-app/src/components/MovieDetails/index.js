@@ -47,10 +47,9 @@ const MovieDetails = () => {
 
     // }, [reviewWatchlist])
 
-    const [hoverRating, setHovetRating] = useState()
+    const [hoverRating, setHoverRating] = useState(0)
 
     const [reviewRating, setReviewRating] = useState(0)
-    const ratingIconClassName = ""
 
 
     useEffect(() => {
@@ -210,38 +209,68 @@ const MovieDetails = () => {
         }
     }
 
-    const ratingClick = () => {
+    const handleMouseEnter = (rating) => {
+        setHoverRating(rating);
+      };
+
+      const handleMouseLeave = () => {
+        setHoverRating(0);
+      };
+
+      {/* <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div> */}
+
+      const renderStars = () => {
+        const stars = [];
+        for (let i = 0.5; i <= 5; i += 0.5) {
+          stars.push(
+            <div
+              key={i}
+              className={`rate-icon ${hoverRating >= i ? 'hover' : ''} ${
+                reviewRating >= i ? 'selected' : ''
+              }`}
+              onMouseEnter={() => handleMouseEnter(i)}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => ratingClick(i)}
+              data-rating={i}
+            ></div>
+          );
+        }
+        return stars;
+      };
+
+    const ratingClick = (rating) => {
         if (!reviewRating && !userHasReview) {
             dispatch(createReview({
                 watch_date: '',
-                rating: 0,
+                rating: rating,
                 like: false,
                 content: '',
                 created_at: stringDate
             }, movieId))
                 .then(setUserHasReview(true))
-                .then(setReviewRating())
-        }
-        else if (!hasLiked) {
-            const updatedReview = {
-                ...userReview,
-                like:true,
-                updated_at: stringDate
-            }
-
-            dispatch(updateReview(updatedReview))
-                .then(setHasLiked(true))
+                .then(setReviewRating(rating))
         }
         else {
             const updatedReview = {
                 ...userReview,
-                like: false,
+                rating: rating,
                 updated_at: stringDate
             }
 
             dispatch(updateReview(updatedReview))
-                .then(setHasLiked(false))
+                .then(setReviewRating(rating))
         }
+    }
+
+    const removeRatingClick = () => {
+        const updatedReview = {
+            ...userReview,
+            rating: 0,
+            updated_at: stringDate
+        }
+
+        dispatch(updateReview(updatedReview))
+            .then(setReviewRating(0))
     }
 
 
@@ -360,10 +389,13 @@ const MovieDetails = () => {
                                                 />
                                                 <div className="rate-movie-box">
                                                     <div className="rate-icon range">
-                                                        <div className="rate-icon selected" style={{height:32+"px", width:(reviewRating*36)+"px"}}></div>
-                                                        <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div>
+                                                        {renderStars()}
+                                                        {/* <div className="rate-icon">{renderStars()}</div> */}
+                                                        {/* <div className="rate-icon selected" style={{height:32+"px", width:(reviewRating*36)+"px"}}></div> */}
+                                                        {/* <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div> */}
                                                     </div>
                                                 </div>
+                                                <div className="remove-rating" onClick={() => removeRatingClick()}>"Remove rating"</div>
                                             </li>
                                             {areReviewsLoaded && userHasReview ?
                                                 <li className="action-row">
