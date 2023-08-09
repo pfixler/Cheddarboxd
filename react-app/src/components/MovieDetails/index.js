@@ -47,7 +47,10 @@ const MovieDetails = () => {
 
     // }, [reviewWatchlist])
 
-    const [reviewRating, setReviewRating] = useState(userReview?.rating)
+    const [hoverRating, setHovetRating] = useState()
+
+    const [reviewRating, setReviewRating] = useState(0)
+    const ratingIconClassName = ""
 
 
     useEffect(() => {
@@ -100,11 +103,13 @@ const MovieDetails = () => {
                     if (user.id == reviews[i].reviewer.id) {
                         setUserReview(reviews[i])
                         setHasLiked(reviews[i].like)
+                        setReviewRating(reviews[i].rating)
                         return setUserHasReview(true)
                     }
                 }
             }
             // setUserReview(null)
+            setReviewRating(0)
             setHasLiked(false)
             return setUserHasReview(false)
         }
@@ -202,6 +207,40 @@ const MovieDetails = () => {
         else {
             dispatch(removeFromWatchlist(movie))
                 .then(setOnWatchlist(false))
+        }
+    }
+
+    const ratingClick = () => {
+        if (!reviewRating && !userHasReview) {
+            dispatch(createReview({
+                watch_date: '',
+                rating: 0,
+                like: false,
+                content: '',
+                created_at: stringDate
+            }, movieId))
+                .then(setUserHasReview(true))
+                .then(setReviewRating())
+        }
+        else if (!hasLiked) {
+            const updatedReview = {
+                ...userReview,
+                like:true,
+                updated_at: stringDate
+            }
+
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(true))
+        }
+        else {
+            const updatedReview = {
+                ...userReview,
+                like: false,
+                updated_at: stringDate
+            }
+
+            dispatch(updateReview(updatedReview))
+                .then(setHasLiked(false))
         }
     }
 
@@ -316,13 +355,13 @@ const MovieDetails = () => {
                                                     min={0}
                                                     max={10}
                                                     step={1}
-                                                    // value={rating}
-                                                    // onChange={(e) => setRating(e.target.value)}
+                                                    value={reviewRating}
+                                                    onChange={(e) => setReviewRating(e.target.value)}
                                                 />
                                                 <div className="rate-movie-box">
                                                     <div className="rate-icon range">
-                                                        <div className="rate-icon selected" style={{height:32+"px", width:placeholder+"px"}}></div>
-                                                        <div className="rate-icon hover" style={{height:32+"px", width:placeholder+"px"}}></div>
+                                                        <div className="rate-icon selected" style={{height:32+"px", width:(reviewRating*36)+"px"}}></div>
+                                                        <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div>
                                                     </div>
                                                 </div>
                                             </li>
