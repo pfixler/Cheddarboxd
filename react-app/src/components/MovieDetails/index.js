@@ -221,7 +221,7 @@ const MovieDetails = () => {
 
       const renderStars = () => {
         const stars = [];
-        for (let i = 0.5; i <= 5; i += 0.5) {
+        for (let i = 1; i <= 5; i += 1) {
           stars.push(
             <div
               key={i}
@@ -232,7 +232,13 @@ const MovieDetails = () => {
               onMouseLeave={handleMouseLeave}
               onClick={() => ratingClick(i)}
               data-rating={i}
-            ></div>
+            >
+                {/* <span className="star"></span>
+                <span className="star"></span>
+                <span className="star"></span>
+                <span className="star"></span>
+                <span className="star"></span> */}
+            </div>
           );
         }
         return stars;
@@ -378,7 +384,7 @@ const MovieDetails = () => {
                                             </li>
                                             <li className="action-row rate">
                                                 <span className="rate-label">Rate</span>
-                                                <input
+                                                {/* <input
                                                     className="rating-field"
                                                     type='range'
                                                     min={0}
@@ -386,14 +392,19 @@ const MovieDetails = () => {
                                                     step={1}
                                                     value={reviewRating}
                                                     onChange={(e) => setReviewRating(e.target.value)}
-                                                />
+                                                /> */}
                                                 <div className="rate-movie-box">
-                                                    <div className="rate-icon range">
+                                                    <div className="rating-stars">
                                                         {renderStars()}
-                                                        {/* <div className="rate-icon">{renderStars()}</div> */}
-                                                        {/* <div className="rate-icon selected" style={{height:32+"px", width:(reviewRating*36)+"px"}}></div> */}
-                                                        {/* <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div> */}
                                                     </div>
+                                                    {/* <div className="rate-icon range"> */}
+                                                        {/* {hoverRating ? */}
+                                                        {/* : */}
+                                                            {/* <div className="rate-icon selected" style={{height:32+"px", width:(reviewRating*36)+"px"}}></div> */}
+                                                        {/* } */}
+                                                        {/* <div className="rate-icon">{renderStars()}</div> */}
+                                                        {/* <div className="rate-icon hover" style={{height:32+"px", width:(hoverRating*36)+"px"}}></div> */}
+                                                    {/* </div> */}
                                                 </div>
                                                 <div className="remove-rating" onClick={() => removeRatingClick()}>"Remove rating"</div>
                                             </li>

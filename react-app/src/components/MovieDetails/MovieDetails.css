@@ -345,24 +345,42 @@
     transform: translateX(0);
 }
 
-.rate-icon.range {
-    width: 180px;
-    height: 32px;
-    background-position: 1px -890px;
-    margin: 0 auto;
+.rating-stars {
+    display: inline-block;
 }
 
-.rate-icon.selected {
+/* .star {
+    display: inline-block;
+    width: 180px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+} */
+
+/* .star-container.selected {
+    background-position: 1px -925px;
+} */
+
+.rate-icon.selected,
+.rate-icon.hover {
     background-position: 1px -925px;
 }
+
 
 /* .rate-icon.selected:hover {
     display: none;
 } */
 
-.rate-icon.hover {
+.rate-icon.hover  {
     background-position: 1px -960px;
 }
+
+.rate-icon {
+    display: inline-block;
+    width: 36px;
+    height: 32px;
+    background-position: 1px -890px;
+  }
 
 /* .rate-icon.hover:hover {
     background-position: 1px -960px;
