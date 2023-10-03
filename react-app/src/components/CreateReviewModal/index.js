@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReview } from '../../store/review';
+import './CreateReviewModal.css';
 
 const CreateReviewModal = ({movie}) => {
     const dispatch = useDispatch();

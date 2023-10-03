@@ -9,6 +9,7 @@ import './MovieDetails.css'
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import AddToListModal from "../AddToListModal";
 
 
 const MovieDetails = () => {
@@ -427,7 +428,12 @@ const MovieDetails = () => {
                                                 </li>
                                             }
                                             <li className="action-row">
-                                                <div>Add to list</div>
+                                                <OpenModalButton
+                                                    buttonText="Add to list"
+                                                    // onClick={isUserSignedIn}
+                                                    // onItemClick={closeMenu}
+                                                    modalComponent={<AddToListModal movie={movie}/>}
+                                                />
                                             </li>
                                         </ul>
                                         :
