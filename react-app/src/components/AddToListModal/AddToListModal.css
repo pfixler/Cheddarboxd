@@ -1,0 +1,43 @@
+.add-to-list-modal {
+    max-width: calc(100vw - 30rem);
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    background-color: #456;
+    /* padding: 16px 30px 16px 30px; */
+    border-radius: 3px;
+    display: flex;
+}
+
+.add-to-list-modal .list-modal-content {
+    /* width: 75%; */
+}
+
+.add-to-list-modal .header{
+    color: white;
+    font-size: 1.38461538rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border-bottom: 1px solid #345;
+    padding-bottom: 16px;
+    padding: 16px 30px 16px 30px;
+}
+
+.add-to-list-modal .header button {
+    font-size: 18px;
+    background-color: transparent;
+    color: #9ab;
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-list-modal .header button:hover {
+    color: white;
+}
+
+.add-to-list-modal .functions {
+    padding: 16px 30px 16px 30px;
+}
+
+.add-to-list-modal .lists {
+    padding: 16px 30px 16px 30px;
+}
