@@ -35,10 +35,10 @@ const MovieDetails = () => {
     // const [hasWatched, setHasWatched] = useState()
     const [userHasReview, setUserHasReview] = useState(false)
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
-    console.log('user has review', userHasReview)
+    // console.log('user has review', userHasReview)
 
     const [hasLiked, setHasLiked] = useState(false)
-    console.log('has liked', hasLiked)
+    // console.log('has liked', hasLiked)
     const likeIconClassName = "action-icon like" + (hasLiked ? " on" : "")
 
 

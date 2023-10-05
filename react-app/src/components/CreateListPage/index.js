@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { createList } from "../../store/list";
-import { useHistory } from "react-router-dom";
-import movie, { loadAllMovies } from "../../store/movie";
+import { useHistory, useParams } from "react-router-dom";
+import movie, { loadAllMovies, loadOneMovie } from "../../store/movie";
 import './CreateListPage.css'
 
 const CreateListPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { movieId } = useParams();
     const user = useSelector(state => state.session.user);
     const movies = Object.values(useSelector(state => state.movie.allMovies));
+    // const newListMovie =
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [publicList, setPublicList] = useState(false);
@@ -20,6 +22,7 @@ const CreateListPage = () => {
 
     useEffect(() => {
         dispatch(loadAllMovies())
+        dispatch(loadOneMovie(movieId))
     }, [dispatch])
 
     const handleChange = () => {

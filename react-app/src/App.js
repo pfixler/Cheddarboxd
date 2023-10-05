@@ -48,6 +48,9 @@ function App() {
           <Route exact path="/lists/new">
             <CreateListPage />
           </Route>
+          <Route exact path="/lists/new/with/:movieId">
+            <CreateListPage />
+          </Route>
           <Route path="/:userId/lists/:listId">
             <EditListPage />
           </Route>
