@@ -1,5 +1,5 @@
 .add-to-list-modal {
-    max-width: calc(100vw - 30rem);
+    width: 40vw;
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
     background-color: #456;
@@ -9,7 +9,7 @@
 }
 
 .add-to-list-modal .list-modal-content {
-    /* width: 75%; */
+    width: 100%;
 }
 
 .add-to-list-modal .header{
@@ -20,6 +20,8 @@
     border-bottom: 1px solid #345;
     padding-bottom: 16px;
     padding: 16px 30px 16px 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .add-to-list-modal .header button {
@@ -34,7 +36,7 @@
     color: white;
 }
 
-.add-to-list-modal .functions {
+.add-to-list-modal .actions {
     padding: 16px 30px 16px 30px;
 }
 

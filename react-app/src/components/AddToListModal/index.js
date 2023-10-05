@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './AddToListModal.css';
+import { NavLink } from 'react-router-dom';
 
 
 const AddToListModal = ({movie}) => {
@@ -17,9 +18,11 @@ const AddToListModal = ({movie}) => {
                     Add {movie.title} to lists
                     <button onClick={closeModal}>X</button>
                 </div>
-                <div className='functions'>
+                <div className='actions'>
                     <div className='new-list'>
-
+                        <NavLink to={`/lists/new/with/${movie.id}`} onClick={closeModal}>
+                            New List
+                        </NavLink>
                     </div>
                     <div className='search'>
 
