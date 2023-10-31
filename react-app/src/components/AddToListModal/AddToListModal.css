@@ -38,8 +38,57 @@
 
 .add-to-list-modal .actions {
     padding: 16px 30px 16px 30px;
+    border-bottom: 1px solid #345;
 }
 
-.add-to-list-modal .lists {
+/* .add-to-list-modal .lists {
     padding: 16px 30px 16px 30px;
+} */
+
+.actions .new-list span {
+    height: 100%;
+    background-color: transparent;
+    color: #bcd;
+    cursor: pointer;
+    border: none;
+    font-size: 1.15384615rem;
+    line-height: 1.26666667;
+}
+
+.actions .new-list span:hover {
+    color: white;
+}
+
+.lists .list {
+    height: 100%;
+    background-color: transparent;
+    color: #bcd;
+    /* cursor: pointer; */
+    border: none;
+    font-size: 1.15384615rem;
+    line-height: 1.26666667;
+    padding: 8px 30px 8px 30px;
+    border-bottom: 1px solid #345;
+    display: flex;
+    justify-content: space-between;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lists .list .list-names {
+    cursor: pointer;
+}
+
+.lists .list .list-names:hover {
+    color: white;
+}
+
+.lists .list .number-of-movies {
+    color: #9ab;
+    flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1.53846154;
+    /* padding-left: 15px; */
+    /* text-align: right; */
+    white-space: nowrap;
 }
