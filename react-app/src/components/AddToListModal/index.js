@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadAllLists, loadMovieLists } from "../../store/list";
 import { useModal } from '../../context/Modal';
 import './AddToListModal.css';
 import { NavLink } from 'react-router-dom';
@@ -7,9 +8,16 @@ import { NavLink } from 'react-router-dom';
 
 const AddToListModal = ({movie}) => {
     const dispatch = useDispatch();
-    //testing
+    const listsObj = useSelector(state => state.list.allLists);
+    const lists = Object.values(listsObj).slice(0,4);
+    const listLength = lists.length;
+    console.log("lists", lists)
 
     const {closeModal} = useModal();
+
+    useEffect(() => {
+        dispatch(loadAllLists())
+    }, [dispatch, listLength])
 
     return (
         <div className='add-to-list-modal'>
@@ -21,7 +29,7 @@ const AddToListModal = ({movie}) => {
                 <div className='actions'>
                     <div className='new-list'>
                         <NavLink to={`/lists/new/with/${movie.id}`} onClick={closeModal}>
-                            New List
+                            <span>New List...</span>
                         </NavLink>
                     </div>
                     <div className='search'>
@@ -29,12 +37,16 @@ const AddToListModal = ({movie}) => {
                     </div>
                 </div>
                 <div className='lists'>
-                    <div className='list-names'>
-
-                    </div>
-                    <div className='number-of-movies'>
-
-                    </div>
+                    {lists.map(list => (
+                        <div className='list'>
+                            <div className='list-names'>
+                                {list.name}
+                            </div>
+                            <div className='number-of-movies'>
+                                {list.movies.length} movies
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
