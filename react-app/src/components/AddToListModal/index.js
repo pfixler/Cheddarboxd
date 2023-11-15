@@ -9,9 +9,9 @@ import { NavLink } from 'react-router-dom';
 const AddToListModal = ({movie}) => {
     const dispatch = useDispatch();
     const listsObj = useSelector(state => state.list.allLists);
-    const lists = Object.values(listsObj).slice(0,4);
+
+    const lists = Object.values(listsObj);
     const listLength = lists.length;
-    console.log("lists", lists)
 
     const {closeModal} = useModal();
 
@@ -19,9 +19,13 @@ const AddToListModal = ({movie}) => {
         dispatch(loadAllLists())
     }, [dispatch, listLength])
 
+    const handleSubmit = () => {
+
+    }
+
     return (
         <div className='add-to-list-modal'>
-            <div className='list-modal-content'>
+            <form className='list-modal-content' onSubmit={handleSubmit}>
                 <div className='header'>
                     Add {movie.title} to lists
                     <button onClick={closeModal}>X</button>
@@ -48,7 +52,14 @@ const AddToListModal = ({movie}) => {
                         </div>
                     ))}
                 </div>
-            </div>
+                <div className='submit'>
+                    <button className='green-button'>
+                        <span>
+                            Add
+                        </span>
+                    </button>
+                </div>
+            </form>
         </div>
     )
 }

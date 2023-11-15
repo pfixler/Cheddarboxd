@@ -38,12 +38,17 @@
 
 .add-to-list-modal .actions {
     padding: 16px 30px 16px 30px;
-    border-bottom: 1px solid #345;
+    /* border-bottom: 1px solid #345; */
 }
 
 /* .add-to-list-modal .lists {
     padding: 16px 30px 16px 30px;
 } */
+
+.add-to-list-modal .lists {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #345;
+}
 
 .actions .new-list span {
     height: 100%;
@@ -68,7 +73,7 @@
     font-size: 1.15384615rem;
     line-height: 1.26666667;
     padding: 8px 30px 8px 30px;
-    border-bottom: 1px solid #345;
+    border-top: 1px solid #345;
     display: flex;
     justify-content: space-between;
     text-overflow: ellipsis;
@@ -91,4 +96,12 @@
     /* padding-left: 15px; */
     /* text-align: right; */
     white-space: nowrap;
+}
+
+.add-to-list-modal .submit {
+    background-color: #345;
+    display: flex;
+    justify-content: flex-end;
+    /* margin-top: auto; */
+    padding: 16px 30px 16px 30px;
 }
