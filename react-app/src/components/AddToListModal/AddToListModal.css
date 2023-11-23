@@ -50,6 +50,11 @@
     border-bottom: 1px solid #345;
 }
 
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
+
 .actions .new-list span {
     height: 100%;
     background-color: transparent;
@@ -63,6 +68,30 @@
 .actions .new-list span:hover {
     color: white;
 }
+
+.actions .search {
+
+}
+
+.actions .search input {
+    font-size: 1.15384615rem;
+    line-height: 1.26666667;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: #bcd;
+}
+
+/* .actions .search label::after {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -440px -30px;
+    background-repeat: no-repeat;
+    content: "";
+    height: 14px;
+    margin-top: -7px;
+    width: 14px;
+} */
 
 .lists .list {
     height: 100%;
