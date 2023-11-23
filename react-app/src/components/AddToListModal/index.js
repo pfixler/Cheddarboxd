@@ -13,6 +13,19 @@ const AddToListModal = ({movie}) => {
     const lists = Object.values(listsObj);
     const listLength = lists.length;
 
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredLists, setFilteredLists] = useState(lists);
+
+    const handleSearch = (e) => {
+        const searchText = e.target.value.toLowerCase();
+        setSearchTerm(searchText);
+
+        const filtered = lists.filter((list) =>
+          list.name.toLowerCase().includes(searchText)
+        );
+        setFilteredLists(filtered);
+      };
+
     const {closeModal} = useModal();
 
     useEffect(() => {
@@ -22,6 +35,8 @@ const AddToListModal = ({movie}) => {
     const handleSubmit = () => {
 
     }
+
+
 
     return (
         <div className='add-to-list-modal'>
@@ -37,21 +52,27 @@ const AddToListModal = ({movie}) => {
                         </NavLink>
                     </div>
                     <div className='search'>
-
+                        <input
+                            type="text"
+                            placeholder="Type to search"
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
+                        {/* <label></label> */}
                     </div>
                 </div>
-                <div className='lists'>
-                    {lists.map(list => (
-                        <div className='list'>
-                            <div className='list-names'>
+                <ul className='lists'>
+                    {filteredLists.map((list, index) => (
+                        <li key={index} className='list'>
+                            <span className='list-names'>
                                 {list.name}
-                            </div>
-                            <div className='number-of-movies'>
+                            </span>
+                            <span className='number-of-movies'>
                                 {list.movies.length} movies
-                            </div>
-                        </div>
+                            </span>
+                        </li>
                     ))}
-                </div>
+                </ul>
                 <div className='submit'>
                     <button className='green-button'>
                         <span>

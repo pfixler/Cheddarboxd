@@ -61,6 +61,7 @@ a:link {
 input {
     background-color: #CCDDEE;
     border: none;
+    outline: none;
     border-radius: 3px;
 }
 
@@ -87,7 +88,7 @@ textarea:active, textarea:focus {
     align-items: center;
 }
 
-  .green-button {
+.green-button {
     height: 29px;
     background-color: #00b020;
     box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
