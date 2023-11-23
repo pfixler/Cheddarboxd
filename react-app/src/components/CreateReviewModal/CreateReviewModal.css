@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.create-review-header-button:hover {
+.create-review-header button:hover {
     color: white;
 }
 
@@ -109,7 +109,15 @@
     display: flex;
 }
 
+.rating-and-like .rating-label {
+    display: flex;
+    align-items: center;
+}
 
+.rating-and-like .like-label {
+    display: flex;
+    align-items: center;
+}
 
 .create-review-form button {
     height: 28px;
