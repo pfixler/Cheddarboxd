@@ -26,6 +26,18 @@ const AddToListModal = ({movie}) => {
         setFilteredLists(filtered);
       };
 
+    const [selectedLists, setSelectedLists] = useState([]);
+    console.log('selectedlists:', selectedLists)
+
+    const selectListFunction = (list) => {
+        if (selectedLists.includes(list)) {
+            setSelectedLists(selectedLists.filter(id => id =! list.id))
+        }
+        else {
+            setSelectedLists([...selectedLists, list]);
+        }
+    }
+
     const {closeModal} = useModal();
 
     useEffect(() => {
@@ -63,7 +75,7 @@ const AddToListModal = ({movie}) => {
                 </div>
                 <ul className='lists'>
                     {filteredLists.map((list, index) => (
-                        <li key={index} className='list'>
+                        <li key={index} className='list' onClick={() => selectListFunction(list)}>
                             <span className='list-names'>
                                 {list.name}
                             </span>
