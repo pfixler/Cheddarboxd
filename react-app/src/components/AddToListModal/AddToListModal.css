@@ -69,9 +69,9 @@
     color: white;
 }
 
-.actions .search {
+/* .actions .search {
 
-}
+} */
 
 .actions .search input {
     font-size: 1.15384615rem;
@@ -107,6 +107,10 @@
     justify-content: space-between;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.lists .selected {
+    color: white;
 }
 
 .lists .list .list-names {
