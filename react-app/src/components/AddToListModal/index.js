@@ -31,7 +31,7 @@ const AddToListModal = ({movie}) => {
 
     const selectListFunction = (list) => {
         if (selectedLists.includes(list)) {
-            setSelectedLists(selectedLists.filter(id => id =! list.id))
+            setSelectedLists(selectedLists.filter(obj => obj !== list))
         }
         else {
             setSelectedLists([...selectedLists, list]);
@@ -75,7 +75,7 @@ const AddToListModal = ({movie}) => {
                 </div>
                 <ul className='lists'>
                     {filteredLists.map((list, index) => (
-                        <li key={index} className='list' onClick={() => selectListFunction(list)}>
+                        <li key={index} className={`list ${selectedLists.includes(list) ? 'selected' : ''}`} onClick={() => selectListFunction(list)}>
                             <span className='list-names'>
                                 {list.name}
                             </span>
