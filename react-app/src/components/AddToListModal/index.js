@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const AddToListModal = ({movie}) => {
+    console.log('movie', movie)
     const dispatch = useDispatch();
     const listsObj = useSelector(state => state.list.allLists);
 
@@ -44,8 +45,22 @@ const AddToListModal = ({movie}) => {
         dispatch(loadAllLists())
     }, [dispatch, listLength])
 
-    const handleSubmit = () => {
+    const createdAt = new Date();
+    const stringDate = createdAt.toISOString().slice(0, 10);
 
+    const handleSubmit = () => {
+        for (let i in selectedLists) {
+            if (selectedLists[i].includes(movie)) {
+
+            }
+            else {
+                let updatedList = {
+                    ...selectedLists[i],
+                    updated_at:stringDate,
+                    list_movies:selectedLists[i].movies.push(movie)
+                }
+            }
+        }
     }
 
 
