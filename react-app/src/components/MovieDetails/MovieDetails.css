@@ -142,7 +142,7 @@
 
 }
 
-.movie-interaction-statistics .icon {
+/* .movie-interaction-statistics .icon {
     background-image: url(../../images/cheddarboxd-icons.svg);
     width: 16px;
     height: 12px;
@@ -177,7 +177,7 @@
 .movie-interaction-statistics .like-icon {
     background-position: -380px -30px;
     display: inline-block;
-}
+} */
 
 .single-movie-information {
 
