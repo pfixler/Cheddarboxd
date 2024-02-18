@@ -138,6 +138,47 @@
     z-index: 1;
 }
 
+.movie-interaction-statistics {
+
+}
+
+.movie-interaction-statistics .icon {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    width: 16px;
+    height: 12px;
+}
+
+.movie-views {
+    display: flex;
+    vertical-align: top;
+}
+
+.movie-interaction-statistics .view-icon {
+    background-position: -360px -30px;
+    display: inline-block;
+
+}
+
+.movie-lists {
+    display: flex;
+    vertical-align: top;
+}
+
+.movie-interaction-statistics .list-icon {
+    background-position: -420px -30px;
+    display: inline-block;
+}
+
+.movie-likes {
+    display: flex;
+    vertical-align: middle;
+}
+
+.movie-interaction-statistics .like-icon {
+    background-position: -380px -30px;
+    display: inline-block;
+}
+
 .single-movie-information {
 
 }
