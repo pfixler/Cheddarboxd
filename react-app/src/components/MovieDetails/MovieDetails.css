@@ -460,7 +460,8 @@
 }
 
 .review-rating {
-
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -450px -50px;
 }
 
 .review-words {
