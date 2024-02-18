@@ -135,9 +135,9 @@ const ProfilePage = () => {
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Films</NavLink>
                         </li>
-                        <li className='navitem'>
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Diary</NavLink>
-                        </li>
+                        </li> */}
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Reviews</NavLink>
                         </li>
@@ -150,7 +150,7 @@ const ProfilePage = () => {
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Likes</NavLink>
                         </li>
-                        <li className='navitem'>
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Tags</NavLink>
                         </li>
                         <li className='navitem'>
@@ -158,7 +158,7 @@ const ProfilePage = () => {
                         </li>
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Invitations</NavLink>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>
