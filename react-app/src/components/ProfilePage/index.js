@@ -215,28 +215,28 @@ const ProfilePage = () => {
                                         <div className='content'>
                                             <div className='title-release-date'>
                                                 <span className='title'>
-
+                                                    {review.movie.title}
                                                 </span>
                                                 <span className='release-date'>
-
+                                                    {review.movie.release_date}
                                                 </span>
                                             </div>
                                             <div className='rating-creation-date'>
                                                 <span className='rating'>
-
+                                                    placeholder
                                                 </span>
                                                 <span className='creation-date'>
-
+                                                    {review.created_at}
                                                 </span>
                                             </div>
                                             <div className='review'>
-
+                                                {review.content}
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='likes'>
+                                    {/* <div className='likes'>
 
-                                    </div>
+                                    </div> */}
                                 </div>
                             ))}
                         </div>
