@@ -4,12 +4,16 @@ import { useState, useEffect } from 'react';
 import './ProfilePage.css';
 import { loadProfileDetails } from '../../store/profile';
 import { unfollowProfile, followProfile } from '../../store/session';
+import { loadUserReviews } from '../../store/review';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
     const { profileId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const profile = useSelector(state => state.profile.profile);
+    const reviews = Object.values(useSelector(state => state.review.userReviews));
+    console.log('reviews', reviews)
+    const recentReviews = reviews.slice(-3)
 
 
     const [sameUser, setSameUser] = useState(false);
@@ -18,7 +22,7 @@ const ProfilePage = () => {
 
 
     useEffect(() => {
-
+        dispatch(loadUserReviews(profileId))
         dispatch(loadProfileDetails(profileId))
             .then(() => setProfileLoaded(true))
 
@@ -193,7 +197,43 @@ const ProfilePage = () => {
                             Recent Activity
                         </h2>
                         <div className='profile-recent-reviews'>
-                            
+                            {recentReviews.map(review => (
+                                <div className='information-box' key={review.id}>
+                                    <div className='information'>
+                                        <div className='poster-box'>
+                                            <img
+                                            className="poster"
+                                            src={review.movie.poster_path}
+                                            name={review.movie.title}
+                                            />
+                                        </div>
+                                        <div className='content'>
+                                            <div className='title-release-date'>
+                                                <span className='title'>
+
+                                                </span>
+                                                <span className='release-date'>
+
+                                                </span>
+                                            </div>
+                                            <div className='rating-creation-date'>
+                                                <span className='rating'>
+
+                                                </span>
+                                                <span className='creation-date'>
+
+                                                </span>
+                                            </div>
+                                            <div className='review'>
+
+                                            </div>
+                                        </div>
+                                        <div className='likes'>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className='profile-body-section'>
