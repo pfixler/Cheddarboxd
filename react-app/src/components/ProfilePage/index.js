@@ -192,6 +192,9 @@ const ProfilePage = () => {
                         <h2 className='profile-body-header'>
                             Recent Activity
                         </h2>
+                        <div className='profile-recent-reviews'>
+                            
+                        </div>
                     </div>
                     <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
