@@ -196,6 +196,11 @@ const ProfilePage = () => {
                         <h2 className='profile-body-header'>
                             Recent Activity
                         </h2>
+                    </div>
+                    <div className='profile-body-section'>
+                        <h2 className='profile-body-header'>
+                            Recent Reviews
+                        </h2>
                         <div className='profile-recent-reviews'>
                             {recentReviews.map(review => (
                                 <div className='information-box' key={review.id}>
@@ -228,18 +233,13 @@ const ProfilePage = () => {
 
                                             </div>
                                         </div>
-                                        <div className='likes'>
+                                    </div>
+                                    <div className='likes'>
 
-                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                    </div>
-                    <div className='profile-body-section'>
-                        <h2 className='profile-body-header'>
-                            Recent Reviews
-                        </h2>
                     </div>
                     <div className="profile-body-section">
                         <h2 className='profile-body-header'>

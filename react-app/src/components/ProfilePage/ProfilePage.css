@@ -140,12 +140,12 @@
 }
 
 .profile-body-header {
-    border-bottom: 1px solid #456;
+    /* border-bottom: 1px solid #456; */
     color: #9ab;
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: .075em;
-    margin-bottom: 0.76923077rem;
+    margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 5px;
     text-transform: uppercase;
@@ -189,4 +189,22 @@
 
 .right-side {
     width: 27%;
+}
+
+.profile-recent-reviews .information-box {
+    border-top: 1px solid #456;
+}
+
+.profile-recent-reviews .information {
+    display: flex;
+    margin-top: 0.76923077rem;
+}
+
+.profile-recent-reviews .poster-box {
+    margin-right: 20px;
+}
+
+.profile-recent-reviews .poster {
+    width: 70px;
+    height: 105px;
 }
