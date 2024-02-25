@@ -212,7 +212,7 @@ const ProfilePage = () => {
                                             name={review.movie.title}
                                             />
                                         </div>
-                                        <div className='content'>
+                                        <div className='review-content'>
                                             <div className='title-release-date'>
                                                 <span className='title'>
                                                     {review.movie.title}
