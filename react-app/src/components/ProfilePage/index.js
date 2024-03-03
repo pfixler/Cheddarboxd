@@ -218,7 +218,7 @@ const ProfilePage = () => {
                                                     {review.movie.title}
                                                 </span>
                                                 <span className='release-date'>
-                                                    {review.movie.release_date}
+                                                    {review.movie.release_date.slice(0,4)}
                                                 </span>
                                             </div>
                                             <div className='rating-creation-date'>

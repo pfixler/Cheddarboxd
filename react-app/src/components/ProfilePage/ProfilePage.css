@@ -226,5 +226,8 @@
 }
 
 .profile-recent-reviews .release-date {
-
+    font-size: 1.38461538rem;
+    color: #89a;
+    font-family: Graphik-Light-Web,sans-serif;
+    font-weight: 400;
 }
