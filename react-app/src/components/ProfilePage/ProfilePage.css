@@ -231,3 +231,16 @@
     font-family: Graphik-Light-Web,sans-serif;
     font-weight: 400;
 }
+
+.profile-recent-reviews .rating-creation-date {
+    margin-bottom: 10px;
+    color: #678
+}
+
+.profile-recent-reviews .rating {
+
+}
+
+.profile-recent-reviews .creation-date {
+
+}
