@@ -226,7 +226,7 @@ const ProfilePage = () => {
                                                     placeholder
                                                 </span>
                                                 <span className='creation-date'>
-                                                    {review.created_at}
+                                                    Added {`${review.created_at}`}
                                                 </span>
                                             </div>
                                             <div className='review'>
