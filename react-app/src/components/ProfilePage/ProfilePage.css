@@ -213,6 +213,13 @@
 
 }
 
+.profile-recent-reviews .title-release-date {
+    font-family: TiemposTextWeb-Semibold,Georgia,serif;
+    font-size: 1.69230769rem;
+    font-weight: 400;
+    margin: 0 0 10px 
+}
+
 .profile-recent-reviews .title {
 
 }
