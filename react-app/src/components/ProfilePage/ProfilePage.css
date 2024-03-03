@@ -217,11 +217,12 @@
     font-family: TiemposTextWeb-Semibold,Georgia,serif;
     font-size: 1.69230769rem;
     font-weight: 400;
-    margin: 0 0 10px 
+    margin: 0 0 10px
 }
 
 .profile-recent-reviews .title {
-
+    color: #fff;
+    margin-right: 5px;
 }
 
 .profile-recent-reviews .release-date {
