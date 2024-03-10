@@ -223,7 +223,7 @@ const ProfilePage = () => {
                                             </div>
                                             <div className='rating-creation-date'>
                                                 <span className='rating'>
-                                                    
+
                                                 </span>
                                                 <span className='creation-date'>
                                                     Added {`${review.created_at}`}
