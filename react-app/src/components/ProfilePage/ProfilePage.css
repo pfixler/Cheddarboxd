@@ -251,7 +251,7 @@
     background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -476px -50px;
     height: 16px;
-    width: 36px;
+    /* width: 36px; */
     content: "";
     display: block;
 }
