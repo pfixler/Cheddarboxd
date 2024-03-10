@@ -222,7 +222,7 @@ const ProfilePage = () => {
                                                 </span>
                                             </div>
                                             <div className='rating-creation-date'>
-                                                <span className='rating'>
+                                                <span className='rating' style={{width:`${review.rating*13}px`}}>
 
                                                 </span>
                                                 <span className='creation-date'>
