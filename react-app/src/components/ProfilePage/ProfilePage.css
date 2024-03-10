@@ -234,7 +234,8 @@
 
 .profile-recent-reviews .rating-creation-date {
     margin-bottom: 10px;
-    color: #678
+    color: #678;
+    display: flex;
 }
 
 .profile-recent-reviews .rating {
