@@ -238,7 +238,11 @@
 }
 
 .profile-recent-reviews .rating {
-
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -476px -50px;
+    height: 16px;
+    margin-right: 7px;
+    top: -1px;
 }
 
 .profile-recent-reviews .creation-date {
