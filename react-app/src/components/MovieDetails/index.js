@@ -331,15 +331,15 @@ const MovieDetails = () => {
                                 />
                             </div>
                             <div className="movie-interaction-statistics">
-                                <div className="movie-views">
+                                <div className="movie-views icon-number">
                                     <span className="icon view-icon"></span>
                                     <span className="number">{movieReviewsNum}</span>
                                 </div>
-                                <div className="movie-lists">
+                                <div className="movie-lists icon-number">
                                     <span className="icon list-icon"></span>
                                     <span className="number">{movieListsNum}</span>
                                 </div>
-                                <div className="movie-likes">
+                                <div className="movie-likes icon-number">
                                     <span className="icon like-icon"></span>
                                     <span className="number">{movieLikesNum}</span>
                                 </div>
