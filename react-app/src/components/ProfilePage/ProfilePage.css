@@ -130,6 +130,10 @@
     position: relative;
 }
 
+.profile-navbar-list-item:hover {
+    color: #40bcf4;
+}
+
 .profile-page-body {
     display: flex;
     justify-content: space-between;
