@@ -500,9 +500,13 @@
     font-weight: 600;
 }
 
-.review-rating {
+.review-rating::before {
     background-image: url(../../images/cheddarboxd-icons.svg);
     background-position: -450px -50px;
+    height: 16px;
+    /* width: 36px; */
+    content: "";
+    display: block;
 }
 
 .review-words {
