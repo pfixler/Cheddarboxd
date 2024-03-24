@@ -148,34 +148,24 @@ textarea:active, textarea:focus {
     height: 12px;
 }
 
-.movie-views {
+.movie-interaction-statistics .icon-number {
     display: flex;
-    vertical-align: top;
-}
-
-.movie-interaction-statistics .view-icon {
-    background-position: -360px -30px;
-    display: inline-block;
-
+    align-items: center;
+    justify-content: center;
 }
 
 .movie-interaction-statistics .icon-number:hover {
     color: white;
 }
 
-.movie-lists {
-    display: flex;
-    vertical-align: top;
+.movie-interaction-statistics .view-icon {
+    background-position: -360px -30px;
+    display: inline-block;
 }
 
 .movie-interaction-statistics .list-icon {
     background-position: -420px -30px;
     display: inline-block;
-}
-
-.movie-likes {
-    display: flex;
-    vertical-align: middle;
 }
 
 .movie-interaction-statistics .like-icon {
