@@ -253,7 +253,7 @@
 
 .profile-recent-reviews .rating::before {
     background-image: url(../../images/cheddarboxd-icons.svg);
-    background-position: -476px -50px;
+    background-position: -450px -50px;
     height: 16px;
     /* width: 36px; */
     content: "";
