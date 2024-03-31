@@ -59,13 +59,13 @@ const HomePage = () => {
                         <div className="create-account-home-page">
                             <div className="home-page-message">
                                 <p>
-                                    Review the movies you have watched.
+                                    Track films you've watched.
                                 </p>
                                 <p>
-                                    Make lists of related movies.
+                                    Save those you want to see.
                                 </p>
                                 <p>
-                                    Follow and comment features coming soon.
+                                    Tell your friends what's good.
                                 </p>
                             </div>
                             <div className='create-account-home-page-button-box'>
