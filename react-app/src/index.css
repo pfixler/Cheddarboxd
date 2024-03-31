@@ -115,6 +115,11 @@ textarea:active, textarea:focus {
     display: flex;
 }
 
+.grey-button:hover {
+    background-color: #678;
+    color: #fff;
+}
+
 .green-button span {
     font-size: 1rem;
     font-weight: 400;
