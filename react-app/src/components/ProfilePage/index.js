@@ -133,27 +133,27 @@ const ProfilePage = () => {
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Profile</NavLink>
                         </li>
-                        <li className='navitem'>
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Activity</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Films</NavLink>
-                        </li>
+                        </li> */}
                         {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Diary</NavLink>
                         </li> */}
-                        <li className='navitem'>
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Reviews</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Watchlist</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Lists</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Likes</NavLink>
-                        </li>
+                        </li> */}
                         {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Tags</NavLink>
                         </li>
@@ -192,11 +192,11 @@ const ProfilePage = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="profile-body-section">
+                    {/* <div className="profile-body-section">
                         <h2 className='profile-body-header'>
                             Recent Activity
                         </h2>
-                    </div>
+                    </div> */}
                     <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Recent Reviews
@@ -240,11 +240,11 @@ const ProfilePage = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="profile-body-section">
+                    {/* <div className="profile-body-section">
                         <h2 className='profile-body-header'>
                             Following
                         </h2>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='right-side'>
                     <div className='profile-body-section'>
@@ -252,21 +252,21 @@ const ProfilePage = () => {
                             Watchlist
                         </h2>
                     </div>
-                    <div className='profile-body-section'>
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Diary
                         </h2>
-                    </div>
-                    <div className='profile-body-section'>
+                    </div> */}
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Ratings
                         </h2>
-                    </div>
-                    <div className='profile-body-section'>
+                    </div> */}
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Recent Lists
                         </h2>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             )}
