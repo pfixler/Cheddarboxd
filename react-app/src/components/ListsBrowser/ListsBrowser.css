@@ -68,6 +68,9 @@
     width: 46%;
     height: 100%;
     border-radius: 4px;
+    border-color: #def;
+    /* border-width: 1px; */
+    box-shadow: 2px 0 7px #000;
     position: absolute;
 }
 
