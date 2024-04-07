@@ -61,7 +61,7 @@ const EditListPage = () => {
             return window.alert(`${errorArr}`)
         }
 
-        
+
 
         const data = await dispatch(updateList(updatedList))
             if (data) {
@@ -176,18 +176,18 @@ const EditListPage = () => {
                                     ))}
                                 </select>
                         </div>
-                        <div className="list-form-button-box">
-                                <button className="list-form-button" id="list-form-delete-button" onClick={deleteListFunction}>
-                                    <div>Delete</div>
+                        <div className="buttons-box">
+                                <button className="grey-button" id="list-form-delete-button" type="button" onClick={deleteListFunction}>
+                                    <span>Delete</span>
                                 </button>
                             {/* <div className='list-form-button'> */}
-                                <button className='list-form-button' id="list-form-cancel-button" type="button" onClick={handleCancelClick}>
-                                    <div>Cancel</div>
+                                <button className='grey-button' id="list-form-cancel-button" type="button" onClick={handleCancelClick}>
+                                    <span>Cancel</span>
                                 </button>
                             {/* </div> */}
                             {/* <div className="list-form-button"> */}
-                                <button className='list-form-button' type='submit'>
-                                    <div>Save</div>
+                                <button className='green-button' type='submit'>
+                                    <span>Save</span>
                                 </button>
                             {/* </div> */}
                         </div>
