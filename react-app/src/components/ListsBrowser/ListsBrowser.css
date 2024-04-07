@@ -40,6 +40,11 @@
     border: none;
 }
 
+.create-list-button-box button:hover {
+    background: #303840;
+    color: #def;
+}
+
 .list-lists-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
