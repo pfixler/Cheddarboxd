@@ -6,6 +6,7 @@ import { loadProfileDetails } from '../../store/profile';
 import { unfollowProfile, followProfile } from '../../store/session';
 import { loadUserReviews } from '../../store/review';
 import { getWatchlist } from '../../store/watchlist';
+import '../ListsBrowser/ListsBrowser.css';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -254,9 +255,17 @@ const ProfilePage = () => {
                         <h2 className='profile-body-header'>
                             Watchlist
                         </h2>
-                        {/* <div className='watchlist-box'>
-                            {watchlist.map}
-                        </div> */}
+                        <div className='watchlist-box'>
+                            <div className='single-list-card'>
+                                {watchlist.map((movie, idx) => (
+                                    <img
+                                        key={idx}
+                                        className={`list-images-image-${idx}`}
+                                        src={movie.poster_path}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                     {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
