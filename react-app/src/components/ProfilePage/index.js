@@ -5,6 +5,7 @@ import './ProfilePage.css';
 import { loadProfileDetails } from '../../store/profile';
 import { unfollowProfile, followProfile } from '../../store/session';
 import { loadUserReviews } from '../../store/review';
+import { getWatchlist } from '../../store/watchlist';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -12,8 +13,9 @@ const ProfilePage = () => {
     const sessionUser = useSelector(state => state.session.user);
     const profile = useSelector(state => state.profile.profile);
     const reviews = Object.values(useSelector(state => state.review.userReviews));
-    console.log('reviews', reviews)
-    const recentReviews = reviews.slice(-3)
+    const recentReviews = reviews.slice(-3);
+    const watchlist = Object.values(useSelector(state => state.watchlist));
+    console.log("watchlist", watchlist);
 
 
     const [sameUser, setSameUser] = useState(false);
@@ -22,6 +24,7 @@ const ProfilePage = () => {
 
 
     useEffect(() => {
+        dispatch(getWatchlist(profileId))
         dispatch(loadUserReviews(profileId))
         dispatch(loadProfileDetails(profileId))
             .then(() => setProfileLoaded(true))
@@ -251,6 +254,9 @@ const ProfilePage = () => {
                         <h2 className='profile-body-header'>
                             Watchlist
                         </h2>
+                        {/* <div className='watchlist-box'>
+                            {watchlist.map}
+                        </div> */}
                     </div>
                     {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
