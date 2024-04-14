@@ -17,6 +17,7 @@ const ProfilePage = () => {
     const recentReviews = reviews.slice(-3);
     const watchlist = Object.values(useSelector(state => state.watchlist));
     console.log("watchlist", watchlist);
+    const watchlistArrayFirstFive = watchlist.slice(0,5)
 
 
     const [sameUser, setSameUser] = useState(false);
@@ -181,7 +182,7 @@ const ProfilePage = () => {
                         <p className='favorite-films-content'>
                             Don't forget to select your favorite films!
                         </p>
-                        <ul className='favorite-films-poster-list'>
+                        {/* <ul className='favorite-films-poster-list'>
                             <li className='favorite-films-poster-list-placeholder'>
 
                             </li>
@@ -194,7 +195,7 @@ const ProfilePage = () => {
                             <li className='favorite-films-poster-list-placeholder'>
 
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
                     {/* <div className="profile-body-section">
                         <h2 className='profile-body-header'>
@@ -257,13 +258,15 @@ const ProfilePage = () => {
                         </h2>
                         <div className='watchlist-box'>
                             <div className='single-list-card'>
-                                {watchlist.map((movie, idx) => (
-                                    <img
-                                        key={idx}
-                                        className={`list-images-image-${idx}`}
-                                        src={movie.poster_path}
-                                    />
-                                ))}
+                                <div className='list-images'>
+                                    {watchlistArrayFirstFive.map((movie, idx) => (
+                                        <img
+                                            key={idx}
+                                            className={`list-images-image _${idx}`}
+                                            src={movie.poster_path}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
