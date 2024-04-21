@@ -146,7 +146,7 @@ const MovieDetails = () => {
     const watchClick = () => {
         if (!userHasReview) {
             dispatch(createReview({
-                watch_date: '',
+                watch_date: stringDate,
                 rating: 0,
                 like: false,
                 content: '',
@@ -168,7 +168,7 @@ const MovieDetails = () => {
     const likeClick = () => {
         if (!hasLiked && !userHasReview) {
             dispatch(createReview({
-                watch_date: '',
+                watch_date: stringDate,
                 rating: 0,
                 like: true,
                 content: '',
@@ -248,7 +248,7 @@ const MovieDetails = () => {
     const ratingClick = (rating) => {
         if (!reviewRating && !userHasReview) {
             dispatch(createReview({
-                watch_date: '',
+                watch_date: stringDate,
                 rating: rating,
                 like: false,
                 content: '',
