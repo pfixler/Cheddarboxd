@@ -1,4 +1,5 @@
 import "../MovieDetails/MovieDetails.css";
+import "./ReviewModalIcons.css";
 import { useState } from "react";
 
 
@@ -50,18 +51,13 @@ const ReviewModalIcons = ({review}) => {
     }
 
     const removeRatingClick = () => {
-        
+
     }
 
 
 
     return (
         <div className="review-modal-icons">
-            <div className="action-row">
-                <span className="icon-box" onClick={() => likeClick()}>
-                    <div className={likeIconClassName}>Like</div>
-                </span>
-            </div>
             <div className="action-row rate">
                 <span className="rate-label">Rate</span>
                 <div className="rate-movie-box">
@@ -70,6 +66,12 @@ const ReviewModalIcons = ({review}) => {
                     </div>
                 </div>
                 <div className="remove-rating" onClick={() => removeRatingClick()}>"Remove rating"</div>
+            </div>
+            <div className="action-row like">
+                <span>Like</span>
+                <span className="icon-box" onClick={() => likeClick()}>
+                    <div className={likeIconClassName}></div>
+                </span>
             </div>
         </div>
     )
