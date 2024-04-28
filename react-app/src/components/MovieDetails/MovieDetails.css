@@ -333,6 +333,14 @@
     background-position: -340px -890px;
 }
 
+.action-icon.watchlist.on:hover .original-text {
+    display: none;
+}
+
+.action-icon.watchlist.on:hover .hover-text {
+    display: inline;
+}
+
 .action-icon.watchlist::before {
     background-position: -400px -850px;
 }

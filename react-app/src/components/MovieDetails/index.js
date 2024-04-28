@@ -387,7 +387,8 @@ const MovieDetails = () => {
                                                 </span>
                                                 <span className="icon-box" onClick={() => watchlistClick()}>
                                                     <div className={watchlistIconClassName}>
-                                                        Watchlist
+                                                        <span className="original-text">Watchlist</span>
+                                                        <span className="hover-text">Remove</span>
                                                     </div>
                                                 </span>
                                             </li>
