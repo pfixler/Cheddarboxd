@@ -374,13 +374,20 @@ const MovieDetails = () => {
                                         <ul className="interaction-actions">
                                             <li className="action-row" id="top-icons">
                                                 <span className="icon-box" onClick={() => watchClick()}>
-                                                    <span className={watchIconClassName}>Watch</span>
+                                                    <div className={watchIconClassName}>
+                                                        Watch
+                                                    </div>
                                                 </span>
                                                 <span className="icon-box" onClick={() => likeClick()}>
-                                                    <div className={likeIconClassName}>Like</div>
+                                                    <div className={likeIconClassName}>
+                                                        <span className="original-text">Like</span>
+                                                        <span className="hover-text">Remove</span>
+                                                    </div>
                                                 </span>
                                                 <span className="icon-box" onClick={() => watchlistClick()}>
-                                                    <div className={watchlistIconClassName}>Watchlist</div>
+                                                    <div className={watchlistIconClassName}>
+                                                        Watchlist
+                                                    </div>
                                                 </span>
                                             </li>
                                             <li className="action-row rate">
