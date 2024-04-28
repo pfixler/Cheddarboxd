@@ -147,12 +147,14 @@ const EditReviewModal = ({review}) => {
                     </div>
                     <div className='edit-review-buttons'>
                         <div className="submit">
-                            <button className='review-submit-button' id='save-edit-review' type='submit'>
-                                Save
+                            <button className='green-button' id='save-edit-review' type='submit'>
+                                <span>Save</span>
                             </button>
                         </div>
                         <div className='delete'>
-                            <button className='review-delete-button' id='delete-edit-review' onClick={deleteReviewFunction}>Delete</button>
+                            <button className='grey-button' id='delete-edit-review' onClick={deleteReviewFunction}>
+                                <span>Delete</span>
+                            </button>
                         </div>
                     </div>
                 </form>
