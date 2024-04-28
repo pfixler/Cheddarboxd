@@ -119,7 +119,7 @@
     align-items: center;
 }
 
-.create-review-form button {
+/* .create-review-form button {
     height: 28px;
     background-color: #00b020;
     box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
@@ -136,4 +136,4 @@
     font-size: 16px;
     line-height: 12px;
     font-weight: 600;
-}
+} */
