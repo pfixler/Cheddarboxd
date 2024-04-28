@@ -375,7 +375,8 @@ const MovieDetails = () => {
                                             <li className="action-row" id="top-icons">
                                                 <span className="icon-box" onClick={() => watchClick()}>
                                                     <div className={watchIconClassName}>
-                                                        Watch
+                                                        <span className="original-text">Watch</span>
+                                                        <span className="hover-text">Remove</span>
                                                     </div>
                                                 </span>
                                                 <span className="icon-box" onClick={() => likeClick()}>
