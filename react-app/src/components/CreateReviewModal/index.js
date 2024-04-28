@@ -132,8 +132,8 @@ const CreateReviewModal = ({movie}) => {
                         </div>
                     </div>
                     <div className="submit">
-                        <button className='review-submit-button' type='submit'>
-                            Save
+                        <button className='green-button' type='submit'>
+                            <span>Save</span>
                         </button>
                     </div>
                 </form>
