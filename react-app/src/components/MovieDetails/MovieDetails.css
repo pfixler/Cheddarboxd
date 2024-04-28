@@ -301,11 +301,11 @@
     display: none;
 }
 
-.action-icon.watch.on:hover .original-text {
+.action-icon.on:hover .original-text {
     display: none;
 }
 
-.action-icon.watch.on:hover .hover-text {
+.action-icon.on:hover .hover-text {
     display: inline;
 }
 
@@ -317,13 +317,13 @@
     background-position: -280px -890px;
 }
 
-.action-icon.like.on:hover .original-text {
+/* .action-icon.like.on:hover .original-text {
     display: none;
 }
 
 .action-icon.like.on:hover .hover-text {
     display: inline;
-}
+} */
 
 .action-icon.like::before {
     background-position: -340px -850px;
@@ -333,13 +333,13 @@
     background-position: -340px -890px;
 }
 
-.action-icon.watchlist.on:hover .original-text {
+/* .action-icon.watchlist.on:hover .original-text {
     display: none;
 }
 
 .action-icon.watchlist.on:hover .hover-text {
     display: inline;
-}
+} */
 
 .action-icon.watchlist::before {
     background-position: -400px -850px;
