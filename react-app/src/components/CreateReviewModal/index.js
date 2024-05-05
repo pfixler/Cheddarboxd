@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReview } from '../../store/review';
 import './CreateReviewModal.css';
+import ReviewModalIcons from '../ReviewModalIcons';
 
 const CreateReviewModal = ({movie}) => {
     const dispatch = useDispatch();
@@ -105,7 +106,8 @@ const CreateReviewModal = ({movie}) => {
                         {/* </label> */}
                     </div>
                     <div className='rating-and-like' id='review-input-box'>
-                        <div className="rating">
+                        <ReviewModalIcons/>
+                        {/* <div className="rating">
                             <label className='rating-label'>
                                 Rating
                                 <input
@@ -129,7 +131,7 @@ const CreateReviewModal = ({movie}) => {
                                     onChange={handleChange}
                                 />
                             </label>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="submit">
                         <button className='green-button' type='submit'>
