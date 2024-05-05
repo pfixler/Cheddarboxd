@@ -136,7 +136,7 @@ const ProfilePage = () => {
                 <nav className="profile-navbar">
                     <ul className="profile-navbar-list">
                         <li className='navitem'>
-                            <NavLink exact to="/"
+                            <NavLink exact to={`/profiles/${sessionUser.id}`}
                                 className="profile-navbar-list-item selected"
                             >
                                 Profile
