@@ -130,6 +130,10 @@
     position: relative;
 }
 
+.profile-navbar-list-item .selected {
+    color: #fff;
+}
+
 .profile-navbar-list-item:hover {
     color: #40bcf4;
 }
