@@ -136,7 +136,11 @@ const ProfilePage = () => {
                 <nav className="profile-navbar">
                     <ul className="profile-navbar-list">
                         <li className='navitem'>
-                            <NavLink exact to="/" className="profile-navbar-list-item">Profile</NavLink>
+                            <NavLink exact to="/"
+                                className="profile-navbar-list-item selected"
+                            >
+                                Profile
+                            </NavLink>
                         </li>
                         {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Activity</NavLink>
