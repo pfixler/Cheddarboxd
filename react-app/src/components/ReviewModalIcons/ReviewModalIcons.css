@@ -1,0 +1,24 @@
+.review-modal-icons {
+    display: flex;
+}
+
+.review-modal-icons .rate-movie-box {
+    padding-left: 20px;
+}
+
+.review-modal-icons .action-row {
+    border: none;
+}
+
+.review-modal-icons .action-row.like {
+    flex-direction: column;
+    position: relative;
+}
+
+.review-modal-icons .remove-rating::after {
+    top: 4px;
+}
+
+.review-modal-icons .action-row.rate {
+    margin-right: 35px;
+}

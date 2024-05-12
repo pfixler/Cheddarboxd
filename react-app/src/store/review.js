@@ -1,6 +1,7 @@
 
 const LOAD_MOVIE_REVIEWS = 'reviews/LOAD_MOVIE_REVIEWS';
 const LOAD_USER_REVIEWS = 'reivews/LOAD_USER_REVIEWS';
+// const LOAD_SINGLE_REVIEW = 'reviews/LOAD_SINGLE_REVIEW';
 const CREATE_REVIEW = 'review/CREATE_REVIEW';
 const UPDATE_REVIEW = 'review/UPDATE_REVIEW';
 const DELETE_REVIEW = 'review/DELETE_REVIEW';
@@ -14,6 +15,11 @@ const loadUser = (reviews) => ({
     type: LOAD_USER_REVIEWS,
     reviews
 })
+
+// const loadSingle = (review) => ({
+//     type: LOAD_SINGLE_REVIEW,
+//     review
+// })
 
 const create = (review) => ({
     type: CREATE_REVIEW,
@@ -47,6 +53,15 @@ export const loadUserReviews = (userId) => async (dispatch) => {
         dispatch(loadUser(userReviews))
     }
 }
+
+// export const loadSingleReview = (userId, movieId) => async (dispatch) => {
+//     const response = await fetch(`/api/reviews/user/${userId}/movie/${movieId}`)
+
+//     if (response.ok) {
+//         const userReview = await response.json();
+//         dispatch(loadSingle(userReview));
+//     }
+// }
 
 export const createReview = (review, movieId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/movie/${movieId}`, {
@@ -86,18 +101,19 @@ export const deleteReview = (review) => async (dispatch) => {
 
 
 const initialState = { userReviews: {}, movieReviews: {}};
-const review = (state=initialState, action) => {
+
+const review = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_MOVIE_REVIEWS:
-            newState = {...state, movieReviews: {}};
-            action.reviews.Reviews.forEach((review) => {
+            newState = { movieReviews: {}, userReviews: {}}
+            action.reviews.Reviews.forEach(review => {
                 newState.movieReviews[review.id] = review;
             })
             return newState;
         case LOAD_USER_REVIEWS:
             newState = {movieReviews: {}, userReviews: {}};
-            action.reviews.Reviews.forEach((review) => {
+            action.reviews.Reviews.forEach(review => {
                 newState.userReviews[review.id] = review;
             })
             return newState

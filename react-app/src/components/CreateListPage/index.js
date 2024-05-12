@@ -1,26 +1,32 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { createList } from "../../store/list";
-import { useHistory } from "react-router-dom";
-import movie, { loadAllMovies } from "../../store/movie";
+import { useHistory, useParams } from "react-router-dom";
+import { loadAllMovies } from "../../store/movie";
 import './CreateListPage.css'
 
 const CreateListPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { movieId } = useParams();
     const user = useSelector(state => state.session.user);
     const movies = Object.values(useSelector(state => state.movie.allMovies));
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [publicList, setPublicList] = useState(false);
-    const [listMovies, setListMovies] = useState([])
+    const [listMovies, setListMovies] = useState([]);
 
     const createdAt = new Date();
     const stringDate = createdAt.toISOString().slice(0, 10)
 
     useEffect(() => {
         dispatch(loadAllMovies())
-    }, [dispatch])
+        if (movieId) {
+            setListMovies([movieId, ...listMovies])
+        }
+        }, [dispatch])
+
 
     const handleChange = () => {
         setPublicList(!publicList)
@@ -176,16 +182,16 @@ const CreateListPage = () => {
                                     <div className="create-list-movie-image-box">
                                         <img
                                             className="create-list-movie-image"
-                                            src={getListMovieById(listMovie).poster_path}
-                                            name={getListMovieById(listMovie).title}
+                                            src={getListMovieById(listMovie)?.poster_path}
+                                            name={getListMovieById(listMovie)?.title}
                                         />
                                     </div>
                                     <div className="list-movie-details">
                                         <div className="list-movie-title">
-                                            {getListMovieById(listMovie).title}
+                                            {getListMovieById(listMovie)?.title}
                                         </div>
                                         <div className="list-movie-release-year">
-                                            {getListMovieById(listMovie).release_date?.split('-')[0]}
+                                            {getListMovieById(listMovie)?.release_date?.split('-')[0]}
                                         </div>
                                     </div>
                                 </div>

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { updateReview, deleteReview } from '../../store/review';
-import '../CreateReviewModal/CreateReviewModal.css'
-import './EditReviewModal.css'
+import '../CreateReviewModal/CreateReviewModal.css';
+import './EditReviewModal.css';
+import ReviewModalIcons from '../ReviewModalIcons';
 
 const EditReviewModal = ({review}) => {
 
@@ -117,7 +118,8 @@ const EditReviewModal = ({review}) => {
                         {/* </label> */}
                     </div>
                     <div className='rating-and-like' id='review-input-box'>
-                        <div className="rating">
+                        <ReviewModalIcons review={review} />
+                        {/* <div className="rating">
                             <label className='rating-label'>
                                 Rating
                                 <input
@@ -141,16 +143,18 @@ const EditReviewModal = ({review}) => {
                                     onChange={handleChange}
                                 />
                             </label>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='edit-review-buttons'>
                         <div className="submit">
-                            <button className='review-submit-button' id='save-edit-review' type='submit'>
-                                Save
+                            <button className='green-button' id='save-edit-review' type='submit'>
+                                <span>Save</span>
                             </button>
                         </div>
                         <div className='delete'>
-                            <button className='review-delete-button' id='delete-edit-review' onClick={deleteReviewFunction}>Delete</button>
+                            <button className='grey-button' id='delete-edit-review' onClick={deleteReviewFunction}>
+                                <span>Delete</span>
+                            </button>
                         </div>
                     </div>
                 </form>

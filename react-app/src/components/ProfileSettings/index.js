@@ -54,9 +54,9 @@ const ProfileSettings = () => {
                     <li className="profile-settings-navbar-list-item">
                         Profile
                     </li>
-                    <li className="profile-settings-navbar-list-item">
+                    {/* <li className="profile-settings-navbar-list-item">
                         Avatar
-                    </li>
+                    </li> */}
                 </ul>
                 {/* <p className="delete-account-button">
                     Deactivate Account

@@ -138,6 +138,47 @@
     z-index: 1;
 }
 
+.movie-interaction-statistics {
+
+}
+
+/* .movie-interaction-statistics .icon {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    width: 16px;
+    height: 12px;
+}
+
+.movie-views {
+    display: flex;
+    vertical-align: top;
+}
+
+.movie-interaction-statistics .view-icon {
+    background-position: -360px -30px;
+    display: inline-block;
+
+}
+
+.movie-lists {
+    display: flex;
+    vertical-align: top;
+}
+
+.movie-interaction-statistics .list-icon {
+    background-position: -420px -30px;
+    display: inline-block;
+}
+
+.movie-likes {
+    display: flex;
+    vertical-align: middle;
+}
+
+.movie-interaction-statistics .like-icon {
+    background-position: -380px -30px;
+    display: inline-block;
+} */
+
 .single-movie-information {
 
 }
@@ -148,7 +189,7 @@
     align-items: baseline;
 }
 
-.title {
+.single-movie-information .title {
     color: white;
     font-size: 26px;
     font-family: Arial, Helvetica, sans-serif;
@@ -161,7 +202,7 @@
     align-items: center;
 }
 
-.release-date {
+.single-movie-information .release-date {
     font-size: 16px;
     color: #DDEEFF;
     margin-right: 7px;
@@ -254,7 +295,19 @@
     content: "";
     display: block;
     margin: 0 auto 3px;
-  }
+}
+
+.action-icon .hover-text {
+    display: none;
+}
+
+.action-icon.on:hover .original-text {
+    display: none;
+}
+
+.action-icon.on:hover .hover-text {
+    display: inline;
+}
 
 .action-icon.watch::before {
     background-position: -280px -850px;
@@ -264,6 +317,14 @@
     background-position: -280px -890px;
 }
 
+/* .action-icon.like.on:hover .original-text {
+    display: none;
+}
+
+.action-icon.like.on:hover .hover-text {
+    display: inline;
+} */
+
 .action-icon.like::before {
     background-position: -340px -850px;
 }
@@ -271,6 +332,14 @@
 .action-icon.like.on::before {
     background-position: -340px -890px;
 }
+
+/* .action-icon.watchlist.on:hover .original-text {
+    display: none;
+}
+
+.action-icon.watchlist.on:hover .hover-text {
+    display: inline;
+} */
 
 .action-icon.watchlist::before {
     background-position: -400px -850px;
@@ -282,6 +351,7 @@
 
 .action-row.rate {
     flex-direction: column;
+    position: relative;
 }
 
 .rating-field {
@@ -297,30 +367,97 @@
 .rate-movie-box {
     display: block;
     margin-top: 4px;
+    /* width: 100%; */
+    position: relative;
 }
 
-.rate-icon.range {
+/* .remove-rating {
+    display: none;
+} */
+
+.remove-rating {
+    background: none;
+    bottom: 10px;
+    height: 32px;
+    left: 5px;
+    overflow: hidden;
+    position: absolute;
+    width: 20px;
+    display: block;;
+    text-indent: 110%;
+    white-space: nowrap;
+}
+
+.remove-rating::after {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -370px -50px;
+    content: "";
+    display: block;
+    height: 16px;
+    right: 4px;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    transform: translateX(6px);
+    transition: all .2s;
+    width: 16px;
+    cursor: pointer;
+}
+
+.remove-rating:hover::after {
+    opacity: .6;
+    transform: translateX(0);
+}
+
+.rate-movie-box:hover + .remove-rating::after {
+    opacity: .6;
+    transform: translateX(0);
+}
+
+.rating-stars {
+    display: inline-block;
+}
+
+/* .star {
+    display: inline-block;
     width: 180px;
     height: 32px;
-    background-position: 1px -890px;
-    margin: 0 auto;
-}
+    position: relative;
+    cursor: pointer;
+} */
 
-.rate-icon.selected {
+/* .star-container.selected {
+    background-position: 1px -925px;
+} */
+
+.rate-icon.selected,
+.rate-icon.hover {
     background-position: 1px -925px;
 }
 
-.rate-icon.selected:hover {
+
+/* .rate-icon.selected:hover {
     display: none;
+} */
+
+.rate-icon.hover  {
+    background-position: 1px -960px;
+}
+
+.rate-icon {
+    display: inline-block;
+    width: 36px;
+    height: 32px;
+    background-position: 1px -890px;
+  }
+
+/* .rate-icon.hover:hover {
+    background-position: 1px -960px;
 }
 
 .rate-icon.hover {
     display: none;
-}
-
-.rate-icon.hover:hover {
-    background-position: 1px -960px;
-}
+} */
 
 .action-row button {
     height: 100%;
@@ -391,8 +528,13 @@
     font-weight: 600;
 }
 
-.review-rating {
-
+.review-rating::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -450px -50px;
+    height: 16px;
+    /* width: 36px; */
+    content: "";
+    display: block;
 }
 
 .review-words {

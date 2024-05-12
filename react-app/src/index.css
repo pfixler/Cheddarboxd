@@ -28,7 +28,8 @@ h2 {
 body {
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #2c3440;
+    /* background-color: #2c3440; */
+    background-color: #14181c;
     /* background: #14181c; */
     background: linear-gradient(180deg, #2c3440, #14181c);
     background-attachment: fixed;
@@ -61,6 +62,7 @@ a:link {
 input {
     background-color: #CCDDEE;
     border: none;
+    outline: none;
     border-radius: 3px;
 }
 
@@ -87,15 +89,20 @@ textarea:active, textarea:focus {
     align-items: center;
 }
 
-  .green-button {
+.green-button {
     height: 29px;
-    background-color: #00b020;
+    background-color: #00ac1c;
     box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%);
     color: #f4fcf0;
     cursor: pointer;
     border: none;
     border-radius: 3px;
     box-sizing: border-box;
+}
+
+.green-button:hover {
+    background-color: #009d1a;
+    /* color: white; */
 }
 
 .grey-button {
@@ -108,6 +115,11 @@ textarea:active, textarea:focus {
     box-sizing: border-box;
     background-color: #567;
     display: flex;
+}
+
+.grey-button:hover {
+    background-color: #678;
+    color: #fff;
 }
 
 .green-button span {
@@ -139,4 +151,35 @@ textarea:active, textarea:focus {
 
 .rate-icon {
     background-image: url(./images/cheddarboxd-icons.svg);
+}
+
+.movie-interaction-statistics .icon {
+    background-image: url(./images/cheddarboxd-icons.svg);
+    width: 16px;
+    height: 12px;
+}
+
+.movie-interaction-statistics .icon-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-interaction-statistics .icon-number:hover {
+    color: white;
+}
+
+.movie-interaction-statistics .view-icon {
+    background-position: -360px -30px;
+    display: inline-block;
+}
+
+.movie-interaction-statistics .list-icon {
+    background-position: -420px -30px;
+    display: inline-block;
+}
+
+.movie-interaction-statistics .like-icon {
+    background-position: -380px -30px;
+    display: inline-block;
 }

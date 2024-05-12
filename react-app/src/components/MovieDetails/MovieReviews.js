@@ -33,8 +33,8 @@ const MovieReviews = ({reviews}) => {
                                     <div className="reviewer-name">
                                         Review by <span>{review.reviewer?.username}</span>
                                     </div>
-                                    <div className="review-rating">
-                                        {review.rating} Stars
+                                    <div className="review-rating" style={{width:`${review.rating*13}px`}}>
+                                        {/* {review.rating} Stars */}
                                     </div>
                                 </div>
                                 <div className="review-words">

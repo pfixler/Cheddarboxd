@@ -93,6 +93,10 @@
 
 }
 
+.submit-sign-in-button:hover {
+    background-color: #009d1a;
+}
+
 .submit-sign-in-button div {
     padding: 6px 12px;
     font-size: 16px;

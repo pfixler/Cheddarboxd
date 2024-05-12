@@ -39,7 +39,7 @@ const movie = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_ALL_MOVIES:
-            newState = { allMovies: {}, oneMovie: {}}
+            newState = { ...state, allMovies: {} }
             action.movies.Movies.forEach(movie => {
                 newState.allMovies[movie.id] = movie;
             });

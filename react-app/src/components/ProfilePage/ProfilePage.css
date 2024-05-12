@@ -130,6 +130,14 @@
     position: relative;
 }
 
+.profile-navbar-list-item .selected {
+    color: #fff;
+}
+
+.profile-navbar-list-item:hover {
+    color: #40bcf4;
+}
+
 .profile-page-body {
     display: flex;
     justify-content: space-between;
@@ -145,7 +153,7 @@
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: .075em;
-    margin-bottom: 0.76923077rem;
+    margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 5px;
     text-transform: uppercase;
@@ -189,4 +197,115 @@
 
 .right-side {
     width: 27%;
+}
+
+.profile-recent-reviews .information-box {
+    border-top: 1px solid #456;
+    padding-bottom: 15px;
+}
+
+.profile-recent-reviews .information {
+    display: flex;
+    margin-top: 0.76923077rem;
+}
+
+.profile-recent-reviews .poster-box {
+    margin-right: 20px;
+    position: relative;
+}
+
+.profile-recent-reviews .poster {
+    width: 70px;
+    height: 105px;
+    border-radius: 3px;
+}
+
+.profile-recent-reviews .movie-frame {
+    height: 100%;
+    box-sizing: border-box;
+    display: block;
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+}
+
+.profile-recent-reviews .review-content {
+
+}
+
+.profile-recent-reviews .title-release-date {
+    font-family: TiemposTextWeb-Semibold,Georgia,serif;
+    font-size: 1.69230769rem;
+    font-weight: 400;
+    margin: 0 0 10px
+}
+
+.profile-recent-reviews .title {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.profile-recent-reviews .release-date {
+    font-size: 1.38461538rem;
+    color: #89a;
+    font-family: Graphik-Light-Web,sans-serif;
+    font-weight: 400;
+}
+
+.profile-recent-reviews .rating-creation-date {
+    margin-bottom: 10px;
+    color: #678;
+    display: flex;
+}
+
+.profile-recent-reviews .rating {
+    /* background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -476px -50px; */
+    /* height: 16px; */
+    margin-right: 7px;
+    top: -1px;
+    /* width: 36px; */
+}
+
+.profile-recent-reviews .rating::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -450px -50px;
+    height: 16px;
+    /* width: 36px; */
+    content: "";
+    display: block;
+}
+
+.profile-recent-reviews .creation-date {
+
+}
+
+.watchlist-box {
+    margin-top: 0.76923077rem;;
+}
+
+.watchlist-box .list-images {
+    height: 105px;
+}
+
+.watchlist-box .list-images-image {
+    width: 29%;
+    border-radius: 3px;
+}
+
+.watchlist-box ._1 {
+    margin-left: 17.75%;
+}
+
+.watchlist-box ._2 {
+    margin-left: 35.5%;
+}
+
+.watchlist-box ._3 {
+    margin-left: 53.25%;
+}
+
+.watchlist-box ._4 {
+    margin-left: 71%;
 }

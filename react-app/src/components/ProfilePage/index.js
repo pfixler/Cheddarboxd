@@ -4,12 +4,20 @@ import { useState, useEffect } from 'react';
 import './ProfilePage.css';
 import { loadProfileDetails } from '../../store/profile';
 import { unfollowProfile, followProfile } from '../../store/session';
+import { loadUserReviews } from '../../store/review';
+import { getWatchlist } from '../../store/watchlist';
+import '../ListsBrowser/ListsBrowser.css';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
     const { profileId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const profile = useSelector(state => state.profile.profile);
+    const reviews = Object.values(useSelector(state => state.review.userReviews));
+    const recentReviews = reviews.slice(-3);
+    const watchlist = Object.values(useSelector(state => state.watchlist));
+    console.log("watchlist", watchlist);
+    const watchlistArrayFirstFive = watchlist.slice(0,5)
 
 
     const [sameUser, setSameUser] = useState(false);
@@ -18,7 +26,8 @@ const ProfilePage = () => {
 
 
     useEffect(() => {
-
+        dispatch(getWatchlist(profileId))
+        dispatch(loadUserReviews(profileId))
         dispatch(loadProfileDetails(profileId))
             .then(() => setProfileLoaded(true))
 
@@ -127,30 +136,34 @@ const ProfilePage = () => {
                 <nav className="profile-navbar">
                     <ul className="profile-navbar-list">
                         <li className='navitem'>
-                            <NavLink exact to="/" className="profile-navbar-list-item">Profile</NavLink>
+                            <NavLink exact to={`/profiles/${sessionUser.id}`}
+                                className="profile-navbar-list-item selected"
+                            >
+                                Profile
+                            </NavLink>
                         </li>
-                        <li className='navitem'>
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Activity</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Films</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Diary</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Reviews</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Watchlist</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Lists</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Likes</NavLink>
-                        </li>
-                        <li className='navitem'>
+                        </li> */}
+                        {/* <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Tags</NavLink>
                         </li>
                         <li className='navitem'>
@@ -158,7 +171,7 @@ const ProfilePage = () => {
                         </li>
                         <li className='navitem'>
                             <NavLink exact to="/" className="profile-navbar-list-item">Invitations</NavLink>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>
@@ -173,7 +186,7 @@ const ProfilePage = () => {
                         <p className='favorite-films-content'>
                             Don't forget to select your favorite films!
                         </p>
-                        <ul className='favorite-films-poster-list'>
+                        {/* <ul className='favorite-films-poster-list'>
                             <li className='favorite-films-poster-list-placeholder'>
 
                             </li>
@@ -186,45 +199,99 @@ const ProfilePage = () => {
                             <li className='favorite-films-poster-list-placeholder'>
 
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
-                    <div className="profile-body-section">
+                    {/* <div className="profile-body-section">
                         <h2 className='profile-body-header'>
                             Recent Activity
                         </h2>
-                    </div>
+                    </div> */}
                     <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Recent Reviews
                         </h2>
+                        <div className='profile-recent-reviews'>
+                            {recentReviews.map(review => (
+                                <div className='information-box' key={review.id}>
+                                    <div className='information'>
+                                        <div className='poster-box'>
+                                            <img
+                                            className="poster"
+                                            src={review.movie.poster_path}
+                                            name={review.movie.title}
+                                            />
+                                            <NavLink exact to={`/movies/${review.movie.id}`} className="movie-frame">
+
+                                            </NavLink>
+                                        </div>
+                                        <div className='review-content'>
+                                            <div className='title-release-date'>
+                                                <span className='title'>
+                                                    {review.movie.title}
+                                                </span>
+                                                <span className='release-date'>
+                                                    {review.movie.release_date.slice(0,4)}
+                                                </span>
+                                            </div>
+                                            <div className='rating-creation-date'>
+                                                <span className='rating' style={{width:`${review.rating*13}px`}}>
+                                                </span>
+                                                <span className='creation-date'>
+                                                    Added {`${review.created_at}`}
+                                                </span>
+                                            </div>
+                                            <div className='review'>
+                                                {review.content}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* <div className='likes'>
+
+                                    </div> */}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    <div className="profile-body-section">
+                    {/* <div className="profile-body-section">
                         <h2 className='profile-body-header'>
                             Following
                         </h2>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='right-side'>
                     <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Watchlist
                         </h2>
+                        <div className='watchlist-box'>
+                            <div className='single-list-card'>
+                                <div className='list-images'>
+                                    {watchlistArrayFirstFive.map((movie, idx) => (
+                                        <img
+                                            key={idx}
+                                            className={`list-images-image _${idx}`}
+                                            src={movie.poster_path}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='profile-body-section'>
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Diary
                         </h2>
-                    </div>
-                    <div className='profile-body-section'>
+                    </div> */}
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Ratings
                         </h2>
-                    </div>
-                    <div className='profile-body-section'>
+                    </div> */}
+                    {/* <div className='profile-body-section'>
                         <h2 className='profile-body-header'>
                             Recent Lists
                         </h2>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             )}
