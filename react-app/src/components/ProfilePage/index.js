@@ -136,7 +136,7 @@ const ProfilePage = () => {
                 <nav className="profile-navbar">
                     <ul className="profile-navbar-list">
                         <li className='navitem'>
-                            <NavLink exact to="/"
+                            <NavLink exact to={`/profiles/${sessionUser.id}`}
                                 className="profile-navbar-list-item selected"
                             >
                                 Profile
@@ -220,6 +220,9 @@ const ProfilePage = () => {
                                             src={review.movie.poster_path}
                                             name={review.movie.title}
                                             />
+                                            <NavLink exact to={`/movies/${review.movie.id}`}>
+                                                
+                                            </NavLink>
                                         </div>
                                         <div className='review-content'>
                                             <div className='title-release-date'>
