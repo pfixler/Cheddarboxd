@@ -212,11 +212,12 @@
 .profile-recent-reviews .poster-box {
     margin-right: 20px;
     position: relative;
+    width: 12%;
 }
 
 .profile-recent-reviews .poster {
-    width: 70px;
-    height: 105px;
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
 }
 
@@ -230,6 +231,7 @@
     position: absolute;
     z-index: 2;
     box-shadow: inset 0 0 1px #def;
+    border-radius: 3px;
 }
 
 .profile-recent-reviews .review-content {
