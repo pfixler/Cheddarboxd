@@ -220,8 +220,8 @@ const ProfilePage = () => {
                                             src={review.movie.poster_path}
                                             name={review.movie.title}
                                             />
-                                            <NavLink exact to={`/movies/${review.movie.id}`} className="movie-frame">
-
+                                            <NavLink exact to={`/movies/${review.movie.id}`} className="poster-frame">
+                                                <div className='poster-overlay'></div>
                                             </NavLink>
                                         </div>
                                         <div className='review-content'>

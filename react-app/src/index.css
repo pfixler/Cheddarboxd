@@ -183,3 +183,31 @@ textarea:active, textarea:focus {
     background-position: -380px -30px;
     display: inline-block;
 }
+
+.poster-box {
+    position: relative;
+}
+
+.poster-frame {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    box-shadow: inset 0 0 1px #def;
+    border-radius: 3px;
+}
+
+.poster-overlay {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.poster-overlay:hover {
+    border: 3px solid #00e054;
+    transition: border .1s;
+}
