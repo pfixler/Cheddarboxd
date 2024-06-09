@@ -196,7 +196,7 @@ textarea:active, textarea:focus {
     top: 0;
     right: 0;
     position: absolute;
-    z-index: 2;
+    z-index: 21;
     box-shadow: inset 0 0 1px #def;
     border-radius: 3px;
 }
@@ -207,7 +207,13 @@ textarea:active, textarea:focus {
     border-radius: 3px;
 }
 
-.poster-overlay:hover {
+.poster-overlay.green:hover {
     border: 3px solid #00e054;
     transition: border .1s;
+}
+
+.poster-overlay.white:hover {
+    border: 3px solid #def;
+    transition: border .1s;
+    /* z-index: 8; */
 }

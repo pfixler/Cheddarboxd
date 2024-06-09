@@ -221,7 +221,7 @@ const ProfilePage = () => {
                                             name={review.movie.title}
                                             />
                                             <NavLink exact to={`/movies/${review.movie.id}`} className="poster-frame">
-                                                <div className='poster-overlay'></div>
+                                                <div className='poster-overlay green'></div>
                                             </NavLink>
                                         </div>
                                         <div className='review-content'>
@@ -266,13 +266,18 @@ const ProfilePage = () => {
                         <div className='watchlist-box'>
                             <div className='single-list-card'>
                                 <div className='list-images'>
-                                    {watchlistArrayFirstFive.map((movie, idx) => (
-                                        <img
-                                            key={idx}
-                                            className={`list-images-image _${idx}`}
-                                            src={movie.poster_path}
-                                        />
-                                    ))}
+                                    <NavLink exact to ={'/'} className='poster-frame white'>
+                                        <div className='poster-overlay white'></div>
+                                    </NavLink>
+                                        {watchlistArrayFirstFive.map((movie, idx) => (
+                                            // <div>
+                                                <img
+                                                    key={idx}
+                                                    className={`list-images-image _${idx}`}
+                                                    src={movie.poster_path}
+                                                />
+                                            // </div>
+                                        ))}
                                 </div>
                             </div>
                         </div>
