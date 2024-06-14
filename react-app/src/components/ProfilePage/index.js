@@ -269,15 +269,15 @@ const ProfilePage = () => {
                                     <NavLink exact to ={'/'} className='poster-frame white'>
                                         <div className='poster-overlay white'></div>
                                     </NavLink>
-                                        {watchlistArrayFirstFive.map((movie, idx) => (
-                                            // <div>
-                                                <img
-                                                    key={idx}
-                                                    className={`list-images-image _${idx}`}
-                                                    src={movie.poster_path}
-                                                />
-                                            // </div>
-                                        ))}
+                                    {watchlistArrayFirstFive.map((movie, idx) => (
+                                        // <div>
+                                            <img
+                                                key={idx}
+                                                className={`list-images-image _${idx}`}
+                                                src={movie.poster_path}
+                                            />
+                                        // </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
