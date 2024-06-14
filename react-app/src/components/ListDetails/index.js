@@ -73,6 +73,9 @@ const ListDetails = () => {
                                                 src={movie.poster_path}
                                                 name={movie.title}
                                             />
+                                            <NavLink exact to={`/movies/${movie.id}`} className="poster-frame">
+                                                <div className='poster-overlay green'></div>
+                                            </NavLink>
                                         </div>
                                     ))}
                                 </div>
