@@ -34,6 +34,9 @@ const SingleList = ({list}) => {
                 <div className="single-list-card">
                     <NavLink to={`/lists/${list.id}`}>
                         <div className="list-images">
+                            <div className='poster-frame white'>
+                                <div className='poster-overlay white'></div>
+                            </div>
                             {listMovies.map((movie, idx) => (
                                 <img
                                     key={movie.id}

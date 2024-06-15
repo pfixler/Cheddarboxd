@@ -59,6 +59,7 @@
     /* height: 187px; */
     width: 100%;
     height: 187px;
+    position: relative;
 }
 
 .list-movie-image {

@@ -214,6 +214,6 @@ textarea:active, textarea:focus {
 
 .poster-overlay.white:hover {
     border: 3px solid #def;
-    transition: border .1s;
+    transition: border .3s;
     /* z-index: 8; */
 }
