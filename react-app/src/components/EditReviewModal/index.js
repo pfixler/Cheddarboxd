@@ -15,8 +15,10 @@ const EditReviewModal = ({review}) => {
 
     const [content, setContent] = useState(review.content);
     const [rating, setRating] = useState(review.rating);
+    console.log('rating:', rating)
 
     const [like, setLike] = useState(review.like);
+    console.log('like:', like)
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
 
@@ -118,7 +120,7 @@ const EditReviewModal = ({review}) => {
                         {/* </label> */}
                     </div>
                     <div className='rating-and-like' id='review-input-box'>
-                        <ReviewModalIcons review={review} />
+                        <ReviewModalIcons review={review} rating={review?.rating} like={review?.like}/>
                         {/* <div className="rating">
                             <label className='rating-label'>
                                 Rating
