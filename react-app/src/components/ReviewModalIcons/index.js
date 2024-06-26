@@ -4,19 +4,21 @@ import { useState } from "react";
 
 
 
-const ReviewModalIcons = ({review}) => {
+const ReviewModalIcons = ({review, rating, like}) => {
 
 
 
-    const likeIconClassName = "action-icon like" + (review?.like ? " on" : "");
-
+    const [modalLike, setmodalLike] = useState(like);
     const likeClick = () => {
-
+        setmodalLike(!modalLike);
     }
+    const likeIconClassName = "action-icon like" + (modalLike ? " on" : "");
+    console.log('in component like:', modalLike);
 
     const [hoverRating, setHoverRating] = useState(0);
 
-    const [reviewRating, setReviewRating] = useState(0);
+    const [reviewRating, setReviewRating] = useState(rating);
+    console.log('in component rating:', reviewRating)
 
     const handleMouseEnter = (rating) => {
         setHoverRating(rating);
@@ -46,12 +48,12 @@ const ReviewModalIcons = ({review}) => {
         return stars;
     };
 
-    const ratingClick = () => {
-
+    const ratingClick = (rating) => {
+        setReviewRating(rating);
     }
 
     const removeRatingClick = () => {
-
+        setReviewRating(0);
     }
 
 
