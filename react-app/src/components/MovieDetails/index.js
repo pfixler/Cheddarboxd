@@ -31,7 +31,7 @@ const MovieDetails = () => {
     const [isDifferentLanguage, setIsDifferentLanguage] = useState(false)
 
     const [userReview, setUserReview] = useState(false)
-
+    console.log('review:', userReview)
     // const [hasWatched, setHasWatched] = useState()
     const [userHasReview, setUserHasReview] = useState(false)
     const watchIconClassName = "action-icon watch" + (userHasReview ? " on" : "")
