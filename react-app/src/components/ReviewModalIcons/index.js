@@ -4,13 +4,14 @@ import { useState } from "react";
 
 
 
-const ReviewModalIcons = ({review, rating, like}) => {
+const ReviewModalIcons = ({like, rating, onLikeChange, onRatingChange}) => {
 
 
 
     const [modalLike, setmodalLike] = useState(like);
     const likeClick = () => {
         setmodalLike(!modalLike);
+        onLikeChange(!modalLike);
     }
     const likeIconClassName = "action-icon like" + (modalLike ? " on" : "");
     console.log('in component like:', modalLike);
@@ -50,10 +51,12 @@ const ReviewModalIcons = ({review, rating, like}) => {
 
     const ratingClick = (rating) => {
         setReviewRating(rating);
+        onRatingChange(rating);
     }
 
     const removeRatingClick = () => {
         setReviewRating(0);
+        onRatingChange(0);
     }
 
 
