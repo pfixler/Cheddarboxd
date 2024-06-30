@@ -10,9 +10,15 @@ const CreateReviewModal = ({movie}) => {
     const [dateWatched, setDateWatched] = useState('');
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(0);
+    const handleRatingChange = (ratingChange) => {
+        setRating(ratingChange)
+    };
     //should this be 0 or null or something else
-    const [like, setLike] = useState(false)
-    const [errors, setErrors] = useState([])
+    const [like, setLike] = useState(false);
+    const handleLikeChange = (likeChange) => {
+        setLike(likeChange)
+    };
+    const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
 
     const createdAt = new Date();
@@ -106,7 +112,8 @@ const CreateReviewModal = ({movie}) => {
                         {/* </label> */}
                     </div>
                     <div className='rating-and-like' id='review-input-box'>
-                        <ReviewModalIcons/>
+                        <ReviewModalIcons onLikeChange={handleLikeChange} onRatingChange={handleRatingChange}
+                        like={null} rating={null}/>
                         {/* <div className="rating">
                             <label className='rating-label'>
                                 Rating
