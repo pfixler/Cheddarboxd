@@ -161,6 +161,7 @@
 
 .profile-body-section {
     padding-bottom: 2.30769231rem;
+    width: 100%;
 }
 
 .favorite-films-content {
@@ -199,14 +200,21 @@
     width: 27%;
 }
 
+.profile-recent-reviews {
+    width: 100%;
+}
+
 .profile-recent-reviews .information-box {
     border-top: 1px solid #456;
     padding-bottom: 15px;
+    width: 100%;
 }
 
 .profile-recent-reviews .information {
     display: flex;
     margin-top: 0.76923077rem;
+    max-height: 111.6px;
+    width: 100%;
 }
 
 .profile-recent-reviews .poster-box {
@@ -235,7 +243,7 @@
 } */
 
 .profile-recent-reviews .review-content {
-
+    width: 88%;
 }
 
 .profile-recent-reviews .title-release-date {
@@ -281,8 +289,30 @@
     display: block;
 }
 
+.profile-recent-reviews .like {
+    margin-right: 7px;
+}
+
+.profile-recent-reviews .like.off::before {
+    display: none;
+}
+
+.profile-recent-reviews .like::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -390px -90px;
+    height: 16px;
+    width: 15px;
+    content: "";
+    display: block;
+}
+
 .profile-recent-reviews .creation-date {
 
+}
+
+.profile-recent-reviews .review {
+    overflow: hidden;
+    max-height: calc(111.6px - 25px - 16px - 20px);
 }
 
 .watchlist-box {
