@@ -289,6 +289,23 @@
     display: block;
 }
 
+.profile-recent-reviews .like {
+    margin-right: 7px;
+}
+
+.profile-recent-reviews .like.off::before {
+    display: none;
+}
+
+.profile-recent-reviews .like::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -390px -90px;
+    height: 16px;
+    width: 15px;
+    content: "";
+    display: block;
+}
+
 .profile-recent-reviews .creation-date {
 
 }

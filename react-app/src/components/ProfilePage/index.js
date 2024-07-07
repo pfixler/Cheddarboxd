@@ -56,6 +56,7 @@ const ProfilePage = () => {
         setUserFollowing(!userFollowing);
     }
 
+    const likeIconClassName = (like) => like ? "" : "off";
 
 
     return (
@@ -235,6 +236,8 @@ const ProfilePage = () => {
                                             </div>
                                             <div className='rating-creation-date'>
                                                 <span className='rating' style={{width:`${review.rating*13}px`}}>
+                                                </span>
+                                                <span className={`like ${likeIconClassName(review?.like)}`}>
                                                 </span>
                                                 <span className='creation-date'>
                                                     Added {`${review.created_at}`}
