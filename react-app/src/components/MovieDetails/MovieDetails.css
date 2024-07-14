@@ -497,14 +497,16 @@
     padding-bottom: 15px;
     padding-top: 15px;
     border-bottom: 1px solid #456;
-    max-height: 350px;
+    max-height: 200px;
 }
 
 .reviewer-image {
     width: 8%;
     display: flex;
     align-items: start;
-    justify-content: center;
+    /* justify-content: center; */
+    margin-right: 12px;
+    max-width: fit-content;
 }
 
 #reviewer-icon {
@@ -537,8 +539,35 @@
     display: block;
 }
 
+.review-information .rating::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -450px -50px;
+    height: 16px;
+    /* width: 36px; */
+    content: "";
+    display: block;
+}
+
+.review-information .like {
+    margin-right: 7px;
+}
+
+.review-information .like.off::before {
+    display: none;
+}
+
+.review-information .like::before {
+    background-image: url(../../images/cheddarboxd-icons.svg);
+    background-position: -390px -90px;
+    height: 16px;
+    width: 15px;
+    content: "";
+    display: block;
+}
+
 .review-words {
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-height: 144px;
 }
