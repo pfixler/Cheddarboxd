@@ -13,6 +13,8 @@ const MovieReviews = ({reviews}) => {
         }
     }, [dispatch, reviews])
 
+    const likeIconClassName = (like) => like ? "" : "off";
+
     return (
         <>
             {reviewsLoaded && (
@@ -33,6 +35,7 @@ const MovieReviews = ({reviews}) => {
                                     <div className="reviewer-name">
                                         Review by <span>{review.reviewer?.username}</span>
                                     </div>
+                                    <div className={`like ${likeIconClassName(review?.like)}`}></div>
                                     <div className="review-rating" style={{width:`${review.rating*13}px`}}>
                                         {/* {review.rating} Stars */}
                                     </div>
