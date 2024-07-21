@@ -121,6 +121,11 @@
     line-height: 1.38461538;
 }
 
+/* .profile-navbar-list .profile-link {
+    color: #fff;
+    text-decoration: underline #00e054;
+} */
+
 .profile-navbar-list-item {
     color: #9ab;
     display: block;
@@ -130,9 +135,15 @@
     position: relative;
 }
 
-.profile-navbar-list-item .selected {
+.profile-navbar-list .profile-link {
     color: #fff;
+    text-decoration: underline #00e054;
 }
+
+/* .profile-navbar-list-item .selected {
+    color: #fff;
+    text-decoration: underline #00e054;
+} */
 
 .profile-navbar-list-item:hover {
     color: #40bcf4;
