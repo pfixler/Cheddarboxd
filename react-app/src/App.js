@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage";
 import ProfilePage from "./components/ProfilePage";
 import Footer from "./components/Footer";
 import ProfileSettings from "./components/ProfileSettings";
+import ProfileWatchlistPage from "./components/ProfileWatchlistPage";
 
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route exact path="/profiles/:profileId">
             <ProfilePage />
+          </Route>
+          <Route exact path="/profiles/:profileId/watchlist">
+            <ProfileWatchlistPage />
           </Route>
           <Route exact path="/settings">
             <ProfileSettings/>
