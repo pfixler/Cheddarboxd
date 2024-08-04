@@ -6,7 +6,8 @@ const ProfileWatchlistPage = () => {
     return (
         <div>
 
-            
+
+        
         </div>
     )
 }
