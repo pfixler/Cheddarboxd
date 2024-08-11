@@ -7,6 +7,7 @@ const ProfileWatchlistPage = () => {
         <div>
 
 
+
         
         </div>
     )
